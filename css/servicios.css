@@ -1,0 +1,252 @@
+/* =========================
+   SERVICIOS - ESTILOS BASE 
+   ========================= */
+
+.servicios-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  position: relative;
+  
+  /* El valor negativo tira la sección hacia arriba. */
+  margin-top: -5rem;  
+  margin-bottom: 0;
+  
+  /* Truco Full Width */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.intro-image {
+  width: 100%;               /* El contenedor ocupa todo el ancho */
+  order: 1;                  /* La imagen va primero */
+}
+
+.intro-image img {
+  width: 100%;
+  height: 60vh;              /* Altura de la imagen: 60% de la pantalla */
+  object-fit: cover;         /* Recorte perfecto sin deformar */
+  border-radius: 0;          /* Sin bordes redondeados */
+  display: block;            /* Evita espacios blancos abajo */
+}
+
+.intro-content {
+  order: 2;                  /* El texto va segundo */
+  text-align: center;        /* Texto centrado */
+  max-width: 800px;          /* Ancho máximo para que se lea bien */
+  margin: 0 auto;            /* Centrado del bloque */
+  padding: 3rem 1.5rem;      /* Espacio alrededor del texto */
+}
+
+.intro-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.intro-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.btn-primary {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f6b3a;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* =========================
+   FLECHA SCROLL (AJUSTADA)
+   ========================= */
+
+.scroll-arrow {
+  display: block;
+  margin: 1rem auto 0 auto; /* Centrada y separada del texto */
+  text-align: center;
+  font-size: 2.6rem;
+  color: #4f6b3a;
+  opacity: 0.75;
+  pointer-events: none;
+  animation: arrow-bounce 2.0s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(6px); }
+  40%  { transform: translateY(0); }
+  60%  { transform: translateY(4px); }
+  80%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* =========================
+   BLOQUES DE SERVICIOS 
+   ========================= */
+
+.servicio-detalle:nth-of-type(1) { background-color: #e6e8e2; }
+.servicio-detalle:nth-of-type(2) { background-color: #dde5da; }
+.servicio-detalle:nth-of-type(3) { background-color: #e3dfd4; }
+.servicio-detalle:nth-of-type(4) { background-color: #d9dfda; }
+.servicio-detalle:nth-of-type(5) { background-color: #e6e8e2; }
+
+.servicio-detalle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 6rem max(3rem, calc(50vw - 550px));
+  position: relative;
+}
+
+/* Línea separadora */
+.servicio-detalle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Intercalado: servicios pares (2, 4, ...) - Imagen a la izquierda */
+.servicio-detalle:nth-of-type(even) .servicio-texto {
+  order: 2;
+}
+
+.servicio-detalle:nth-of-type(even) .servicio-imagen {
+  order: 1;
+}
+
+/* Estilos de Texto del Servicio */
+.servicio-texto h2 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.servicio-texto {
+  padding: 2.5rem;        /* Espacio interno para que el texto no toque los bordes */
+  border-radius: 16px;    /* Bordes redondeados igual que las imágenes */
+  /* Opcional: una sombra muy suave para despegarlo apenas del fondo */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03); 
+}
+
+.servicio-imagen img {
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 16px;
+  object-fit: cover;
+  
+  /* NUEVA LÍNEA: Sombra para efecto de profundidad */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.10);
+  
+  /* Opcional: una transición suave por si quieres un efecto al pasar el mouse */
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+/* Opcional: Efecto al pasar el mouse (hover) para que "flote" más */
+.servicio-imagen img:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.20), 0 10px 10px rgba(0,0,0,0.15);
+  transform: translateY(-5px); /* Mueve la imagen un poquito hacia arriba */
+}
+
+/* --- COLORES DE LAS CAJAS DE TEXTO --- */
+
+/* Bloque 1 (y 5 si existe) - Fondo base: #e6e8e2 */
+.servicio-detalle:nth-of-type(1) .servicio-texto,
+.servicio-detalle:nth-of-type(5) .servicio-texto {
+  background-color: #d8dcd3; /* Un verde grisáceo más intenso */
+}
+
+/* Bloque 2 - Fondo base: #dde5da */
+.servicio-detalle:nth-of-type(2) .servicio-texto {
+  background-color: #ccd9c8; /* Verde un poco más fuerte */
+}
+
+/* Bloque 3 - Fondo base: #e3dfd4 */
+.servicio-detalle:nth-of-type(3) .servicio-texto {
+  background-color: #d6d0c2; /* Beige/Arena más intenso */
+}
+
+/* Bloque 4 - Fondo base: #d9dfda */
+.servicio-detalle:nth-of-type(4) .servicio-texto {
+  background-color: #cbd4cc; /* Gris verdoso más intenso */
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+  /* Quitamos .servicios-intro de aquí porque ya es flex column por defecto arriba */
+  .servicio-detalle {
+    grid-template-columns: 1fr;
+  }
+
+  .servicio-texto,
+  .servicio-imagen {
+    order: initial;
+  }
+
+  /* En móvil, la imagen va arriba */
+  .servicio-imagen {
+    order: -1;
+  }
+
+  .servicio-detalle {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 3rem 1.5rem;
+  }
+}
+
+/* =========================
+   ANIMACIONES SERVICIOS
+   ========================= */
+
+.servicio-detalle {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.servicio-detalle.servicio-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lista-beneficios {
+  list-style: none; /* Quita los puntos feos por defecto */
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.lista-beneficios li {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+/* Agregamos un check verde antes de cada ítem */
+.lista-beneficios li::before {
+  content: "✔";  /* O puedes usar un emoji como "🌿" */
+  color: #4f6b3a;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
