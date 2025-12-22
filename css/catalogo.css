@@ -1,63 +1,110 @@
 /* =========================================
-   ESTILOS CATÁLOGO (Versión Final: Hueso y Tierra)
+   ESTILOS CATÁLOGO
    ========================================= */
 
-/* --- CABECERA (HERO) --- */
+/* --- 1. CABECERA (HERO) - NUEVO ESTILO PRO --- */
 .catalogo-hero {
   position: relative;
-  /* Capa oscura + Imagen de fondo */
-  background: linear-gradient(rgba(30, 77, 43, 0.85), rgba(30, 77, 43, 0.7)),
-              url('../assets/img/agroquimicos/image-444.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Altura controlada */
+  height: 50vh; 
+  min-height: 400px;
   
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 100px 20px;
+  color: white;
+  
+  /* FONDO: Coherente con el Home */
+  background: url('../assets/img/imgFondoInicio.png') no-repeat center center;
+  background-size: cover;
+  
+  /* Ajuste para menú transparente */
+  margin-top: -85px; 
+  padding-top: 85px; 
 }
 
-.catalogo-hero h1 { 
-  font-size: 3rem; margin-bottom: 15px; color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+/* Capa Oscura */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(15, 31, 22, 0.8), rgba(15, 31, 22, 0.95));
+  z-index: 1;
 }
 
-.catalogo-hero p { 
-  font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto;
+/* Contenido Hero */
+.hero-content-catalog {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c5a065; /* Dorado */
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.catalogo-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-line {
+  width: 60px;
+  height: 3px;
+  background-color: #c5a065;
+  margin-bottom: 25px;
+  border-radius: 2px;
+}
+
+.catalogo-hero p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  max-width: 600px;
+  font-weight: 300;
 }
 
 
-/* --- EL CONTENEDOR MAESTRO --- */
+/* --- 2. LISTADO DE PRODUCTOS (Estilo Original Preservado) --- */
+
 .producto-bloque {
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch; /* Alturas iguales */
+  align-items: stretch; 
   min-height: 450px; 
-  
-  /* NUEVO: Línea negra sutil separadora (15% opacidad) */
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-/* Quitamos la línea del último producto para que quede limpio con el footer */
 .producto-bloque:last-child {
   border-bottom: none;
 }
 
-
-/* --- LA IMAGEN (40%) --- */
+/* Imagen */
 .prod-imagen {
   flex: 0 0 40%;
   max-width: 40%;
   position: relative;
   overflow: hidden;
-  
-  /* Centrado */
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto; 
-  
-  /* Borde sutil vertical para separar foto de texto (opcional, queda elegante) */
   border-right: 1px solid rgba(0,0,0,0.05);
 }
 
@@ -66,11 +113,9 @@
   height: 100%; 
   object-fit: cover;
   display: block; 
-  margin: 0;
 }
 
-
-/* --- EL TEXTO (60%) --- */
+/* Texto */
 .prod-contenido {
   flex: 0 0 60%;
   max-width: 60%;
@@ -81,10 +126,10 @@
   box-sizing: border-box;
 }
 
-/* Tipografía */
 .prod-tag {
   text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
   font-weight: 700; opacity: 0.5; margin-bottom: 15px;
+  font-family: 'Inter', sans-serif;
 }
 
 .prod-contenido h2 {
@@ -99,7 +144,6 @@
 
 .prod-specs {
   display: flex; gap: 30px; margin-bottom: 30px;
-  /* Línea divisoria interna también sutil */
   border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;
   font-size: 0.9rem; color: #555;
 }
@@ -112,52 +156,75 @@
 .btn-linea:hover { background: #1a1a1a; color: white; }
 
 
-/* =========================================
-   LÓGICA DE COLORES Y ZIG-ZAG (NUEVA PALETA)
-   ========================================= */
-
-/* 1. IMPARES: Color Hueso (Más cálido que el blanco) */
+/* --- COLORES Y ZIG-ZAG --- */
 .producto-bloque:nth-child(odd) .prod-contenido { 
   background-color: #f2f0e6; 
 }
 
-/* 2. PARES: Color Tierra Suave + Inversión de lado */
 .producto-bloque:nth-child(even) { 
   flex-direction: row-reverse; 
 }
 .producto-bloque:nth-child(even) .prod-contenido { 
   background-color: #e3dfd4; 
 }
-/* Al invertir, movemos el borde sutil de la imagen a la izquierda */
 .producto-bloque:nth-child(even) .prod-imagen {
   border-right: none;
   border-left: 1px solid rgba(0,0,0,0.05);
 }
 
 
-/* =========================================
-   RESPONSIVE (CELULAR)
-   ========================================= */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
+  /* Ajuste Hero */
+  .catalogo-hero { height: auto; padding: 120px 20px 60px 20px; }
+  .catalogo-hero h1 { font-size: 2.5rem; }
+  
+  /* Ajuste Productos */
   .producto-bloque { min-height: auto; }
   
   .prod-imagen, .prod-contenido {
     flex: 0 0 100%; max-width: 100%;
-    border: none; /* Sin bordes verticales en celular */
+    border: none;
   }
 
   .prod-imagen {
-    height: 280px; 
+    height: 300px; 
     display: block; 
   }
   
-  .prod-imagen img { height: auto; min-height: 100%; }
+  .prod-imagen img { height: 100%; width: 100%; }
 
   .prod-contenido {
     padding: 40px 20px; align-items: center; text-align: center;
   }
   
-  /* En celular desactivamos el zig-zag */
+  .prod-specs { justify-content: center; }
+
+  /* Desactivar zig-zag en móvil */
   .producto-bloque:nth-child(even) { flex-direction: row; }
   .prod-imagen { order: -1; }
+}
+
+/* =========================================
+   FIX RESPONSIVE NAVBAR (Solo para Catálogo)
+   ========================================= */
+@media (max-width: 600px) {
+  /* 1. Ocultar el texto de la marca para ganar espacio */
+  nav .brand a {
+    font-size: 0; /* El texto desaparece */
+  }
+  
+  /* 2. Mantener el logo visible y bonito */
+  .brand-icon {
+    width: 42px; 
+    height: 42px;
+    /* El gap del estilo inline se mantendrá, dando un pequeño margen */
+  }
+
+  /* 3. Ajustar el botón "Volver" para que entre cómodo */
+  .btn-nav {
+    font-size: 0.8rem; /* Letra un poco más chica */
+    padding: 0 15px;   /* Menos relleno a los costados */
+    height: 36px;      /* Altura compacta */
+  }
 }
