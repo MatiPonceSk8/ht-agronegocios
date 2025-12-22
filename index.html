@@ -8,8 +8,10 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/home.css">
 
@@ -38,14 +40,57 @@
     </div>
   </nav>
 
-  <header class="hero" id="inicio">
-    <div class="hero-content">
-      <h1>Planificamos, asesoramos, producimos</h1>
-      <p>Llevamos tu campo al siguiente nivel con insumos de primera calidad y asesoramiento técnico especializado.</p>
-      <a href="#contacto" class="btn-hero">Solicitar Asesoramiento</a>
-    </div>
-    <div class="scroll-down">↓</div>
-  </header>
+  <section class="hero-cinematic" id="inicio">
+      
+      <div class="hero-bg-overlay"></div>
+      
+      <div class="hero-main-content">
+          
+          <div class="hero-decorative-line">
+              <span class="line-shape"></span>
+              <span class="line-text">ALIADOS DE TU PRODUCCIÓN</span>
+          </div>
+
+          <h1 class="hero-title-large">
+              COMPROMISO <br>
+              <span class="text-outline">PRODUCTIVO</span>
+          </h1>
+
+          <p class="hero-description">
+              Innovación y tecnología aplicada a cada hectárea. <br>
+              Llevamos tu rendimiento al siguiente nivel.
+          </p>
+
+          <div class="hero-buttons">
+              <a href="#contacto" class="btn-glow">
+                  Empezar Ahora
+              </a>
+              <a href="catalogo.html" class="btn-outline-white">
+                  Ver Catálogo
+              </a>
+          </div>
+      </div>
+
+      <div class="hero-floating-bottom">
+          <div class="hero-socials">
+              <span>Síguenos</span>
+              <div class="social-line"></div>
+              <a href="https://instagram.com/ht.agronegocios" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/5493585025485" target="_blank"><i class="fab fa-whatsapp"></i></a>
+              <a href="mailto:gestion@ht.agronegocios.com"><i class="far fa-envelope"></i></a>
+          </div>
+
+          <div class="hero-scroll-trigger">
+              <div class="mouse"></div>
+          </div>
+
+          <div class="hero-decor-right">
+              <span>HT AGRO</span>
+              <div class="decor-line"></div>
+          </div>
+      </div>
+
+  </section>
 
   <section id="servicios" class="container">
     <div class="section-header">
@@ -102,62 +147,62 @@
 
   </section>
 
-<section id="insumos" class="agroquimicos-section">
-  <div class="agroquimicos-bg"></div>
+  <section id="insumos" class="agroquimicos-section">
+    <div class="agroquimicos-bg"></div>
 
-  <div class="container agroquimicos-content">
-    <div class="section-header light">
-      <div class="divider"></div>
-      <h2>Insumos Agroquímicos</h2>
-      <p>
-        Comercializamos agroquímicos de marcas líderes, seleccionados estratégicamente
-        para maximizar la eficiencia productiva y el cuidado del cultivo.
-      </p>
-    </div>
-
-    <div class="agroquimicos-slider">
-      <div class="agroquimicos-text">
-        <h3 id="agro-title">Herbicida Selectivo</h3>
-        <p id="agro-desc">
-          Control eficaz de malezas de hoja ancha y gramíneas, con alta selectividad
-          y excelente comportamiento en diferentes ambientes.
+    <div class="container agroquimicos-content">
+      <div class="section-header light">
+        <div class="divider"></div>
+        <h2>Insumos Agroquímicos</h2>
+        <p>
+          Comercializamos agroquímicos de marcas líderes, seleccionados estratégicamente
+          para maximizar la eficiencia productiva y el cuidado del cultivo.
         </p>
-        <a href="catalogo.html" class="btn-slider-catalogo">Ver Catálogo Completo</a>
       </div>
 
-      <div class="agroquimicos-image">
-        <button class="agro-nav prev" aria-label="Anterior">‹</button>
-        <img id="agro-img" src="assets/img/historia.png" alt="Agroquímico">
-        <button class="agro-nav next" aria-label="Siguiente">›</button>
+      <div class="agroquimicos-slider">
+        <div class="agroquimicos-text">
+          <h3 id="agro-title">Herbicida Selectivo</h3>
+          <p id="agro-desc">
+            Control eficaz de malezas de hoja ancha y gramíneas, con alta selectividad
+            y excelente comportamiento en diferentes ambientes.
+          </p>
+          <a href="catalogo.html" class="btn-slider-catalogo">Ver Catálogo Completo</a>
+        </div>
 
-        <div class="agro-dots" id="agro-dots"></div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="agroquimicos-image">
+          <button class="agro-nav prev" aria-label="Anterior">‹</button>
+          <img id="agro-img" src="assets/img/historia.png" alt="Agroquímico">
+          <button class="agro-nav next" aria-label="Siguiente">›</button>
 
-<section id="equipo" class="bg-white-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="divider"></div>
-      <h2>Nuestro Equipo</h2>
-      <p>Profesionales comprometidos con el desarrollo del agro en Córdoba.</p>
-    </div>
-
-    <div class="team-grid">
-      <div class="team-card">
-        <h4>Hernán Titarelli</h4>
-        <span class="role">Ingeniero Agrónomo</span>
-        <p style="color:#666; font-size:0.95rem">Fundador y director técnico. Especialista en manejo de cultivos y planificación estratégica.</p>
-      </div>
-      <div class="team-card">
-        <h4>Equipo Técnico</h4>
-        <span class="role">Staff</span>
-        <p style="color:#666; font-size:0.95rem">Monitoreo constante, logística eficiente y atención personalizada en cada etapa.</p>
+          <div class="agro-dots" id="agro-dots"></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="equipo" class="bg-white-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="divider"></div>
+        <h2>Nuestro Equipo</h2>
+        <p>Profesionales comprometidos con el desarrollo del agro en Córdoba.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <h4>Hernán Titarelli</h4>
+          <span class="role">Ingeniero Agrónomo</span>
+          <p style="color:#666; font-size:0.95rem">Fundador y director técnico. Especialista en manejo de cultivos y planificación estratégica.</p>
+        </div>
+        <div class="team-card">
+          <h4>Equipo Técnico</h4>
+          <span class="role">Staff</span>
+          <p style="color:#666; font-size:0.95rem">Monitoreo constante, logística eficiente y atención personalizada en cada etapa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="contacto" class="container">
     <div class="contact-split">
@@ -228,6 +273,7 @@
 
     </div>
   </section>
+
   <div class="contact-fab">
     <button class="fab-main" aria-label="Abrir contactos">
       ✉️
