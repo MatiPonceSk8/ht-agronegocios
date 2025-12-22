@@ -1,11 +1,11 @@
 /* =========================================
-   1. HERO CINEMATIC (Estilo Dark Moderno - Final)
+   1. HERO CINEMATIC (Portada Oscura y Moderna)
    ========================================= */
 
 .hero-cinematic {
   position: relative;
   width: 100%;
-  height: 100vh; /* Pantalla completa */
+  height: 100vh; /* Ocupa toda la pantalla */
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   background-color: #0f1f16; 
   color: white;
 
-  /* Ajuste para que la imagen quede detrás del menú transparente */
+  /* Margen negativo para que la imagen quede detrás del menú */
   margin-top: -85px; 
   padding-top: 85px; 
 }
@@ -28,7 +28,7 @@
 .hero-bg-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Degradado: Oscuro a la izquierda para el texto, transparente a la derecha */
+  /* Degradado: Oscuro a la izquierda, transparente a la derecha */
   background: linear-gradient(90deg, 
       rgba(12, 28, 18, 0.95) 0%, 
       rgba(12, 28, 18, 0.85) 45%, 
@@ -36,11 +36,11 @@
   z-index: 1;
 }
 
-/* Contenedor del contenido principal */
+/* Contenedor Principal Hero */
 .hero-main-content {
   position: relative;
   z-index: 10;
-  max-width: 850px; /* Ancho suficiente para el texto grande */
+  max-width: 850px;
   animation: fadeSlideRight 1.2s ease-out;
 }
 
@@ -68,22 +68,19 @@
   color: #c5a065;
 }
 
-/* --- TÍTULO GIGANTE (INTER EXTRA BOLD) --- */
+/* Título Gigante */
 .hero-title-large {
-  font-family: 'Inter', sans-serif; /* Fuente moderna y sólida */
-  
-  /* Tamaño responsivo masivo */
+  font-family: 'Inter', sans-serif;
   font-size: clamp(3rem, 7.5vw, 6.5rem); 
-  
-  line-height: 1; /* Muy compacto */
-  font-weight: 800; /* Extra Negrita */
+  line-height: 1; 
+  font-weight: 800; /* Extra Bold */
   margin: 0 0 30px 0;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: -2px; /* Letras juntas para impacto visual */
+  letter-spacing: -2px;
 }
 
-/* Efecto de borde (Outline) para la segunda palabra */
+/* Efecto Outline (Borde) */
 .text-outline {
   color: transparent;
   -webkit-text-stroke: 1.5px #ffffff;
@@ -102,7 +99,7 @@
   font-weight: 300;
 }
 
-/* --- BOTONES --- */
+/* Botones Hero */
 .hero-buttons {
   display: flex;
   gap: 20px;
@@ -110,7 +107,6 @@
   flex-wrap: wrap;
 }
 
-/* Botón 1: Glow Dorado */
 .btn-glow {
   padding: 15px 40px;
   background: #c5a065;
@@ -132,13 +128,12 @@
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
-/* Botón 2: Outline Blanco (Sin Play) */
 .btn-outline-white {
   display: inline-block;
   padding: 14px 35px;
   background: transparent;
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde sutil */
+  border: 1px solid rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -150,15 +145,11 @@
 .btn-outline-white:hover {
   border-color: #ffffff;
   background: #ffffff;
-  color: #1e4d2b; /* Texto verde al pasar el mouse */
+  color: #1e4d2b;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* =========================================
-   2. ELEMENTOS FLOTANTES (BOTTOM)
-   ========================================= */
-
+/* Elementos Flotantes (Bottom) */
 .hero-floating-bottom {
   position: absolute;
   bottom: 30px;
@@ -172,99 +163,137 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Redes Sociales */
-.hero-socials {
-  display: flex; align-items: center; gap: 20px; color: rgba(255,255,255,0.7);
-}
+.hero-socials { display: flex; align-items: center; gap: 20px; color: rgba(255,255,255,0.7); }
 .hero-socials span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
 .social-line { width: 40px; height: 1px; background: rgba(255,255,255,0.4); }
 .hero-socials a { color: white; font-size: 1.2rem; transition: 0.3s; opacity: 0.8; }
 .hero-socials a:hover { color: #c5a065; transform: translateY(-3px); opacity: 1; }
 
-/* Scroll Mouse Indicator */
-.hero-scroll-trigger {
-  position: absolute; left: 50%; transform: translateX(-50%); bottom: 20px; opacity: 0.8;
-}
-.mouse {
-  width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.6); border-radius: 20px; position: relative;
-}
-.mouse::before {
-  content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
-  width: 4px; height: 4px; background: #c5a065; border-radius: 50%; animation: scrollAnim 2s infinite;
-}
+.hero-scroll-trigger { position: absolute; left: 50%; transform: translateX(-50%); bottom: 20px; opacity: 0.8; }
+.mouse { width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.6); border-radius: 20px; position: relative; }
+.mouse::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #c5a065; border-radius: 50%; animation: scrollAnim 2s infinite; }
 @keyframes scrollAnim { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 20px; } }
 
-/* Decoración Derecha */
-.hero-decor-right {
-  display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.5);
-}
+.hero-decor-right { display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.5); }
 .hero-decor-right span { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
 .decor-line { width: 50px; height: 1px; background: rgba(255,255,255,0.4); }
 
-/* Animación de Entrada */
-@keyframes fadeSlideRight {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+@keyframes fadeSlideRight { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
 
 
 /* =========================================
-   3. ESTILOS RESTANTES (Servicios, Equipo, Slider...)
+   2. SECCIÓN SERVICIOS (Estilo Premium Interactivo)
    ========================================= */
 
-/* Grid de Servicios */
-.grid-insumos {
+.services-section {
+  padding: 100px 0;
+  background-color: #f9f9f7; /* Gris muy suave */
+}
+
+/* Cabecera */
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 70px auto; }
+.section-subtitle { display: block; font-family: 'Inter', sans-serif; color: #c5a065; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #1e4d2b; margin-bottom: 20px; }
+.header-line { width: 60px; height: 3px; background: #c5a065; margin: 0 auto 25px auto; }
+.section-header p { font-size: 1.1rem; color: #5e6d64; line-height: 1.6; }
+
+/* Grid Servicios */
+.grid-services {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   margin-bottom: 60px;
 }
-.card-insumo {
+
+/* Tarjeta Premium */
+.service-card {
+  background: #ffffff;
+  padding: 40px 35px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 20px;
-  padding: 25px;
-  background: white;
-  border-radius: 8px; 
-  box-shadow: 0 10px 30px -10px rgba(30, 77, 43, 0.15);
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.02);
+  position: relative;
+  overflow: hidden;
 }
-.card-insumo:hover { transform: translateY(-5px); }
 
-.icon-circle {
-  flex-shrink: 0;
-  width: 70px; height: 70px;
-  background: #1e4d2b;
+/* Línea Dorada Lateral */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 0%;
+  background-color: #c5a065;
+  transition: height 0.4s ease;
+}
+
+/* Icono */
+.card-icon {
+  width: 60px; height: 60px;
+  background-color: #f4f8f5;
+  color: #1e4d2b;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: white;
-}
-.icon-circle svg { width: 32px; height: 32px; fill: currentColor; }
-.insumo-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
-.insumo-content p { font-size: 0.95rem; color: #5e6d64; margin: 0; }
-
-/* Scroll Reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+  font-size: 1.5rem;
+  transition: all 0.4s ease;
 }
 
-/* Sección Equipo */
+/* Contenido */
+.card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1e4d2b; margin-bottom: 12px; transition: color 0.4s ease; }
+.card-content p { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 20px; transition: color 0.4s ease; }
+
+/* Enlace ver más */
+.card-link {
+  font-size: 0.9rem; font-weight: 700; color: #c5a065; text-transform: uppercase; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 8px;
+  opacity: 0; transform: translateY(10px); transition: all 0.4s ease;
+}
+
+/* HOVER SERVICIOS */
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(30, 77, 43, 0.15);
+  border-color: transparent;
+  background-color: #1e4d2b; /* Fondo cambia a Verde */
+}
+.service-card:hover::before { height: 100%; }
+.service-card:hover .card-icon {
+  background-color: rgba(255,255,255,0.1); color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+.service-card:hover .card-content h3 { color: #ffffff; }
+.service-card:hover .card-content p { color: rgba(255,255,255,0.8); }
+.service-card:hover .card-link { opacity: 1; transform: translateY(0); color: #c5a065; }
+
+/* Botón CTA Servicios */
+.cta-container { text-align: center; margin-top: 50px; }
+.btn-primary-solid {
+  display: inline-block; padding: 16px 45px; background-color: #1e4d2b;
+  color: white; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;
+  transition: 0.3s; box-shadow: 0 10px 20px rgba(30, 77, 43, 0.2);
+}
+.btn-primary-solid:hover { background-color: #153820; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(30, 77, 43, 0.3); }
+
+
+/* =========================================
+   3. SECCIÓN EQUIPO (Estilo Clásico Limpio)
+   ========================================= */
+
+.bg-white-section { background-color: #ffffff; padding: 80px 0; }
+
 .team-grid {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
+
 .team-card {
-  background: #f8f6f2;
+  background: #f8f6f2; /* Fondo beige muy claro */
   padding: 30px;
   border-radius: 8px;
   text-align: center;
@@ -273,103 +302,160 @@
   border-top: 4px solid #c5a065;
   box-shadow: 0 10px 30px -10px rgba(30, 77, 43, 0.15);
 }
-.team-card h4 { font-size: 1.4rem; margin-bottom: 5px; color: #2c2c2c; }
-.role { color: #1e4d2b; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; }
 
-/* Insumos Agroquímicos (Slider) */
-.agroquimicos-section {
-  position: relative;
-  padding: 100px 0;
-  overflow: hidden;
+.team-card h4 { font-size: 1.4rem; margin-bottom: 5px; color: #2c2c2c; }
+.role { 
+  color: #1e4d2b; font-weight: 600; font-size: 0.9rem; 
+  text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; 
 }
 
+
+/* =========================================
+   4. INSUMOS AGROQUÍMICOS (Mantenido)
+   ========================================= */
+
+.agroquimicos-section { position: relative; padding: 100px 0; overflow: hidden; }
 .agroquimicos-bg {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(rgba(30, 77, 43, 0.85), rgba(30, 77, 43, 0.85)),
               url('../assets/img/campo.png');
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
+  background-size: cover; background-position: center; z-index: 0;
 }
-
 .btn-slider-catalogo {
-    display: inline-block;
-    margin-top: 25px; 
-    padding: 12px 30px;
-    border: 1px solid #ffffff; 
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border-radius: 4px;
+    display: inline-block; margin-top: 25px; padding: 12px 30px;
+    border: 1px solid #ffffff; color: #ffffff; text-decoration: none;
+    text-transform: uppercase; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;
+    transition: all 0.3s ease; border-radius: 4px;
 }
-.btn-slider-catalogo:hover {
-    background-color: #ffffff; 
-    color: #1e4d2b; 
-    transform: translateY(-2px); 
-}
-
+.btn-slider-catalogo:hover { background-color: #ffffff; color: #1e4d2b; transform: translateY(-2px); }
 .agroquimicos-content { position: relative; z-index: 1; color: white; }
 .section-header.light h2, .section-header.light p { color: white; }
-
-.agroquimicos-slider {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 60px;
-  margin-top: 60px;
-}
-
+.agroquimicos-slider { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 60px; margin-top: 60px; }
 .agroquimicos-text h3 { font-size: 2rem; margin-bottom: 15px; color: #c5a065; }
 .agroquimicos-text p { font-size: 1.05rem; opacity: 0.95; line-height: 1.7; }
-
-.agroquimicos-image {
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.agroquimicos-image img {
-  max-width: 380px;
-  border-radius: 12px;
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
-  transition: opacity 0.5s ease;
-}
+.agroquimicos-image { background: transparent; padding: 0; box-shadow: none; display: flex; align-items: center; justify-content: center; position: relative; }
+.agroquimicos-image img { max-width: 380px; border-radius: 12px; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); transition: opacity 0.5s ease; }
 
 /* Nav Slider */
 .agro-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 5;
+  position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px;
+  border-radius: 50%; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25); color: #fff; font-size: 22px;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; z-index: 5;
 }
 .agro-nav:hover { background: rgba(255, 255, 255, 0.3); transform: translateY(-50%) scale(1.08); }
 .agro-nav.prev { left: 10px; }
 .agro-nav.next { right: 10px; }
 
+/* Utilidad Reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
 
 /* =========================================
-   RESPONSIVE (MÓVIL)
+   5. CONTACTO (ESTILO ULTRA PRO)
+   ========================================= */
+
+.contact-pro-section {
+  padding: 100px 0;
+  background-color: #f9f9f7; 
+}
+
+/* El Contenedor Principal (La Tarjeta Flotante) */
+.contact-pro-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr; 
+  background: white;
+  border-radius: 24px; 
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- PANEL IZQUIERDO (Marca) --- */
+.contact-brand-panel {
+  background: linear-gradient(135deg, #1e4d2b 0%, #112e1a 100%); 
+  color: white;
+  padding: 60px 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.panel-content { position: relative; z-index: 2; }
+
+.panel-subtitle {
+  font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 2px;
+  color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block;
+}
+
+.contact-brand-panel h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem;
+  line-height: 1.1; color: white; margin-bottom: 20px;
+}
+
+.contact-brand-panel p {
+  font-size: 1.05rem; color: rgba(255,255,255,0.8);
+  margin-bottom: 40px; line-height: 1.6;
+}
+
+/* Lista de Contacto */
+.pro-contact-list { display: flex; flex-direction: column; gap: 25px; }
+.pro-item { display: flex; align-items: center; gap: 15px; }
+
+.icon-box {
+  width: 45px; height: 45px; background: rgba(255,255,255,0.1);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: #c5a065;
+}
+
+.pro-item .label { display: block; font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+.pro-item .value { font-size: 1rem; font-weight: 500; font-family: 'Inter', sans-serif; }
+
+/* Decoración Fondo */
+.panel-circle {
+  position: absolute; bottom: -50px; right: -50px;
+  width: 200px; height: 200px; background: #c5a065;
+  border-radius: 50%; opacity: 0.1; filter: blur(40px); z-index: 1;
+}
+
+/* --- PANEL DERECHO (Formulario) --- */
+.contact-form-panel { padding: 60px 50px; background-color: #ffffff; }
+.form-grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #2c2c2c; margin-bottom: 8px; }
+
+/* INPUTS MODERNOS */
+.contact-form-panel input, .contact-form-panel select, .contact-form-panel textarea {
+  width: 100%; padding: 16px 20px; background-color: #f4f5f7; 
+  border: 1px solid transparent; border-radius: 8px;
+  font-size: 0.95rem; color: #333; transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.contact-form-panel input:focus, .contact-form-panel select:focus, .contact-form-panel textarea:focus {
+  background-color: #ffffff; border-color: #1e4d2b;
+  box-shadow: 0 4px 12px rgba(30, 77, 43, 0.1); outline: none;
+}
+
+/* BOTÓN DE ENVÍO PRO */
+.btn-submit-pro {
+  width: 100%; padding: 18px; background-color: #1e4d2b;
+  color: white; font-weight: 600; font-size: 1rem; border: none;
+  border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
+  display: flex; justify-content: center; align-items: center;
+  gap: 10px; letter-spacing: 0.5px;
+}
+.btn-submit-pro:hover {
+  background-color: #153820; transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(30, 77, 43, 0.2);
+}
+
+
+/* =========================================
+   6. RESPONSIVE (MÓVIL)
    ========================================= */
 @media (max-width: 900px) {
   /* Hero */
@@ -378,20 +464,22 @@
   .hero-decorative-line { justify-content: center; margin-bottom: 15px; }
   .hero-title-large { font-size: 3rem; }
   .hero-description { border-left: none; border-bottom: 2px solid #c5a065; padding-left: 0; padding-bottom: 20px; margin: 0 auto 30px auto; }
-  
-  /* Botones apilados en móvil */
   .hero-buttons { justify-content: center; flex-direction: column; gap: 15px; }
   .btn-glow, .btn-outline-white { width: 100%; }
-
-  /* Elementos flotantes ocultos */
   .hero-socials, .hero-decor-right { display: none; }
   
-  /* Grid y Slider */
-  .grid-insumos { grid-template-columns: 1fr; }
-  .agroquimicos-slider {
-    grid-template-columns: 1fr;
-    display: flex !important;
-    flex-direction: column;
-  }
+  /* Servicios */
+  .grid-services { grid-template-columns: 1fr; }
+  .card-link { opacity: 1; transform: translateY(0); margin-top: 15px; }
+
+  /* Slider */
+  .agroquimicos-slider { grid-template-columns: 1fr; display: flex !important; flex-direction: column; }
   .agroquimicos-image { margin-top: 30px; }
+
+  /* Contacto */
+  .contact-pro-wrapper { grid-template-columns: 1fr; }
+  .contact-brand-panel { padding: 40px 30px; }
+  .contact-form-panel { padding: 40px 30px; }
+  .form-grid-row { grid-template-columns: 1fr; gap: 0; }
+  .contact-brand-panel h2 { font-size: 2rem; }
 }
