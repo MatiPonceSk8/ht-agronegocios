@@ -67,22 +67,20 @@
 
 /* --- TÍTULO GIGANTE (ESTILO AGRO: ROBOTO SLAB) --- */
 .hero-title-large {
-  /* Esta es la fuente robusta y cuadrada */
   font-family: 'Roboto Slab', serif; 
-  
   font-size: clamp(3.5rem, 8vw, 7rem); 
   line-height: 1; 
-  font-weight: 900; /* Extra grueso */
+  font-weight: 900;
   margin: 0 0 30px 0;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: -1px; /* Letras compactas y sólidas */
+  letter-spacing: -1px;
 }
 
 /* Efecto Outline */
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 2px #ffffff; /* Borde más grueso para que se note la fuerza */
+  -webkit-text-stroke: 2px #ffffff;
   opacity: 0.9;
 }
 
@@ -276,7 +274,7 @@
 
 
 /* =========================================
-   4. INSUMOS (Mantenido)
+   4. INSUMOS (Texto Centrado)
    ========================================= */
 
 .agroquimicos-section { position: relative; padding: 100px 0; overflow: hidden; }
@@ -286,6 +284,29 @@
               url('../assets/img/campo.png');
   background-size: cover; background-position: center; z-index: 0;
 }
+
+.agroquimicos-content { position: relative; z-index: 1; color: white; }
+.section-header.light h2, .section-header.light p { color: white; }
+
+.agroquimicos-slider { 
+  display: grid; 
+  grid-template-columns: 1.2fr 1fr; 
+  align-items: center; 
+  gap: 60px; 
+  margin-top: 60px; 
+}
+
+/* CENTRADO DE TEXTO Y BOTÓN */
+.agroquimicos-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el botón horizontalmente */
+  text-align: center;  /* Centra el texto */
+}
+
+.agroquimicos-text h3 { font-size: 2rem; margin-bottom: 15px; color: #c5a065; }
+.agroquimicos-text p { font-size: 1.05rem; opacity: 0.95; line-height: 1.7; }
+
 .btn-slider-catalogo {
     display: inline-block; margin-top: 25px; padding: 12px 30px;
     border: 1px solid #ffffff; color: #ffffff; text-decoration: none;
@@ -293,11 +314,7 @@
     transition: all 0.3s ease; border-radius: 4px;
 }
 .btn-slider-catalogo:hover { background-color: #ffffff; color: #1e4d2b; transform: translateY(-2px); }
-.agroquimicos-content { position: relative; z-index: 1; color: white; }
-.section-header.light h2, .section-header.light p { color: white; }
-.agroquimicos-slider { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 60px; margin-top: 60px; }
-.agroquimicos-text h3 { font-size: 2rem; margin-bottom: 15px; color: #c5a065; }
-.agroquimicos-text p { font-size: 1.05rem; opacity: 0.95; line-height: 1.7; }
+
 .agroquimicos-image { background: transparent; padding: 0; box-shadow: none; display: flex; align-items: center; justify-content: center; position: relative; }
 .agroquimicos-image img { max-width: 380px; border-radius: 12px; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); transition: opacity 0.5s ease; }
 
@@ -417,7 +434,6 @@
   background-color: #153820; transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(30, 77, 43, 0.2);
 }
-
 
 /* =========================================
    6. RESPONSIVE (MÓVIL)

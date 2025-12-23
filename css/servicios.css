@@ -239,3 +239,66 @@
   .wide-card { flex-direction: column-reverse; } /* Imagen arriba, texto abajo */
   .wide-card .card-image-side { width: 100%; height: 200px; min-height: auto; }
 }
+
+/* =========================================
+   FIX RESPONSIVE NAVBAR (Móvil)
+   ========================================= */
+@media (max-width: 600px) {
+  
+  /* 1. Ocultamos el texto "HT - AGRONEGOCIOS" */
+  nav .brand a {
+    font-size: 0; /* El texto desaparece */
+    gap: 0 !important; /* Eliminamos el espacio extra */
+  }
+  
+  /* 2. Mantenemos el logo visible y con buen tamaño */
+  .brand-icon {
+    width: 45px; 
+    height: 45px;
+    display: block;
+  }
+
+  /* 3. Ajustamos el botón "Volver" para que no ocupe tanto */
+  .btn-nav {
+    font-size: 0.75rem; /* Letra un poco más chica */
+    padding: 0 15px;    /* Menos relleno a los costados */
+    height: 36px;       /* Altura compacta */
+  }
+  
+  /* Ajuste extra para la cápsula en pantallas muy angostas */
+  .header-capsule {
+      padding: 40px 20px;
+  }
+}
+
+/* =========================================
+   FIX TEXTOS COMPRIMIDOS EN MÓVIL
+   ========================================= */
+@media (max-width: 600px) {
+  
+  /* 1. Título de la Cápsula ("Innovación aplicada...") */
+  .servicios-header h1 {
+    font-size: 2rem !important; /* Bajamos el tamaño (antes era enorme) */
+    line-height: 1.2;           /* Ajustamos la altura de línea */
+    margin-bottom: 15px;
+  }
+  
+  /* 2. Texto de la Cápsula */
+  .servicios-header p {
+    font-size: 1rem;            /* Un poco más chico para que no ocupe tanto */
+    line-height: 1.5;
+  }
+
+  /* 3. Título del CTA Verde ("¿Listo para planificar...") */
+  .services-cta h2 {
+    font-size: 1.6rem !important; /* Mucho más equilibrado para móvil */
+    line-height: 1.3;
+    margin-bottom: 25px;
+    padding: 0 10px;              /* Un pequeño margen lateral para que no toque bordes */
+  }
+  
+  /* Ajuste del padding del bloque verde para que no sea tan alto */
+  .services-cta {
+    padding: 60px 20px;
+  }
+}
