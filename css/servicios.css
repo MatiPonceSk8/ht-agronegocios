@@ -1,252 +1,241 @@
 /* =========================
-   SERVICIOS - ESTILOS BASE 
+   SERVICIOS - DISEÑO BENTO
    ========================= */
 
-.servicios-intro {
+/* --- HEADER --- */
+.servicios-header {
+  text-align: center;
+  padding: 100px 20px 60px 20px;
+  background-color: #f8f6f2; /* Mismo tono beige suave del sitio */
+}
+
+.badge-header {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c5a065; /* Dorado */
+  margin-bottom: 20px;
+  border: 1px solid #c5a065;
+  padding: 8px 16px;
+  border-radius: 50px;
+}
+
+.servicios-header h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: #1e4d2b;
+  margin-bottom: 25px;
+}
+
+.servicios-header p {
+  font-size: 1.2rem;
+  color: #5e6d64;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* --- GRID PRINCIPAL (BENTO) --- */
+.bento-section {
+  padding-bottom: 100px;
+}
+
+.bento-grid {
+  display: grid;
+  /* Definimos una grilla de 3 columnas */
+  grid-template-columns: repeat(3, 1fr);
+  /* Altura automática de filas */
+  grid-auto-rows: minmax(300px, auto);
+  gap: 25px;
+}
+
+/* --- ESTILOS GENERALES DE TARJETAS --- */
+.bento-card {
+  background: white;
+  border-radius: 20px; /* Bordes bien redondeados modernos */
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.03);
   display: flex;
   flex-direction: column;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(30, 77, 43, 0.1);
+}
+
+/* --- TARJETA DESTACADA (Asesoramiento) --- */
+/* Ocupa 2 columnas de ancho y 2 filas de alto (o 1 larga) */
+.featured-card {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: #1e4d2b; /* Verde oscuro */
+  color: white;
+  justify-content: flex-end; /* Texto abajo */
+  padding: 40px;
+  min-height: 500px;
+}
+
+.featured-card .card-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.6;
+  transition: transform 0.6s ease;
+}
+.featured-card:hover .card-bg { transform: scale(1.05); }
+
+.featured-card .card-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(15, 31, 22, 0.95) 10%, rgba(15, 31, 22, 0.2) 100%);
+  z-index: 1;
+}
+
+.featured-card .card-content {
+  position: relative; z-index: 2;
+  max-width: 500px;
+}
+
+.icon-circle {
+  width: 50px; height: 50px; background: #c5a065;
+  color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 20px;
+}
+
+.featured-card h2 {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; color: white;
+  margin-bottom: 15px;
+}
+
+.featured-card p {
+  color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 25px; line-height: 1.6;
+}
+
+.micro-list {
+  list-style: none; padding: 0; margin-bottom: 30px;
+  display: flex; gap: 20px; flex-wrap: wrap;
+}
+.micro-list li {
+  font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #c5a065; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.btn-text-arrow {
+  color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;
+  display: inline-flex; align-items: center; gap: 10px; transition: gap 0.3s;
+}
+.btn-text-arrow:hover { gap: 15px; color: #c5a065; }
+
+
+/* --- TARJETAS ESTÁNDAR (Verticales) --- */
+.standard-card {
+  grid-column: span 1;
+  /* Ocupan 1 espacio de grid */
+}
+
+.card-image-top {
+  height: 220px; overflow: hidden; position: relative;
+}
+.card-image-top img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.standard-card:hover .card-image-top img { transform: scale(1.1); }
+
+.card-body { padding: 30px; }
+
+.standard-card h3 {
+  font-size: 1.5rem; color: #1e4d2b; margin-bottom: 10px;
+}
+.standard-card p {
+  font-size: 0.95rem; color: #666; margin-bottom: 20px; line-height: 1.5;
+}
+
+.tags-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.tags-group span {
+  background: #f4f4f4; color: #555; padding: 5px 12px; border-radius: 4px;
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+}
+
+
+/* --- TARJETA ANCHA (Fertilizantes) --- */
+.wide-card {
+  grid-column: 3 / span 1; /* En desktop la ponemos a la derecha debajo de la otra */
+  grid-row: span 1;
+  /* Para hacerla más interesante, la hacemos layout flex */
+  display: flex; flex-direction: column;
+}
+
+/* Ajuste específico para que el diseño quede cuadrado perfecto en 3 columnas */
+/* Asesoramiento ocupa 2x2. Semillas (1x1) y Protección (1x1) ocupan la col 3 arriba.
+   Fertilizantes podría ir abajo ocupando todo el ancho.
+   
+   VAMOS A REAJUSTAR EL GRID LAYOUT PARA QUE QUEDE PERFECTO:
+*/
+
+.featured-card { grid-column: 1 / 3; grid-row: 1 / 3; } /* Izquierda Grande */
+.standard-card:nth-of-type(2) { grid-column: 3 / 4; grid-row: 1 / 2; } /* Derecha Arriba */
+.standard-card:nth-of-type(3) { grid-column: 3 / 4; grid-row: 2 / 3; } /* Derecha Medio */
+.wide-card { 
+  grid-column: 1 / 4; /* Abajo todo el ancho */
+  flex-direction: row; /* Imagen a un lado, texto al otro */
   align-items: center;
-  padding: 0;
-  position: relative;
-  
-  /* El valor negativo tira la sección hacia arriba. */
-  margin-top: -5rem;  
-  margin-bottom: 0;
-  
-  /* Truco Full Width */
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
 }
 
-.intro-image {
-  width: 100%;               /* El contenedor ocupa todo el ancho */
-  order: 1;                  /* La imagen va primero */
+.wide-card .card-content-side { flex: 1; padding: 40px; }
+.wide-card .card-image-side { flex: 1; height: 100%; min-height: 300px; }
+.wide-card .card-image-side img { width: 100%; height: 100%; object-fit: cover; }
+
+.btn-border-small {
+  display: inline-block; border: 1px solid #1e4d2b; color: #1e4d2b; padding: 10px 20px;
+  border-radius: 4px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase;
+  margin-top: 15px; transition: all 0.3s;
 }
+.btn-border-small:hover { background: #1e4d2b; color: white; }
 
-.intro-image img {
-  width: 100%;
-  height: 60vh;              /* Altura de la imagen: 60% de la pantalla */
-  object-fit: cover;         /* Recorte perfecto sin deformar */
-  border-radius: 0;          /* Sin bordes redondeados */
-  display: block;            /* Evita espacios blancos abajo */
-}
 
-.intro-content {
-  order: 2;                  /* El texto va segundo */
-  text-align: center;        /* Texto centrado */
-  max-width: 800px;          /* Ancho máximo para que se lea bien */
-  margin: 0 auto;            /* Centrado del bloque */
-  padding: 3rem 1.5rem;      /* Espacio alrededor del texto */
-}
-
-.intro-content h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1.5rem;
-  color: #1a1a1a;
-}
-
-.intro-content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  color: #444;
-}
-
-.btn-primary {
-  padding: 0.8rem 1.6rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #4f6b3a;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  display: inline-block;
-}
-
-/* =========================
-   FLECHA SCROLL (AJUSTADA)
-   ========================= */
-
-.scroll-arrow {
-  display: block;
-  margin: 1rem auto 0 auto; /* Centrada y separada del texto */
+/* --- CTA FINAL --- */
+.services-cta {
+  background-color: #1e4d2b;
+  color: white;
   text-align: center;
-  font-size: 2.6rem;
-  color: #4f6b3a;
-  opacity: 0.75;
-  pointer-events: none;
-  animation: arrow-bounce 2.0s ease-in-out infinite;
+  padding: 80px 20px;
+  margin-top: 50px;
 }
-
-@keyframes arrow-bounce {
-  0%   { transform: translateY(0); }
-  20%  { transform: translateY(6px); }
-  40%  { transform: translateY(0); }
-  60%  { transform: translateY(4px); }
-  80%  { transform: translateY(0); }
-  100% { transform: translateY(0); }
+.services-cta h2 { color: white; font-size: 2.2rem; margin-bottom: 30px; }
+.btn-cta-gold {
+  background: #c5a065; color: white; padding: 15px 40px; border-radius: 50px;
+  font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(197, 160, 101, 0.4);
 }
+.btn-cta-gold:hover { background: white; color: #1e4d2b; transform: translateY(-3px); }
 
-/* =========================
-   BLOQUES DE SERVICIOS 
-   ========================= */
 
-.servicio-detalle:nth-of-type(1) { background-color: #e6e8e2; }
-.servicio-detalle:nth-of-type(2) { background-color: #dde5da; }
-.servicio-detalle:nth-of-type(3) { background-color: #e3dfd4; }
-.servicio-detalle:nth-of-type(4) { background-color: #d9dfda; }
-.servicio-detalle:nth-of-type(5) { background-color: #e6e8e2; }
-
-.servicio-detalle {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: center;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding: 6rem max(3rem, calc(50vw - 550px));
-  position: relative;
-}
-
-/* Línea separadora */
-.servicio-detalle::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-}
-
-/* Intercalado: servicios pares (2, 4, ...) - Imagen a la izquierda */
-.servicio-detalle:nth-of-type(even) .servicio-texto {
-  order: 2;
-}
-
-.servicio-detalle:nth-of-type(even) .servicio-imagen {
-  order: 1;
-}
-
-/* Estilos de Texto del Servicio */
-.servicio-texto h2 {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
-}
-
-.servicio-texto {
-  padding: 2.5rem;        /* Espacio interno para que el texto no toque los bordes */
-  border-radius: 16px;    /* Bordes redondeados igual que las imágenes */
-  /* Opcional: una sombra muy suave para despegarlo apenas del fondo */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03); 
-}
-
-.servicio-imagen img {
-  width: 85%;
-  display: block;
-  margin: 0 auto;
-  border-radius: 16px;
-  object-fit: cover;
-  
-  /* NUEVA LÍNEA: Sombra para efecto de profundidad */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.10);
-  
-  /* Opcional: una transición suave por si quieres un efecto al pasar el mouse */
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-/* Opcional: Efecto al pasar el mouse (hover) para que "flote" más */
-.servicio-imagen img:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.20), 0 10px 10px rgba(0,0,0,0.15);
-  transform: translateY(-5px); /* Mueve la imagen un poquito hacia arriba */
-}
-
-/* --- COLORES DE LAS CAJAS DE TEXTO --- */
-
-/* Bloque 1 (y 5 si existe) - Fondo base: #e6e8e2 */
-.servicio-detalle:nth-of-type(1) .servicio-texto,
-.servicio-detalle:nth-of-type(5) .servicio-texto {
-  background-color: #d8dcd3; /* Un verde grisáceo más intenso */
-}
-
-/* Bloque 2 - Fondo base: #dde5da */
-.servicio-detalle:nth-of-type(2) .servicio-texto {
-  background-color: #ccd9c8; /* Verde un poco más fuerte */
-}
-
-/* Bloque 3 - Fondo base: #e3dfd4 */
-.servicio-detalle:nth-of-type(3) .servicio-texto {
-  background-color: #d6d0c2; /* Beige/Arena más intenso */
-}
-
-/* Bloque 4 - Fondo base: #d9dfda */
-.servicio-detalle:nth-of-type(4) .servicio-texto {
-  background-color: #cbd4cc; /* Gris verdoso más intenso */
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-  /* Quitamos .servicios-intro de aquí porque ya es flex column por defecto arriba */
-  .servicio-detalle {
-    grid-template-columns: 1fr;
+  .servicios-header h1 { font-size: 2.5rem; }
+  
+  .bento-grid {
+    grid-template-columns: 1fr; /* Una sola columna en móvil */
+    grid-auto-rows: auto;
   }
-
-  .servicio-texto,
-  .servicio-imagen {
-    order: initial;
+  
+  /* Reset de posiciones para móvil: uno abajo del otro */
+  .featured-card, 
+  .standard-card:nth-of-type(2), 
+  .standard-card:nth-of-type(3), 
+  .wide-card {
+    grid-column: span 1;
+    grid-row: auto;
   }
-
-  /* En móvil, la imagen va arriba */
-  .servicio-imagen {
-    order: -1;
-  }
-
-  .servicio-detalle {
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding: 3rem 1.5rem;
-  }
-}
-
-/* =========================
-   ANIMACIONES SERVICIOS
-   ========================= */
-
-.servicio-detalle {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.servicio-detalle.servicio-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.lista-beneficios {
-  list-style: none; /* Quita los puntos feos por defecto */
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.lista-beneficios li {
-  margin-bottom: 0.8rem;
-  font-size: 1.05rem;
-  display: flex;
-  align-items: center;
-  color: #333;
-}
-
-/* Agregamos un check verde antes de cada ítem */
-.lista-beneficios li::before {
-  content: "✔";  /* O puedes usar un emoji como "🌿" */
-  color: #4f6b3a;
-  font-weight: bold;
-  margin-right: 10px;
-  font-size: 1.2rem;
+  
+  .featured-card { min-height: 400px; }
+  
+  .wide-card { flex-direction: column-reverse; } /* Imagen arriba, texto abajo */
+  .wide-card .card-image-side { width: 100%; height: 200px; min-height: auto; }
 }
