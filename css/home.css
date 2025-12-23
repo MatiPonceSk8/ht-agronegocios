@@ -1,11 +1,14 @@
+/* IMPORTANTE: Cargamos la fuente "AGRO" (Roboto Slab) directamente aquí */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&display=swap');
+
 /* =========================================
-   1. HERO CINEMATIC (Portada Oscura y Moderna)
+   1. HERO CINEMATIC (Estilo Agro Power)
    ========================================= */
 
 .hero-cinematic {
   position: relative;
   width: 100%;
-  height: 100vh; /* Ocupa toda la pantalla */
+  height: 100vh;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -19,16 +22,15 @@
   background-color: #0f1f16; 
   color: white;
 
-  /* Margen negativo para que la imagen quede detrás del menú */
+  /* Ajuste menú transparente */
   margin-top: -85px; 
   padding-top: 85px; 
 }
 
-/* Capa Oscura (Overlay) */
+/* Capa Oscura */
 .hero-bg-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Degradado: Oscuro a la izquierda, transparente a la derecha */
   background: linear-gradient(90deg, 
       rgba(12, 28, 18, 0.95) 0%, 
       rgba(12, 28, 18, 0.85) 45%, 
@@ -36,7 +38,6 @@
   z-index: 1;
 }
 
-/* Contenedor Principal Hero */
 .hero-main-content {
   position: relative;
   z-index: 10;
@@ -44,7 +45,7 @@
   animation: fadeSlideRight 1.2s ease-out;
 }
 
-/* Línea Decorativa Superior */
+/* Línea Decorativa */
 .hero-decorative-line {
   display: flex;
   align-items: center;
@@ -53,11 +54,7 @@
   opacity: 0.9;
 }
 
-.line-shape {
-  width: 50px; 
-  height: 2px; 
-  background-color: #c5a065; /* Dorado */
-}
+.line-shape { width: 50px; height: 2px; background-color: #c5a065; }
 
 .line-text {
   font-family: 'Inter', sans-serif;
@@ -68,23 +65,25 @@
   color: #c5a065;
 }
 
-/* Título Gigante */
+/* --- TÍTULO GIGANTE (ESTILO AGRO: ROBOTO SLAB) --- */
 .hero-title-large {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(3rem, 7.5vw, 6.5rem); 
+  /* Esta es la fuente robusta y cuadrada */
+  font-family: 'Roboto Slab', serif; 
+  
+  font-size: clamp(3.5rem, 8vw, 7rem); 
   line-height: 1; 
-  font-weight: 800; /* Extra Bold */
+  font-weight: 900; /* Extra grueso */
   margin: 0 0 30px 0;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: -2px;
+  letter-spacing: -1px; /* Letras compactas y sólidas */
 }
 
-/* Efecto Outline (Borde) */
+/* Efecto Outline */
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px #ffffff;
-  opacity: 0.8;
+  -webkit-text-stroke: 2px #ffffff; /* Borde más grueso para que se note la fuerza */
+  opacity: 0.9;
 }
 
 /* Descripción */
@@ -182,12 +181,12 @@
 
 
 /* =========================================
-   2. SECCIÓN SERVICIOS (Estilo Premium Interactivo)
+   2. SECCIÓN SERVICIOS (Estilo Premium)
    ========================================= */
 
 .services-section {
   padding: 100px 0;
-  background-color: #f9f9f7; /* Gris muy suave */
+  background-color: #f9f9f7; 
 }
 
 /* Cabecera */
@@ -205,7 +204,7 @@
   margin-bottom: 60px;
 }
 
-/* Tarjeta Premium */
+/* Tarjeta */
 .service-card {
   background: #ffffff;
   padding: 40px 35px;
@@ -221,55 +220,37 @@
   overflow: hidden;
 }
 
-/* Línea Dorada Lateral */
 .service-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 0%;
-  background-color: #c5a065;
-  transition: height 0.4s ease;
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0%;
+  background-color: #c5a065; transition: height 0.4s ease;
 }
 
-/* Icono */
 .card-icon {
-  width: 60px; height: 60px;
-  background-color: #f4f8f5;
-  color: #1e4d2b;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem;
-  transition: all 0.4s ease;
+  width: 60px; height: 60px; background-color: #f4f8f5; color: #1e4d2b;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; transition: all 0.4s ease;
 }
 
-/* Contenido */
 .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1e4d2b; margin-bottom: 12px; transition: color 0.4s ease; }
 .card-content p { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 20px; transition: color 0.4s ease; }
 
-/* Enlace ver más */
 .card-link {
   font-size: 0.9rem; font-weight: 700; color: #c5a065; text-transform: uppercase; letter-spacing: 1px;
-  display: flex; align-items: center; gap: 8px;
-  opacity: 0; transform: translateY(10px); transition: all 0.4s ease;
+  display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease;
 }
 
-/* HOVER SERVICIOS */
+/* Hover */
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(30, 77, 43, 0.15);
-  border-color: transparent;
-  background-color: #1e4d2b; /* Fondo cambia a Verde */
+  transform: translateY(-8px); box-shadow: 0 20px 40px rgba(30, 77, 43, 0.15);
+  border-color: transparent; background-color: #1e4d2b;
 }
 .service-card:hover::before { height: 100%; }
-.service-card:hover .card-icon {
-  background-color: rgba(255,255,255,0.1); color: #ffffff;
-  transform: scale(1.1) rotate(5deg);
-}
+.service-card:hover .card-icon { background-color: rgba(255,255,255,0.1); color: #ffffff; transform: scale(1.1) rotate(5deg); }
 .service-card:hover .card-content h3 { color: #ffffff; }
 .service-card:hover .card-content p { color: rgba(255,255,255,0.8); }
 .service-card:hover .card-link { opacity: 1; transform: translateY(0); color: #c5a065; }
 
-/* Botón CTA Servicios */
+/* Botón CTA */
 .cta-container { text-align: center; margin-top: 50px; }
 .btn-primary-solid {
   display: inline-block; padding: 16px 45px; background-color: #1e4d2b;
@@ -280,38 +261,22 @@
 
 
 /* =========================================
-   3. SECCIÓN EQUIPO (Estilo Clásico Limpio)
+   3. SECCIÓN EQUIPO (Estilo Clásico)
    ========================================= */
 
 .bg-white-section { background-color: #ffffff; padding: 80px 0; }
-
-.team-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
+.team-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
 .team-card {
-  background: #f8f6f2; /* Fondo beige muy claro */
-  padding: 30px;
-  border-radius: 8px;
-  text-align: center;
-  flex: 1 1 300px;
-  max-width: 400px;
-  border-top: 4px solid #c5a065;
+  background: #f8f6f2; padding: 30px; border-radius: 8px; text-align: center;
+  flex: 1 1 300px; max-width: 400px; border-top: 4px solid #c5a065;
   box-shadow: 0 10px 30px -10px rgba(30, 77, 43, 0.15);
 }
-
 .team-card h4 { font-size: 1.4rem; margin-bottom: 5px; color: #2c2c2c; }
-.role { 
-  color: #1e4d2b; font-weight: 600; font-size: 0.9rem; 
-  text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; 
-}
+.role { color: #1e4d2b; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 15px; }
 
 
 /* =========================================
-   4. INSUMOS AGROQUÍMICOS (Mantenido)
+   4. INSUMOS (Mantenido)
    ========================================= */
 
 .agroquimicos-section { position: relative; padding: 100px 0; overflow: hidden; }
@@ -353,15 +318,15 @@
 
 
 /* =========================================
-   5. CONTACTO (ESTILO ULTRA PRO)
+   5. CONTACTO (ESTILO AGENCY PRO - CLARO)
    ========================================= */
 
 .contact-pro-section {
   padding: 100px 0;
-  background-color: #f9f9f7; 
+  background-color: #f9f9f7; /* Gris muy suave (Versión Clara) */
 }
 
-/* El Contenedor Principal (La Tarjeta Flotante) */
+/* El Contenedor Principal */
 .contact-pro-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.3fr; 
@@ -458,7 +423,6 @@
    6. RESPONSIVE (MÓVIL)
    ========================================= */
 @media (max-width: 900px) {
-  /* Hero */
   .hero-cinematic { justify-content: center; text-align: center; padding: 0 20px; padding-top: 80px; }
   .hero-bg-overlay { background: rgba(12, 28, 18, 0.85); }
   .hero-decorative-line { justify-content: center; margin-bottom: 15px; }
@@ -468,15 +432,13 @@
   .btn-glow, .btn-outline-white { width: 100%; }
   .hero-socials, .hero-decor-right { display: none; }
   
-  /* Servicios */
   .grid-services { grid-template-columns: 1fr; }
   .card-link { opacity: 1; transform: translateY(0); margin-top: 15px; }
 
-  /* Slider */
   .agroquimicos-slider { grid-template-columns: 1fr; display: flex !important; flex-direction: column; }
   .agroquimicos-image { margin-top: 30px; }
 
-  /* Contacto */
+  /* Contacto Responsive */
   .contact-pro-wrapper { grid-template-columns: 1fr; }
   .contact-brand-panel { padding: 40px 30px; }
   .contact-form-panel { padding: 40px 30px; }

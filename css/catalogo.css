@@ -1,30 +1,30 @@
 /* =========================================
-   ESTILOS CATÁLOGO
+   ESTILOS CATÁLOGO - HT AGRONEGOCIOS
    ========================================= */
 
-/* --- 1. CABECERA (HERO) - NUEVO ESTILO PRO --- */
+/* --- 1. CABECERA (HERO) --- */
 .catalogo-hero {
   position: relative;
-  /* Altura controlada */
-  height: 50vh; 
-  min-height: 400px;
-  
+  height: 55vh; /* Aumenté un poco la altura para que se luzca más */
+  min-height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   
-  /* FONDO: Coherente con el Home */
+  /* Fondo */
   background: url('../assets/img/imgFondoInicio.png') no-repeat center center;
   background-size: cover;
   
-  /* Ajuste para menú transparente */
   margin-top: -85px; 
   padding-top: 85px; 
+  
+  /* Importante: Sin margen inferior para que el grid pueda tocarlo */
+  margin-bottom: -60px;
+  padding-bottom: 48px;
 }
 
-/* Capa Oscura */
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -32,7 +32,6 @@
   z-index: 1;
 }
 
-/* Contenido Hero */
 .hero-content-catalog {
   position: relative;
   z-index: 2;
@@ -45,186 +44,185 @@
 
 .hero-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #c5a065; /* Dorado */
-  font-weight: 700;
-  margin-bottom: 15px;
-  display: block;
+  font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+  color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block;
 }
 
 .catalogo-hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  color: white;
+  font-family: 'Playfair Display', serif; font-size: 3.5rem;
+  line-height: 1.1; margin-bottom: 20px; color: white;
   text-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .hero-line {
-  width: 60px;
-  height: 3px;
-  background-color: #c5a065;
-  margin-bottom: 25px;
-  border-radius: 2px;
+  width: 60px; height: 3px; background-color: #c5a065;
+  margin-bottom: 25px; border-radius: 2px;
 }
 
 .catalogo-hero p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  max-width: 600px;
-  font-weight: 300;
+  font-family: 'Inter', sans-serif; font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9); line-height: 1.6;
+  max-width: 600px; font-weight: 300;
 }
 
+/* =========================================
+   2. FILTROS "ZERO GAP" 
+   ========================================= */
 
-/* --- 2. LISTADO DE PRODUCTOS (Estilo Original Preservado) --- */
+.filtros-container-wrapper {
+    position: relative;
+    z-index: 10;
+    
+    /* TRUCO DE DOBLE MARGEN NEGATIVO: */
+    /* 1. Sube la barra 32px hacia la foto */
+    margin-top: -32px;
+    margin-top: -48px;  
+    
+    /* 2. Sube el grid de productos 32px hacia arriba para ELIMINAR EL ESPACIO BLANCO */
+    /* Esto hace que la foto toque el grid, y la barra quede justo en el medio */
+    margin-bottom: -32px;
+    margin-bottom: -48px;
+    
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    
+    /* Para que los clics pasen a través de los costados vacíos */
+    pointer-events: none; 
+}
+
+.filtros-capsula {
+    background: #ffffff;
+    padding: 8px 10px;
+    border-radius: 50px;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    /* Reactivamos clics en la barra */
+    pointer-events: auto;
+    
+    /* Sombra para despegarla visualmente */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 
+                0 4px 10px rgba(0, 0, 0, 0.05);
+    
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.btn-filtro {
+    background: transparent;
+    border: none;
+    color: #5e6d64; 
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-filtro:hover {
+    color: #1e4d2b;
+    background-color: rgba(30, 77, 43, 0.04);
+}
+
+.btn-filtro.active {
+    background-color: #1e4d2b;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(30, 77, 43, 0.3);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   3. LISTADO DE PRODUCTOS (AJUSTADO)
+   ========================================= */
+
+#catalogo-grid {
+    /* IMPORTANTE: Damos espacio arriba (padding) para compensar el margen negativo */
+    /* Así los primeros productos no quedan tapados por la barra */
+    padding-top: 60px;
+    background-color: transparent; /* Aseguramos fondo blanco */
+}
 
 .producto-bloque {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch; 
-  min-height: 450px; 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  display: flex; flex-wrap: wrap; align-items: stretch; 
+  min-height: 450px; border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
+.producto-bloque:last-child { border-bottom: none; }
 
-.producto-bloque:last-child {
-  border-bottom: none;
-}
-
-/* Imagen */
 .prod-imagen {
-  flex: 0 0 40%;
-  max-width: 40%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto; 
-  border-right: 1px solid rgba(0,0,0,0.05);
+  flex: 0 0 40%; max-width: 40%; position: relative; overflow: hidden;
+  display: flex; justify-content: center; align-items: center;
+  background-color: #ffffff; border-right: 1px solid rgba(0,0,0,0.05);
 }
+.prod-imagen img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.prod-imagen img {
-  width: 100%;
-  height: 100%; 
-  object-fit: cover;
-  display: block; 
-}
-
-/* Texto */
 .prod-contenido {
-  flex: 0 0 60%;
-  max-width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 50px 60px; 
-  box-sizing: border-box;
+  flex: 0 0 60%; max-width: 60%; display: flex; flex-direction: column;
+  justify-content: center; padding: 50px 60px; box-sizing: border-box;
 }
 
 .prod-tag {
   text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
-  font-weight: 700; opacity: 0.5; margin-bottom: 15px;
-  font-family: 'Inter', sans-serif;
+  font-weight: 700; opacity: 0.5; margin-bottom: 15px; font-family: 'Inter', sans-serif;
 }
-
 .prod-contenido h2 {
   font-family: 'Playfair Display', serif; font-size: 2.2rem;
   margin-bottom: 20px; color: #1a1a1a; line-height: 1.1;
 }
-
 .prod-contenido p {
   font-size: 1rem; line-height: 1.6; color: #444;
   margin-bottom: 30px; max-width: 500px;
 }
-
 .prod-specs {
   display: flex; gap: 30px; margin-bottom: 30px;
   border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;
-  font-size: 0.9rem; color: #555;
+  font-size: 0.9rem; color: #555; flex-wrap: wrap;
 }
-
 .btn-linea {
   display: inline-block; padding: 10px 25px; border: 1px solid #1a1a1a;
-  color: #1a1a1a; text-transform: uppercase; font-weight: 600;
-  font-size: 0.75rem; letter-spacing: 1px; width: fit-content; transition: 0.3s;
+  color: #1a1a1a; text-transform: uppercase; font-weight: 600; font-size: 0.75rem;
+  letter-spacing: 1px; width: fit-content; transition: 0.3s; text-decoration: none;
 }
 .btn-linea:hover { background: #1a1a1a; color: white; }
 
+/* ZIG-ZAG */
+.producto-bloque:nth-child(odd) .prod-contenido { background-color: #f2f0e6; }
+.producto-bloque:nth-child(even) { flex-direction: row-reverse; }
+.producto-bloque:nth-child(even) .prod-contenido { background-color: #e3dfd4; }
+.producto-bloque:nth-child(even) .prod-imagen { border-right: none; border-left: 1px solid rgba(0,0,0,0.05); }
 
-/* --- COLORES Y ZIG-ZAG --- */
-.producto-bloque:nth-child(odd) .prod-contenido { 
-  background-color: #f2f0e6; 
-}
+/* ANIMACIONES */
+.fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.producto-bloque:nth-child(even) { 
-  flex-direction: row-reverse; 
-}
-.producto-bloque:nth-child(even) .prod-contenido { 
-  background-color: #e3dfd4; 
-}
-.producto-bloque:nth-child(even) .prod-imagen {
-  border-right: none;
-  border-left: 1px solid rgba(0,0,0,0.05);
-}
-
-
-/* --- RESPONSIVE --- */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  /* Ajuste Hero */
   .catalogo-hero { height: auto; padding: 120px 20px 60px 20px; }
   .catalogo-hero h1 { font-size: 2.5rem; }
   
-  /* Ajuste Productos */
   .producto-bloque { min-height: auto; }
-  
-  .prod-imagen, .prod-contenido {
-    flex: 0 0 100%; max-width: 100%;
-    border: none;
-  }
-
-  .prod-imagen {
-    height: 300px; 
-    display: block; 
-  }
-  
-  .prod-imagen img { height: 100%; width: 100%; }
-
-  .prod-contenido {
-    padding: 40px 20px; align-items: center; text-align: center;
-  }
-  
+  .prod-imagen, .prod-contenido { flex: 0 0 100%; max-width: 100%; border: none; }
+  .prod-imagen { height: 300px; }
+  .prod-contenido { padding: 40px 20px; align-items: center; text-align: center; }
   .prod-specs { justify-content: center; }
-
-  /* Desactivar zig-zag en móvil */
   .producto-bloque:nth-child(even) { flex-direction: row; }
   .prod-imagen { order: -1; }
 }
 
-/* =========================================
-   FIX RESPONSIVE NAVBAR (Solo para Catálogo)
-   ========================================= */
 @media (max-width: 600px) {
-  /* 1. Ocultar el texto de la marca para ganar espacio */
-  nav .brand a {
-    font-size: 0; /* El texto desaparece */
-  }
-  
-  /* 2. Mantener el logo visible y bonito */
-  .brand-icon {
-    width: 42px; 
-    height: 42px;
-    /* El gap del estilo inline se mantendrá, dando un pequeño margen */
-  }
+  /* Ajuste de márgenes en móvil */
+  .filtros-container-wrapper { margin-top: -20px; margin-bottom: -20px; }
+  #catalogo-grid { padding-top: 50px; } /* Menos padding en móvil */
 
-  /* 3. Ajustar el botón "Volver" para que entre cómodo */
-  .btn-nav {
-    font-size: 0.8rem; /* Letra un poco más chica */
-    padding: 0 15px;   /* Menos relleno a los costados */
-    height: 36px;      /* Altura compacta */
-  }
+  .filtros-capsula { padding: 6px; border-radius: 20px; width: 100%; }
+  .btn-filtro { flex: 1 1 auto; text-align: center; padding: 10px 15px; font-size: 0.75rem; }
+
+  nav .brand a { font-size: 0; }
+  .brand-icon { width: 42px; height: 42px; }
+  .btn-nav { font-size: 0.8rem; padding: 0 15px; height: 36px; }
 }
