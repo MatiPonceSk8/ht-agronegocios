@@ -5,22 +5,17 @@
 /* --- 1. CABECERA (HERO) --- */
 .catalogo-hero {
   position: relative;
-  height: 55vh; /* Aumenté un poco la altura para que se luzca más */
+  height: 55vh; 
   min-height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  
-  /* Fondo */
   background: url('../assets/img/imgFondoInicio.png') no-repeat center center;
   background-size: cover;
-  
   margin-top: -85px; 
   padding-top: 85px; 
-  
-  /* Importante: Sin margen inferior para que el grid pueda tocarlo */
   margin-bottom: -60px;
   padding-bottom: 48px;
 }
@@ -65,29 +60,15 @@
   max-width: 600px; font-weight: 300;
 }
 
-/* =========================================
-   2. FILTROS "ZERO GAP" 
-   ========================================= */
-
+/* --- 2. FILTROS "ZERO GAP" --- */
 .filtros-container-wrapper {
     position: relative;
     z-index: 10;
-    
-    /* TRUCO DE DOBLE MARGEN NEGATIVO: */
-    /* 1. Sube la barra 32px hacia la foto */
-    margin-top: -32px;
     margin-top: -48px;  
-    
-    /* 2. Sube el grid de productos 32px hacia arriba para ELIMINAR EL ESPACIO BLANCO */
-    /* Esto hace que la foto toque el grid, y la barra quede justo en el medio */
-    margin-bottom: -32px;
     margin-bottom: -48px;
-    
     display: flex;
     justify-content: center;
     padding: 0 20px;
-    
-    /* Para que los clics pasen a través de los costados vacíos */
     pointer-events: none; 
 }
 
@@ -99,14 +80,9 @@
     gap: 5px;
     flex-wrap: wrap;
     justify-content: center;
-    
-    /* Reactivamos clics en la barra */
     pointer-events: auto;
-    
-    /* Sombra para despegarla visualmente */
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 
                 0 4px 10px rgba(0, 0, 0, 0.05);
-    
     border: 1px solid rgba(0,0,0,0.02);
 }
 
@@ -125,27 +101,37 @@
     letter-spacing: 0.5px;
 }
 
-.btn-filtro:hover {
-    color: #1e4d2b;
-    background-color: rgba(30, 77, 43, 0.04);
+.btn-filtro:hover { color: #1e4d2b; background-color: rgba(30, 77, 43, 0.04); }
+.btn-filtro.active { background-color: #1e4d2b; color: #ffffff; box-shadow: 0 4px 15px rgba(30, 77, 43, 0.3); transform: translateY(-1px); }
+
+
+/* --- 3. GUÍA DE USO (STRIP DELICADO) --- */
+.guide-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* Padding top alto para separarse bien de los filtros */
+  padding: 80px 20px 20px 20px; 
+  font-family: 'Inter', sans-serif;
+  opacity: 0.6; 
+  transition: opacity 0.3s;
 }
+.guide-strip:hover { opacity: 1; }
 
-.btn-filtro.active {
-    background-color: #1e4d2b;
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(30, 77, 43, 0.3);
-    transform: translateY(-1px);
+.guide-step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #5e6d64; font-weight: 600;
 }
+.guide-step i { color: #c5a065; }
+.guide-line { width: 30px; height: 1px; background: #ddd; }
 
-/* =========================================
-   3. LISTADO DE PRODUCTOS (AJUSTADO)
-   ========================================= */
 
+/* --- 4. LISTADO DE PRODUCTOS --- */
 #catalogo-grid {
-    /* IMPORTANTE: Damos espacio arriba (padding) para compensar el margen negativo */
-    /* Así los primeros productos no quedan tapados por la barra */
-    padding-top: 60px;
-    background-color: transparent; /* Aseguramos fondo blanco */
+    padding-top: 20px;
+    background-color: transparent;
+    padding-bottom: 120px; /* Aumentado para evitar choque con dock en móvil */
 }
 
 .producto-bloque {
@@ -166,63 +152,168 @@
   justify-content: center; padding: 50px 60px; box-sizing: border-box;
 }
 
-.prod-tag {
-  text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
-  font-weight: 700; opacity: 0.5; margin-bottom: 15px; font-family: 'Inter', sans-serif;
-}
-.prod-contenido h2 {
-  font-family: 'Playfair Display', serif; font-size: 2.2rem;
-  margin-bottom: 20px; color: #1a1a1a; line-height: 1.1;
-}
-.prod-contenido p {
-  font-size: 1rem; line-height: 1.6; color: #444;
-  margin-bottom: 30px; max-width: 500px;
-}
+.prod-tag { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; opacity: 0.5; margin-bottom: 15px; font-family: 'Inter', sans-serif; }
+.prod-contenido h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; color: #1a1a1a; line-height: 1.1; }
+.prod-contenido p { font-size: 1rem; line-height: 1.6; color: #444; margin-bottom: 30px; max-width: 500px; }
 .prod-specs {
   display: flex; gap: 30px; margin-bottom: 30px;
   border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;
   font-size: 0.9rem; color: #555; flex-wrap: wrap;
 }
-.btn-linea {
-  display: inline-block; padding: 10px 25px; border: 1px solid #1a1a1a;
-  color: #1a1a1a; text-transform: uppercase; font-weight: 600; font-size: 0.75rem;
-  letter-spacing: 1px; width: fit-content; transition: 0.3s; text-decoration: none;
-}
-.btn-linea:hover { background: #1a1a1a; color: white; }
 
-/* ZIG-ZAG */
+/* Zig-Zag */
 .producto-bloque:nth-child(odd) .prod-contenido { background-color: #f2f0e6; }
 .producto-bloque:nth-child(even) { flex-direction: row-reverse; }
 .producto-bloque:nth-child(even) .prod-contenido { background-color: #e3dfd4; }
 .producto-bloque:nth-child(even) .prod-imagen { border-right: none; border-left: 1px solid rgba(0,0,0,0.05); }
 
-/* ANIMACIONES */
+/* Animación */
 .fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* RESPONSIVE */
+
+/* --- 5. BOTONES Y POPOVER --- */
+.prod-actions {
+  position: relative; margin-top: 20px; width: fit-content; min-width: 200px;
+}
+
+.btn-action-trigger {
+  width: 100%; padding: 12px 25px; background: transparent;
+  border: 1px solid #1e4d2b; color: #1e4d2b; font-weight: 700;
+  text-transform: uppercase; font-size: 0.85rem; border-radius: 6px; cursor: pointer;
+  transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.btn-action-trigger:hover { background: #f4f8f5; transform: translateY(-2px); }
+.btn-action-trigger.has-items { background-color: #1e4d2b; color: white; box-shadow: 0 4px 10px rgba(30, 77, 43, 0.2); }
+
+.qty-popover {
+  position: absolute; bottom: 115%; left: 50%; transform: translateX(-50%) translateY(10px);
+  width: 280px; background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  border-radius: 12px; padding: 20px; z-index: 100; opacity: 0; pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); border: 1px solid rgba(0,0,0,0.05); text-align: center;
+}
+.qty-popover::after {
+  content: ""; position: absolute; top: 100%; left: 50%; margin-left: -8px;
+  border-width: 8px; border-style: solid; border-color: white transparent transparent transparent;
+}
+.qty-popover.active { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+.popover-title { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 15px; display: block; }
+.qty-selector { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
+.btn-qty { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #eee; background: white; color: #1e4d2b; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.btn-qty:hover { background: #1e4d2b; color: white; border-color: #1e4d2b; }
+.qty-number { font-size: 1.4rem; font-weight: 800; width: 50px; text-align: center; color: #1e4d2b; }
+
+.popover-footer { display: flex; gap: 10px; }
+.btn-confirm { flex: 1; background: #1e4d2b; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+.btn-confirm:hover { background: #153820; }
+.btn-delete { width: 40px; background: #fff5f5; color: #e53935; border: 1px solid #ffebee; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.btn-delete:hover { background: #ffebee; border-color: #ffcdd2; }
+
+
+/* --- 6. SMART DOCK (BARRA INFERIOR BLUR) --- */
+.smart-dock {
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+  padding: 15px 5%;
+  
+  /* Flex normal para desktop */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  
+  z-index: 2000;
+  transform: translateY(120%);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.smart-dock.visible { transform: translateY(0); }
+
+.dock-left { 
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+  flex-shrink: 0; /* Evita que el texto se comprima */
+}
+
+/* Botón Papelera */
+.btn-icon-trash {
+  width: 44px; height: 44px; 
+  border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);
+  background: white; color: #999; cursor: pointer; 
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem; 
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.btn-icon-trash:hover { background: #ffebee; color: #d32f2f; border-color: #ffcdd2; transform: scale(1.1); }
+
+.dock-info h4 { font-family: 'Inter', sans-serif; font-size: 1rem; margin: 0; color: #1e4d2b; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.dock-info span { font-size: 0.8rem; color: #555; display: block; white-space: nowrap; }
+
+.dock-actions { 
+  display: flex; 
+  gap: 12px;
+}
+.btn-dock {
+  padding: 10px 24px; border: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+  cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}
+.btn-whatsapp { background: #25d366; }
+.btn-whatsapp:hover { background: #1ebc57; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); }
+.btn-email { background: #34495e; }
+.btn-email:hover { background: #2c3e50; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4); }
+
+
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .catalogo-hero { height: auto; padding: 120px 20px 60px 20px; }
   .catalogo-hero h1 { font-size: 2.5rem; }
-  
   .producto-bloque { min-height: auto; }
   .prod-imagen, .prod-contenido { flex: 0 0 100%; max-width: 100%; border: none; }
   .prod-imagen { height: 300px; }
-  .prod-contenido { padding: 40px 20px; align-items: center; text-align: center; }
+  .prod-contenido { padding: 40px 25px; align-items: center; text-align: center; }
   .prod-specs { justify-content: center; }
+  .prod-actions { width: 100%; } 
   .producto-bloque:nth-child(even) { flex-direction: row; }
   .prod-imagen { order: -1; }
 }
 
-@media (max-width: 600px) {
-  /* Ajuste de márgenes en móvil */
+/* --- SOLUCIÓN CRÍTICA PARA BARRA INFERIOR --- */
+/* Aumentamos el breakpoint a 950px (laptops/tablets) */
+/* Antes era 600px y por eso se rompía en tu pantalla */
+
+@media (max-width: 950px) {
   .filtros-container-wrapper { margin-top: -20px; margin-bottom: -20px; }
-  #catalogo-grid { padding-top: 50px; } /* Menos padding en móvil */
-
   .filtros-capsula { padding: 6px; border-radius: 20px; width: 100%; }
-  .btn-filtro { flex: 1 1 auto; text-align: center; padding: 10px 15px; font-size: 0.75rem; }
+  .btn-filtro { flex: 1 1 auto; text-align: center; padding: 10px 10px; font-size: 0.75rem; }
+  
+  .guide-strip { gap: 10px; flex-wrap: wrap; text-align: center; padding-top: 60px; }
+  .guide-line { display: none; }
+  .guide-step { font-size: 0.65rem; }
 
-  nav .brand a { font-size: 0; }
-  .brand-icon { width: 42px; height: 42px; }
-  .btn-nav { font-size: 0.8rem; padding: 0 15px; height: 36px; }
+  /* DOCK EN COLUMNA (Estilo Móvil/Tablet) */
+  .smart-dock { 
+    flex-direction: column; 
+    gap: 15px; 
+    padding: 20px 15px; 
+    align-items: stretch; /* Estira todo el ancho */
+  }
+  .dock-left { 
+    width: 100%; 
+    justify-content: space-between; /* Texto izquierda, Tacho derecha */
+    flex-direction: row-reverse; /* Pone el tacho a la derecha para acceso facil */
+  }
+  .dock-actions { width: 100%; }
+  .btn-dock { 
+    flex: 1; /* Botones ocupan 50% cada uno */
+    justify-content: center; 
+    padding: 12px 0; 
+  }
 }

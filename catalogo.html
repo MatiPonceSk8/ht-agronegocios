@@ -7,8 +7,10 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/catalogo.css">
 </head>
@@ -49,6 +51,20 @@
        </div>
    </section>
 
+   <section class="guide-strip">
+     <div class="guide-step">
+       <i class="fas fa-hand-pointer"></i> <span>1. Seleccioná el insumo</span>
+     </div>
+     <div class="guide-line"></div>
+     <div class="guide-step">
+       <i class="fas fa-boxes"></i> <span>2. Definí la cantidad</span>
+     </div>
+     <div class="guide-line"></div>
+     <div class="guide-step">
+       <i class="fab fa-whatsapp"></i> <span>3. Enviá a cotizar</span>
+     </div>
+   </section>
+
    <div id="catalogo-grid">
        </div>
 
@@ -59,6 +75,29 @@
       <p><strong>HT - AGRONEGOCIOS</strong> &copy; 2025</p>
     </div>
   </footer>
+
+  <div id="smart-dock" class="smart-dock">
+    
+    <div class="dock-left">
+      <button id="btn-trash-all" class="btn-icon-trash" title="Vaciar lista y cerrar">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      
+      <div class="dock-info">
+        <h4><span id="total-items-dock">0</span> productos</h4>
+        <span>listos para cotizar</span>
+      </div>
+    </div>
+
+    <div class="dock-actions">
+      <button id="dock-btn-email" class="btn-dock btn-email">
+        <i class="fas fa-envelope"></i> Email
+      </button>
+      <button id="dock-btn-whatsapp" class="btn-dock btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+    </div>
+  </div>
 
   <script src="js/catalogo.js"></script>
 

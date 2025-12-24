@@ -36,7 +36,7 @@ h1, h2, h3, h4 {
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; height: auto; } /* Importante para móviles */
+img { max-width: 100%; height: auto; }
 
 /* =========================================================
    CONTENEDORES GENERALES
@@ -64,39 +64,45 @@ img { max-width: 100%; height: auto; } /* Importante para móviles */
    BARRA DE NAVEGACIÓN PRINCIPAL
    ========================================================= */
 nav {
-  background: rgba(248, 246, 242, 0.65);
+  background: rgba(248, 246, 242, 0.85);
   backdrop-filter: blur(14px) saturate(1.15);
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 15px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(30, 77, 43, 0.08);
-  box-shadow: 0 12px 30px -18px rgba(30, 77, 43, 0.35);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
+
 .nav-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px; /* Espacio mínimo entre bloques */
 }
+
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--primary);
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
+
 .brand-icon {
-  width: 45px; 
-  height: 45px;
+  width: 42px; 
+  height: 42px;
   border-radius: 50%; 
   object-fit: cover; 
+  flex-shrink: 0; 
 }
 
 /* --- MENÚ DESKTOP --- */
@@ -123,6 +129,7 @@ nav {
 }
 .menu-links a:hover { color: var(--primary); }
 
+/* Botón Nav */
 .btn-nav {
   background: var(--primary);
   color: white !important;
@@ -132,7 +139,9 @@ nav {
   align-items: center;
   border-radius: 50px;
   font-weight: 600;
-  white-space: nowrap;
+  white-space: nowrap; 
+  font-size: 0.9rem;
+  flex-shrink: 0; /* IMPEDIR QUE SE APLASTE */
 } 
 .btn-nav:hover { 
   background: var(--primary-light); 
@@ -145,122 +154,37 @@ nav {
    CONTACTO Y FORMULARIOS
    ========================================================= */
 .contact-split {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  background: white;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
+  background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
 }
-
-/* --- NUEVA TARJETA VERDE MODERNA (CAMBIOS APLICADOS AQUÍ) --- */
 
 .contact-info {
-  background: var(--primary);
-  color: white;
-  padding: 50px 45px;
-  
-  /* FLEX: Para separar cabecera (arriba) y datos (abajo) */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-  
-  /* Altura mínima para asegurar que se estire bien y quede elegante */
-  min-height: 500px; 
+  background: var(--primary); color: white; padding: 50px 45px;
+  display: flex; flex-direction: column; justify-content: space-between; min-height: 500px; 
 }
-
-/* 1. ESTILO DEL TÍTULO (Moderno y "Copado") */
 .contact-info h3 { 
-  color: white; 
-  
-  /* Cambio de fuente a Sans-Serif (Inter) para toque moderno */
-  font-family: 'Inter', sans-serif; 
-  font-weight: 700;       /* Bien negrita */
-  font-size: 2.4rem;      /* Tamaño grande */
-  line-height: 1.1;       /* Interlineado ajustado */
-  letter-spacing: -1px;   /* Letras un poco más juntas */
-  
-  margin-bottom: 25px;    /* Espacio antes del párrafo */
+  color: white; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 2.4rem;      
+  line-height: 1.1; letter-spacing: -1px; margin-bottom: 25px;    
 }
-
-/* 2. ESTILO DEL PÁRRAFO */
-.contact-info p {
-  opacity: 0.85;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  font-weight: 400;
-  max-width: 95%;
-}
-
-/* Agrupamos Título + Párrafo para que se queden arriba juntos */
-.contact-header {
-  margin-bottom: 40px; /* Margen de seguridad */
-}
-
-/* 3. ESTILO DE LOS DATOS (Abajo) */
-.contact-details {
-  /* Línea finita arriba para separar visualmente */
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 30px;
-}
-
-.info-item { 
-  margin-bottom: 18px; 
-}
-.info-item:last-child {
-  margin-bottom: 0;
-}
-
-.info-label { 
-  display: block; 
-  opacity: 0.6;         /* Etiqueta más sutil */
-  font-size: 0.8rem; 
-  text-transform: uppercase; 
-  letter-spacing: 1px;  /* Espaciado elegante */
-  margin-bottom: 4px; 
-}
-
-.info-value { 
-  font-size: 1.15rem; 
-  font-weight: 500;     /* Un poco más grueso */
-  font-family: 'Inter', sans-serif; /* Unificamos fuente moderna */
-}
-
-/* --- FIN DE LA NUEVA TARJETA VERDE --- */
+.contact-info p { opacity: 0.85; font-size: 1.1rem; line-height: 1.6; font-weight: 400; max-width: 95%; }
+.contact-header { margin-bottom: 40px; }
+.contact-details { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 30px; }
+.info-item { margin-bottom: 18px; }
+.info-item:last-child { margin-bottom: 0; }
+.info-label { display: block; opacity: 0.6; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.info-value { font-size: 1.15rem; font-weight: 500; font-family: 'Inter', sans-serif; }
 
 .contact-form-wrapper { padding: 60px 40px; }
-
 form { display: grid; gap: 20px; }
 .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-
 input, select, textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  background: #fdfdfd;
-  transition: 0.3s;
+  width: 100%; padding: 14px; border: 1px solid #e0e0e0; border-radius: 6px;
+  font-family: 'Inter', sans-serif; font-size: 1rem; background: #fdfdfd; transition: 0.3s;
 }
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  background: white;
-  box-shadow: 0 0 0 4px rgba(30, 77, 43, 0.1);
-}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(30, 77, 43, 0.1); }
 button[type="submit"] {
-  background: var(--primary);
-  color: white;
-  padding: 16px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: 0.3s;
+  background: var(--primary); color: white; padding: 16px; border: none; border-radius: 6px;
+  font-size: 1rem; font-weight: 600; cursor: pointer; letter-spacing: 0.5px; transition: 0.3s;
 }
 button[type="submit"]:hover { background: var(--primary-light); }
 #formMsg { font-size: 0.9rem; margin-top: 10px; color: var(--primary); font-weight: 500; }
@@ -268,147 +192,69 @@ button[type="submit"]:hover { background: var(--primary-light); }
 /* =========================================================
    FOOTER
    ========================================================= */
-footer {
-  background: #1a1a1a;
-  color: #888;
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 0.9rem;
-}
+footer { background: #1a1a1a; color: #888; text-align: center; padding: 40px 20px; font-size: 0.9rem; }
 footer strong { color: white; }
 
 /* =========================================================
-   BOTÓN FLOTANTE DE CONTACTO (FAB)
+   BOTÓN FLOTANTE CONTACTO (FAB)
    ========================================================= */
-.contact-fab {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 999;
-}
+.contact-fab { position: fixed; bottom: 25px; right: 25px; z-index: 999; }
 .fab-main {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  background: var(--primary);
-  color: white;
-  font-size: 26px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  width: 60px; height: 60px; border-radius: 50%; border: none; background: var(--primary);
+  color: white; font-size: 26px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.25);
   transition: transform 0.25s ease, background 0.25s ease;
 }
-.fab-main:hover {
-  background: var(--primary-light);
-  transform: scale(1.08);
-}
+.fab-main:hover { background: var(--primary-light); transform: scale(1.08); }
 .fab-menu {
-  position: absolute;
-  bottom: 70px;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
+  position: absolute; bottom: 70px; right: 0; display: flex; flex-direction: column; gap: 12px;
+  opacity: 0; pointer-events: none; transform: translateY(10px); transition: all 0.25s ease;
 }
-.contact-fab.open .fab-menu {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
+.contact-fab.open .fab-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .fab-menu a {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(12px) saturate(1.2);
-  -webkit-backdrop-filter: blur(12px) saturate(1.2);
-  color: var(--text-main);
-  padding: 12px 18px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-  white-space: nowrap;
-  transition: transform 0.2s ease, background 0.2s ease;
+  background: rgba(255, 255, 255, 0.55); backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2); color: var(--text-main);
+  padding: 12px 18px; border-radius: 30px; font-size: 14px; font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18); white-space: nowrap; transition: transform 0.2s ease, background 0.2s ease;
 }
-.fab-menu a:hover {
-  background: var(--bg-body);
-  transform: translateX(-4px);
-}
-.fab-menu a:nth-child(1) { color: #25d366; } /* WhatsApp */
-.fab-menu a:nth-child(2) { color: #c13584; } /* Instagram */
-.fab-menu a:nth-child(3) { color: #555; }     /* Email */
+.fab-menu a:hover { background: var(--bg-body); transform: translateX(-4px); }
+.fab-menu a:nth-child(1) { color: #25d366; }
+.fab-menu a:nth-child(2) { color: #c13584; }
+.fab-menu a:nth-child(3) { color: #555; }
 
 /* =========================================================
-   RESPONSIVE (MENU MÓVIL Y ESTRUCTURA GENERAL)
+   RESPONSIVE Y MÓVIL
    ========================================================= */
 @media (max-width: 900px) {
-  /* NAVEGACIÓN MOBILE */
-  .nav-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-  }
+  .nav-container { flex-direction: row; justify-content: space-between; }
+  .menu-toggle { display: block; background: none; border: none; font-size: 2rem; cursor: pointer; }
   .menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--bg-white);
-    max-height: 0;
-    overflow: hidden;
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-    transition: max-height 0.3s ease;
-    box-shadow: var(--shadow);
+    position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-white);
+    max-height: 0; overflow: hidden; flex-direction: column; gap: 20px; text-align: center;
+    transition: max-height 0.3s ease; box-shadow: var(--shadow);
   }
-  .menu.open {
-    max-height: 320px;
-  }
-  .menu-links {
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px 0;
-    align-items: center;
-  }
+  .menu.open { max-height: 320px; }
+  .menu-links { flex-direction: column; gap: 15px; padding: 20px 0; align-items: center; }
   .menu-links a { justify-content: center; }
   .btn-nav { display: flex; justify-content: center; }
-
-  /* Contacto en una sola columna */
   .contact-split { grid-template-columns: 1fr; }
-  .contact-info { padding: 40px 20px; min-height: auto; } /* Reset altura en móvil */
+  .contact-info { padding: 40px 20px; min-height: auto; }
   .contact-form-wrapper { padding: 30px 20px; }
 }
 
-/* =========================================================
-   BOTONES CTA (NUEVO)
-   ========================================================= */
-.cta-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.btn-cta {
-  display: inline-block;
-  padding: 15px 35px;
-  background: #c5a065;
-  color: white;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1.05rem;
-  transition: all 0.3s ease;
-}
-
-.btn-cta:hover {
-  background: #b08d55;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px -10px rgba(197, 160, 101, 0.5);
+/* --- SOLUCIÓN CRÍTICA DE SUPERPOSICIÓN --- */
+/* Cambiado de 850px a 1100px. 
+   Esto asegura que en laptops normales, el texto se oculte 
+   antes de chocar con el botón. */
+@media (max-width: 1100px) {
+  .brand a {
+    font-size: 0; /* Oculta texto "HT - AGRONEGOCIOS" */
+  }
+  .brand-icon {
+    display: block; 
+    width: 45px; height: 45px; /* Logo circular se mantiene */
+  }
+  .btn-nav {
+    padding: 0 20px;
+    font-size: 0.85rem;
+  }
 }
