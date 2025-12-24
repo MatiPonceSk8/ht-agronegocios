@@ -98,27 +98,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("catalogo-grid");
   const btnsFiltro = document.querySelectorAll(".btn-filtro");
+  
+  // VARIABLES GLOBALES DE ESTADO
   let carrito = []; 
-  let filtroActual = "todos"; // Variable para saber qué estamos viendo
+  let filtroActual = "todos"; // "todos", "herbicida", "fertilizante", etc. o "busqueda"
+  let ultimosResultadosBusqueda = []; // Almacena temporalmente lo que buscó el usuario
 
   /* =========================================================
-     2. RENDERIZADO
+     2. LÓGICA DEL BUSCADOR INTELIGENTE (NUEVO)
+     ========================================================= */
+  const searchInput = document.getElementById('searchInput');
+
+  if(searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const termino = e.target.value.toLowerCase().trim();
+
+      // Desmarcamos visualmente los filtros de botones
+      btnsFiltro.forEach(btn => btn.classList.remove('active'));
+
+      if (termino === "") {
+        // Si borra todo, volvemos a mostrar todo y activamos el botón "Todos"
+        filtroActual = "todos";
+        document.querySelector('[data-filter="todos"]').classList.add('active');
+        renderizarProductos("todos");
+        return;
+      }
+
+      // Filtramos en toda la base de datos
+      const encontrados = productos.filter(p => 
+         p.titulo.toLowerCase().includes(termino) || 
+         p.tag.toLowerCase().includes(termino) ||
+         p.categoria.toLowerCase().includes(termino)
+      );
+
+      // Guardamos el estado de búsqueda
+      filtroActual = "busqueda";
+      ultimosResultadosBusqueda = encontrados;
+
+      // Renderizamos esos resultados
+      renderizarProductos("busqueda");
+    });
+  }
+
+  /* =========================================================
+     3. RENDERIZADO (MODIFICADO PARA SOPORTAR BÚSQUEDA)
      ========================================================= */
   function renderizarProductos(filtro) {
     grid.innerHTML = "";
-    filtroActual = filtro; // Actualizamos el filtro actual
     
-    const filtrados = filtro === "todos" 
-      ? productos 
-      : productos.filter(p => p.categoria === filtro);
+    // Determinamos qué lista de productos usar
+    let listaA_Mostrar = [];
 
-    if(filtrados.length === 0) {
-      grid.innerHTML = "<div style='width:100%; padding:50px; text-align:center; color:#888;'>No hay productos en esta categoría.</div>";
+    if (filtro === "todos") {
+        listaA_Mostrar = productos;
+    } else if (filtro === "busqueda") {
+        listaA_Mostrar = ultimosResultadosBusqueda;
+    } else {
+        // Es un filtro de categoría (herbicida, fertilizante, etc.)
+        listaA_Mostrar = productos.filter(p => p.categoria === filtro);
+    }
+
+    // Manejo de "Sin resultados"
+    if(listaA_Mostrar.length === 0) {
+      if (filtro === "busqueda") {
+         grid.innerHTML = `
+            <div style="width:100%; text-align:center; padding:50px 20px; color:#888;">
+                <i class="fas fa-search" style="font-size:2rem; margin-bottom:15px; opacity:0.3;"></i><br>
+                No encontramos productos que coincidan con tu búsqueda.
+            </div>`;
+      } else {
+         grid.innerHTML = "<div style='width:100%; padding:50px; text-align:center; color:#888;'>No hay productos en esta categoría.</div>";
+      }
       return;
     }
 
-    filtrados.forEach((prod, index) => {
-      // Estado actual
+    // Dibujamos las tarjetas
+    listaA_Mostrar.forEach((prod, index) => {
+      // Estado actual del carrito para este item
       const itemEnCarrito = carrito.find(i => i.id === prod.id);
       const cantidadActual = itemEnCarrito ? itemEnCarrito.cantidad : 0;
 
@@ -136,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const article = document.createElement("article");
       article.classList.add("producto-bloque", "fade-in");
-      article.style.animationDelay = `${index * 0.1}s`;
+      // Pequeño delay escalonado para efecto visual
+      article.style.animationDelay = `${index * 0.05}s`;
       
       article.innerHTML = `
         <div class="prod-imagen">
@@ -178,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     3. DELEGACIÓN DE EVENTOS (INTERACTIVIDAD)
+     4. DELEGACIÓN DE EVENTOS (INTERACTIVIDAD)
      ========================================================= */
   
   grid.addEventListener('click', (e) => {
@@ -199,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =========================================================
-     4. FUNCIONES LÓGICAS
+     5. FUNCIONES LÓGICAS DE CARRITO
      ========================================================= */
 
   function togglePopover(id) {
@@ -240,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const popover = document.getElementById(`popover-${id}`);
     if(popover) popover.classList.remove('active');
     
-    // IMPORTANTE: Usamos la variable global filtroActual para no perder la vista
+    // IMPORTANTE: Redibujamos manteniendo el filtro actual (sea categoría o búsqueda)
     renderizarProductos(filtroActual);
     actualizarDock();
   }
@@ -252,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     5. BARRA INFERIOR (SMART DOCK) Y PAPELERA
+     6. BARRA INFERIOR (SMART DOCK) Y PAPELERA
      ========================================================= */
   function actualizarDock() {
     const dock = document.getElementById("smart-dock");
@@ -276,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Pedimos confirmación simple
       if(confirm("¿Estás seguro de que querés vaciar tu lista de cotización?")) {
         carrito = []; // Vaciamos el array
-        renderizarProductos(filtroActual); // Redibujamos para que los botones vuelvan a "Cotizar"
+        renderizarProductos(filtroActual); // Redibujamos
         actualizarDock(); // Se ocultará la barra
       }
     });
@@ -284,13 +341,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     6. FILTROS Y EVENTOS EXTRA
+     7. FILTROS POR BOTÓN (MODIFICADO PARA LIMPIAR BÚSQUEDA)
      ========================================================= */
   btnsFiltro.forEach(btn => {
     btn.addEventListener("click", () => {
+      
+      // Limpiamos visualmente el buscador para evitar confusión
+      if(searchInput) searchInput.value = "";
+      
+      // Actualizamos estado de botones
       btnsFiltro.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      renderizarProductos(btn.dataset.filter);
+      
+      // Establecemos el nuevo filtro
+      filtroActual = btn.dataset.filter;
+      renderizarProductos(filtroActual);
     });
   });
 
@@ -303,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
-     7. ENVÍO WHATSAPP / EMAIL
+     8. ENVÍO WHATSAPP / EMAIL
      ========================================================= */
   function generarTextoPedido(saltoLinea) {
     let txt = "";
@@ -333,7 +398,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // INICIALIZAR
+  /* =========================================================
+     INIT
+     ========================================================= */
   renderizarProductos("todos");
 
 });

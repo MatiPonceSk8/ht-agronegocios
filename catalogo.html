@@ -44,10 +44,21 @@
 
    <section class="filtros-container-wrapper">
        <div class="filtros-capsula">
-           <button class="btn-filtro active" data-filter="todos">Todos</button>
-           <button class="btn-filtro" data-filter="herbicida">Herbicidas</button>
-           <button class="btn-filtro" data-filter="fertilizante">Fertilizantes</button>
-           <button class="btn-filtro" data-filter="coadyuvante">Coadyuvantes</button>
+           
+           <div class="search-inline">
+               <i class="fas fa-search"></i>
+               <input type="text" id="searchInput" placeholder="Buscar insumo (ej: Glifosato)...">
+           </div>
+
+           <div class="capsule-divider"></div>
+
+           <div class="filters-inline">
+               <button class="btn-filtro active" data-filter="todos">Todos</button>
+               <button class="btn-filtro" data-filter="herbicida">Herbicidas</button>
+               <button class="btn-filtro" data-filter="fertilizante">Fertilizantes</button>
+               <button class="btn-filtro" data-filter="coadyuvante">Coadyuvantes</button>
+           </div>
+
        </div>
    </section>
 

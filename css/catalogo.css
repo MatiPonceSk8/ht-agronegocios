@@ -60,58 +60,111 @@
   max-width: 600px; font-weight: 300;
 }
 
-/* --- 2. FILTROS "ZERO GAP" --- */
+/* --- 2. BARRA UNIFICADA (BUSCADOR + FILTROS) --- */
 .filtros-container-wrapper {
     position: relative;
     z-index: 10;
-    margin-top: -48px;  
-    margin-bottom: -48px;
+    margin-top: -35px;  /* Ajustado para que flote bien */
+    margin-bottom: -35px;
     display: flex;
     justify-content: center;
     padding: 0 20px;
-    pointer-events: none; 
+    pointer-events: none; /* Dejamos pasar clicks a los costados */
 }
 
 .filtros-capsula {
     background: #ffffff;
-    padding: 8px 10px;
+    padding: 5px 8px; /* Compacto */
     border-radius: 50px;
     display: flex;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 
+                0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0,0,0,0.04);
+    pointer-events: auto; /* Activamos clicks dentro de la barra */
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+/* BUSCADOR INTEGRADO */
+.search-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 15px;
+    flex: 1; /* Ocupa el espacio restante */
+    min-width: 220px;
+}
+
+.search-inline i {
+    color: #c5a065; 
+    font-size: 1rem;
+}
+
+.search-inline input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    width: 100%;
+    padding: 12px 0;
+}
+.search-inline input::placeholder { color: #aaa; font-weight: 400; }
+
+/* LÍNEA SEPARADORA */
+.capsule-divider {
+    width: 1px;
+    height: 30px;
+    background-color: #eee;
+}
+
+/* BOTONES DE FILTRO */
+.filters-inline {
+    display: flex;
+    gap: 4px;
     flex-wrap: wrap;
     justify-content: center;
-    pointer-events: auto;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 
-                0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0,0,0,0.02);
 }
 
 .btn-filtro {
     background: transparent;
     border: none;
-    color: #5e6d64; 
-    padding: 12px 24px;
+    color: #666; 
+    padding: 10px 20px;
     border-radius: 40px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.btn-filtro:hover { color: #1e4d2b; background-color: rgba(30, 77, 43, 0.04); }
-.btn-filtro.active { background-color: #1e4d2b; color: #ffffff; box-shadow: 0 4px 15px rgba(30, 77, 43, 0.3); transform: translateY(-1px); }
+.btn-filtro:hover { 
+    background-color: rgba(30, 77, 43, 0.04); 
+    color: #1e4d2b; 
+}
 
+.btn-filtro.active { 
+    background-color: #1e4d2b; 
+    color: #ffffff; 
+    box-shadow: 0 3px 12px rgba(30, 77, 43, 0.25); 
+    transform: translateY(-1px);
+}
 
-/* --- 3. GUÍA DE USO (STRIP DELICADO) --- */
+/* --- 3. GUÍA DE USO --- */
 .guide-strip {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  /* Padding top alto para separarse bien de los filtros */
   padding: 80px 20px 20px 20px; 
   font-family: 'Inter', sans-serif;
   opacity: 0.6; 
@@ -131,7 +184,7 @@
 #catalogo-grid {
     padding-top: 20px;
     background-color: transparent;
-    padding-bottom: 120px; /* Aumentado para evitar choque con dock en móvil */
+    padding-bottom: 120px;
 }
 
 .producto-bloque {
@@ -214,56 +267,38 @@
 /* --- 6. SMART DOCK (BARRA INFERIOR BLUR) --- */
 .smart-dock {
   position: fixed; bottom: 0; left: 0; width: 100%;
-  
   background: rgba(255, 255, 255, 0.75); 
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
   padding: 15px 5%;
-  
-  /* Flex normal para desktop */
   display: flex; 
   justify-content: space-between; 
   align-items: center;
-  
   z-index: 2000;
   transform: translateY(120%);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .smart-dock.visible { transform: translateY(0); }
 
-.dock-left { 
-  display: flex; 
-  align-items: center; 
-  gap: 20px; 
-  flex-shrink: 0; /* Evita que el texto se comprima */
-}
-
-/* Botón Papelera */
+.dock-left { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
 .btn-icon-trash {
-  width: 44px; height: 44px; 
-  border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);
   background: white; color: #999; cursor: pointer; 
   display: flex; align-items: center; justify-content: center; font-size: 1.1rem; 
-  transition: all 0.2s ease;
-  flex-shrink: 0;
+  transition: all 0.2s ease; flex-shrink: 0;
 }
 .btn-icon-trash:hover { background: #ffebee; color: #d32f2f; border-color: #ffcdd2; transform: scale(1.1); }
 
 .dock-info h4 { font-family: 'Inter', sans-serif; font-size: 1rem; margin: 0; color: #1e4d2b; font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .dock-info span { font-size: 0.8rem; color: #555; display: block; white-space: nowrap; }
 
-.dock-actions { 
-  display: flex; 
-  gap: 12px;
-}
+.dock-actions { display: flex; gap: 12px; }
 .btn-dock {
   padding: 10px 24px; border: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem;
   cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; color: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); white-space: nowrap;
 }
 .btn-whatsapp { background: #25d366; }
 .btn-whatsapp:hover { background: #1ebc57; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); }
@@ -285,35 +320,28 @@
   .prod-imagen { order: -1; }
 }
 
-/* --- SOLUCIÓN CRÍTICA PARA BARRA INFERIOR --- */
-/* Aumentamos el breakpoint a 950px (laptops/tablets) */
-/* Antes era 600px y por eso se rompía en tu pantalla */
+@media (max-width: 768px) {
+    /* Barra unificada en móvil */
+    .filtros-capsula {
+        flex-direction: column;
+        border-radius: 20px;
+        gap: 0;
+        padding: 10px;
+    }
+    .search-inline {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+    }
+    .capsule-divider { display: none; }
+    .filters-inline { width: 100%; justify-content: space-between; }
+    .btn-filtro { flex: 1; text-align: center; padding: 8px; font-size: 0.75rem; }
 
-@media (max-width: 950px) {
-  .filtros-container-wrapper { margin-top: -20px; margin-bottom: -20px; }
-  .filtros-capsula { padding: 6px; border-radius: 20px; width: 100%; }
-  .btn-filtro { flex: 1 1 auto; text-align: center; padding: 10px 10px; font-size: 0.75rem; }
-  
-  .guide-strip { gap: 10px; flex-wrap: wrap; text-align: center; padding-top: 60px; }
-  .guide-line { display: none; }
-  .guide-step { font-size: 0.65rem; }
-
-  /* DOCK EN COLUMNA (Estilo Móvil/Tablet) */
-  .smart-dock { 
-    flex-direction: column; 
-    gap: 15px; 
-    padding: 20px 15px; 
-    align-items: stretch; /* Estira todo el ancho */
-  }
-  .dock-left { 
-    width: 100%; 
-    justify-content: space-between; /* Texto izquierda, Tacho derecha */
-    flex-direction: row-reverse; /* Pone el tacho a la derecha para acceso facil */
-  }
-  .dock-actions { width: 100%; }
-  .btn-dock { 
-    flex: 1; /* Botones ocupan 50% cada uno */
-    justify-content: center; 
-    padding: 12px 0; 
-  }
+    /* Dock en móvil */
+    .smart-dock { flex-direction: column; gap: 15px; padding: 20px 15px; align-items: stretch; }
+    .dock-left { width: 100%; justify-content: space-between; flex-direction: row-reverse; }
+    .dock-actions { width: 100%; }
+    .btn-dock { flex: 1; justify-content: center; padding: 12px 0; }
 }
