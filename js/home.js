@@ -137,3 +137,118 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
 });
+
+/* =====================================================
+   ANIMACIÓN DE NÚMEROS (STATS)
+   ===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const statsSection = document.querySelector(".stats-section");
+  const counters = document.querySelectorAll(".stat-number");
+  let started = false; // Para que no se ejecute dos veces
+
+  const startCounting = () => {
+    counters.forEach(counter => {
+      const target = +counter.getAttribute("data-target");
+      const duration = 2000; // Duración en ms (2 segundos)
+      const increment = target / (duration / 16); // 60fps aprox
+
+      let current = 0;
+      
+      const updateCounter = () => {
+        current += increment;
+        
+        if (current < target) {
+          // Formato especial para +50.000 (con punto de mil)
+          if(target > 1000) {
+             counter.innerText = "+" + Math.ceil(current).toLocaleString('es-AR');
+          } else if (target === 100) { // Caso porcentaje
+             counter.innerText = Math.ceil(current) + "%"; 
+          } else {
+             counter.innerText = "+" + Math.ceil(current);
+          }
+          requestAnimationFrame(updateCounter);
+        } else {
+          // Valor final limpio
+          if(target > 1000) {
+             counter.innerText = "+" + target.toLocaleString('es-AR');
+          } else if (target === 100) {
+             counter.innerText = target + "%";
+          } else {
+             counter.innerText = "+" + target;
+          }
+        }
+      };
+
+      updateCounter();
+    });
+  };
+
+  // Observer para disparar cuando se ve la sección
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      startCounting();
+      started = true;
+    }
+  }, { threshold: 0.5 }); // Se activa cuando se ve el 50% de la sección
+
+  if(statsSection) {
+    observer.observe(statsSection);
+  }
+});
+
+/* =====================================================
+   ANIMACIÓN DE NÚMEROS (STATS)
+   ===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const statsSection = document.querySelector(".stats-section");
+  const counters = document.querySelectorAll(".stat-number");
+  let started = false; // Control para que corra solo una vez
+
+  const startCounting = () => {
+    counters.forEach(counter => {
+      // Obtenemos el valor final del HTML
+      const target = +counter.getAttribute("data-target");
+      const duration = 2000; // 2 segundos de animación
+      const increment = target / (duration / 16); // Cálculo de velocidad
+
+      let current = 0;
+      
+      const updateCounter = () => {
+        current += increment;
+        
+        if (current < target) {
+          // Mientras cuenta:
+          if(target > 1000) {
+             // Si es miles, usamos formato con punto (15.000)
+             counter.innerText = "+" + Math.ceil(current).toLocaleString('es-AR');
+          } else {
+             // Si es chico, número directo (25)
+             counter.innerText = "+" + Math.ceil(current);
+          }
+          requestAnimationFrame(updateCounter);
+        } else {
+          // Valor final exacto:
+          if(target > 1000) {
+             counter.innerText = "+" + target.toLocaleString('es-AR');
+          } else {
+             counter.innerText = "+" + target;
+          }
+        }
+      };
+
+      updateCounter();
+    });
+  };
+
+  // El Observer activa la animación cuando llegas a la sección
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      startCounting();
+      started = true;
+    }
+  }, { threshold: 0.5 }); // Se activa al ver el 50% de la sección
+
+  if(statsSection) {
+    observer.observe(statsSection);
+  }
+});

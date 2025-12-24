@@ -179,7 +179,98 @@
 
 
 /* =========================================
-   2. SECCIÓN SERVICIOS (Estilo Premium)
+   2. SECCIÓN TRAYECTORIA (STATS) - NUEVA
+   ========================================= */
+.stats-section {
+  background-color: #1e4d2b; /* Verde HT */
+  color: white;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #c5a065; /* Detalle dorado */
+}
+
+/* Patrón de fondo rayado animado */
+.stats-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  
+  /* Rayas diagonales */
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.1) 0px,  /* Color de línea (10% opacidad) */
+      rgba(255,255,255,0.1) 1px,  /* Grosor */
+      transparent 1px,
+      transparent 15px            /* Espaciado */
+  );
+  
+  pointer-events: none;
+  animation: moverFondoRayado 60s linear infinite;
+}
+
+/* Animación de movimiento horizontal */
+@keyframes moverFondoRayado {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 0; }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 30px;
+  text-align: center;
+}
+
+.stat-item {
+  position: relative;
+  padding: 10px;
+}
+
+/* Líneas separadoras (solo Desktop) */
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute; right: 0; top: 20%; height: 60%;
+  width: 1px; background: rgba(197, 160, 101, 0.4);
+}
+
+.stat-number {
+  font-family: 'Roboto Slab', serif; /* Fuente fuerte */
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #c5a065; /* Dorado */
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Responsive de Stats */
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+  }
+  .stat-item:not(:last-child)::after { display: none; }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .stat-number { font-size: 3rem; }
+}
+
+
+/* =========================================
+   3. SECCIÓN SERVICIOS (Estilo Premium)
    ========================================= */
 
 .services-section {
@@ -259,7 +350,7 @@
 
 
 /* =========================================
-   3. SECCIÓN EQUIPO (Estilo Clásico)
+   4. SECCIÓN EQUIPO (Estilo Clásico)
    ========================================= */
 
 .bg-white-section { background-color: #ffffff; padding: 80px 0; }
@@ -274,7 +365,7 @@
 
 
 /* =========================================
-   4. INSUMOS (Texto Centrado)
+   5. INSUMOS (Texto Centrado)
    ========================================= */
 
 .agroquimicos-section { position: relative; padding: 100px 0; overflow: hidden; }
@@ -335,7 +426,7 @@
 
 
 /* =========================================
-   5. CONTACTO (ESTILO AGENCY PRO - CLARO)
+   6. CONTACTO (ESTILO AGENCY PRO - CLARO)
    ========================================= */
 
 .contact-pro-section {
@@ -436,7 +527,7 @@
 }
 
 /* =========================================
-   6. RESPONSIVE (MÓVIL)
+   7. RESPONSIVE GLOBAL (MÓVIL)
    ========================================= */
 @media (max-width: 900px) {
   .hero-cinematic { justify-content: center; text-align: center; padding: 0 20px; padding-top: 80px; }
@@ -460,4 +551,88 @@
   .contact-form-panel { padding: 40px 30px; }
   .form-grid-row { grid-template-columns: 1fr; gap: 0; }
   .contact-brand-panel h2 { font-size: 2rem; }
+}
+
+/* =========================================
+   CINTA DE MARCAS (LOGO TICKER)
+   ========================================= */
+.logos-section {
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+  padding: 20px 0; /* Espaciado interno */
+}
+.logos-title {
+  display: flex;              /* Para alinear las líneas con el texto */
+  align-items: center;
+  justify-content: center;
+  gap: 15px;                  /* Espacio entre el texto y las líneas */
+
+  font-family: 'Playfair Display', serif; /* Fuente elegante del sitio */
+  font-size: 1.2rem;          /* Un pelín más grande para que se lea bien la fuente serif, pero sutil */
+  font-weight: 700;           /* Negrita para presencia */
+  color: #1e4d2b;             /* Verde Corporativo (en vez de gris) */
+  
+  letter-spacing: 1px;        /* Espaciado de letras */
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Líneas doradas a los costados */
+.logos-title::before,
+.logos-title::after {
+  content: "";
+  display: block;
+  width: 40px;                /* Largo de la línea */
+  height: 2px;                /* Grosor de la línea */
+  background-color: #c5a065;  /* Color Dorado */
+  border-radius: 2px;
+}
+.logos-slider::before { left: 0; background: linear-gradient(to right, white, transparent); }
+.logos-slider::after { right: 0; background: linear-gradient(to left, white, transparent); }
+
+/* Pista que se mueve */
+.logos-track {
+  display: flex;
+  gap: 80px; /* Espacio generoso entre logos */
+  width: max-content;
+  animation: scrollLogos 45s linear infinite; /* 45s para que sea lento y elegante */
+}
+
+/* ESTILO DE LOS LOGOS */
+.logos-track img {
+  height: 45px; /* Altura fija para uniformidad */
+  width: auto;  /* El ancho se ajusta solo */
+  object-fit: contain;
+  
+  /* Estética Sutil */
+  filter: grayscale(100%) opacity(0.5) contrast(1.2);
+  mix-blend-mode: multiply; /* Ayuda a limpiar bordes blancos de JPGs */
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+/* Hover: Recuperan color y opacidad */
+.logos-track img:hover {
+  filter: grayscale(0%) opacity(1) contrast(1);
+  transform: scale(1.1); /* Ligero zoom */
+  mix-blend-mode: normal;
+}
+
+/* Animación */
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Se mueve hasta la mitad (donde empieza el duplicado) */
+}
+
+/* Pausar si el usuario pasa el mouse */
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .logos-track { gap: 40px; }
+  .logos-track img { height: 30px; } /* Más chicos en celular */
 }
