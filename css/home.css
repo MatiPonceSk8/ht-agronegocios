@@ -17,7 +17,7 @@
   overflow: hidden;
   
   /* IMAGEN DE FONDO */
-  background: url('../assets/img/imgFondoInicio.png') no-repeat center center;
+  background: url('../assets/img/inicio.png') no-repeat center center;
   background-size: cover;
   background-color: #0f1f16; 
   color: white;
@@ -372,7 +372,7 @@
 .agroquimicos-bg {
   position: absolute; inset: 0;
   background: linear-gradient(rgba(30, 77, 43, 0.85), rgba(30, 77, 43, 0.85)),
-              url('../assets/img/campo.png');
+              url('../assets/img/insumos\ agroquimicos.png');
   background-size: cover; background-position: center; z-index: 0;
 }
 

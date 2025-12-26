@@ -242,9 +242,6 @@ footer strong { color: white; }
 }
 
 /* --- SOLUCIÓN CRÍTICA DE SUPERPOSICIÓN --- */
-/* Cambiado de 850px a 1100px. 
-   Esto asegura que en laptops normales, el texto se oculte 
-   antes de chocar con el botón. */
 @media (max-width: 1100px) {
   .brand a {
     font-size: 0; /* Oculta texto "HT - AGRONEGOCIOS" */

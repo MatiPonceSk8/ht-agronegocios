@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HT - Agronegocios | Servicios Premium</title>
+  <title>HT - Agronegocios | Servicios Técnicos</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/servicios.css"> 
 </head>
@@ -32,91 +31,116 @@
 
   <main>
     
-    <header class="servicios-header">
-      <div class="container">
-        <span class="badge-header">SOLUCIONES INTEGRALES</span>
-        <h1>Innovación aplicada <br> a tu campo.</h1>
-        <p>No solo vendemos insumos. Diseñamos la estrategia que tu lote necesita para alcanzar su máximo potencial productivo.</p>
+    <header class="agro-header">
+      <div class="container header-flex">
+        <div class="header-text">
+          <span class="badge-tech">AGRO-TECNOLOGÍA APLICADA</span>
+          <h1 class="title-display">
+            MAXIMIZAMOS <br>
+            <span class="highlight-gold">TU HECTÁREA.</span>
+          </h1>
+          <p class="subtitle">
+            Ingeniería agronómica de precisión y logística de insumos estratégicos. 
+            <strong>Todo sincronizado para rendir.</strong>
+          </p>
+          <a href="#dashboard" class="btn-scroll-down">
+            Explorar Soluciones <i class="fas fa-arrow-down"></i>
+          </a>
+        </div>
+        <div class="header-visual">
+           <div class="visual-mask-rounded">
+             <img src="assets/img/hernan.png" alt="Ing. Hernán Titarelli">
+           </div>
+           <div class="stat-badge-floating">
+             <span class="stat-num">+15</span>
+             <span class="stat-txt">Años de<br>Trayectoria</span>
+           </div>
+        </div>
       </div>
     </header>
 
-    <section class="container bento-section">
-      
-      <div class="bento-grid">
-        
-        <article class="bento-card featured-card">
-          <div class="card-bg" style="background-image: url('assets/img/historia.png');"></div>
-          <div class="card-overlay"></div>
-          <div class="card-content">
-            <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
-            <h2>Asesoramiento Técnico Integral</h2>
-            <p>Desde la planificación de la siembra hasta la cosecha. Nuestro equipo monitorea cada etapa para tomar decisiones basadas en datos reales.</p>
-            <ul class="micro-list">
-              <li><i class="fas fa-check"></i> Planificación de campaña</li>
-              <li><i class="fas fa-check"></i> Monitoreo de lotes</li>
-              <li><i class="fas fa-check"></i> Agricultura de precisión</li>
+    <section id="dashboard" class="fullscreen-split">
+      <article class="split-panel">
+        <div class="panel-bg" style="background-image: url('assets/img/nuevo.png');"></div>
+        <div class="panel-gradient"></div>
+        <div class="tech-border"><span class="border-label">INGENIERÍA</span></div>
+        <span class="outline-num">01</span>
+        <div class="panel-content">
+          <div class="panel-icon"><i class="fas fa-satellite-dish"></i></div>
+          <h2>asesoramiento tecnico</h2>
+          <div class="panel-hidden-info">
+            <p>Planificación estratégica y monitoreo. Tus ojos expertos en el lote.</p>
+            <ul class="panel-list">
+              <li><i class="fas fa-check"></i> Diseño de Rotaciones</li>
+              <li><i class="fas fa-check"></i> Agricultura de Precisión</li>
             </ul>
-            <a href="index.html#contacto" class="btn-text-arrow">Agendar visita <i class="fas fa-arrow-right"></i></a>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="bento-card standard-card">
-          <div class="card-image-top">
-            <img src="assets/img/trigo.png" alt="Semillas">
+      <article class="split-panel">
+        <div class="panel-bg" style="background-image: url('assets/img/aplicacion\ de\ agroquimico.png');"></div>
+        <div class="panel-gradient"></div>
+        <div class="tech-border"><span class="border-label">LOGÍSTICA</span></div>
+        <span class="outline-num">02</span>
+        <div class="panel-content">
+          <div class="panel-icon gold"><i class="fas fa-flask"></i></div>
+          <h2>Venta de Insumos</h2>
+          <div class="panel-hidden-info">
+            <p>El producto exacto, a tiempo. Disponibilidad de marcas líderes.</p>
+            <a href="catalogo.html" class="btn-panel-action">Ver Catálogo</a>
           </div>
-          <div class="card-body">
-            <h3>Semillas</h3>
-            <p>Genética de vanguardia seleccionada para adaptarse a tus ambientes y fechas de siembra.</p>
-            <div class="tags-group">
-              <span>Maíz</span><span>Soja</span><span>Trigo</span>
-            </div>
-          </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="bento-card standard-card">
-          <div class="card-image-top">
-            <img src="assets/img/barbecho.png" alt="Protección">
-          </div>
-          <div class="card-body">
-            <h3>Protección de Cultivos</h3>
-            <p>Estrategias de control químico eficientes para mantener tu lote limpio y sano.</p>
-            <div class="tags-group">
-              <span>Herbicidas</span><span>Fungicidas</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="bento-card wide-card">
-          <div class="card-content-side">
-            <h3>Nutrición & Fertilizantes</h3>
-            <p>Devolvele al suelo lo que necesita. Mezclas físicas y correcciones a medida basadas en análisis de suelo.</p>
-            <a href="catalogo.html" class="btn-border-small">Ver Catálogo</a>
-          </div>
-          <div class="card-image-side">
-            <img src="assets/img/campo.png" alt="Fertilizantes">
-          </div>
-        </article>
-
+      <article class="split-panel panel-map">
+      <div class="map-absolute">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.936224388373!2d-64.35246792433555!3d-33.12055697352526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d200732d67069d%3A0x6001002564273296!2sCastelli%201835%2C%20X5800%20R%C3%ADo%20Cuarto%2C%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1703625482341!5m2!1ses!2sar" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-tint"></div>
       </div>
-
+        <div class="tech-border"><span class="border-label">UBICACIÓN</span></div>
+        <span class="outline-num">03</span>
+        <div class="panel-content">
+          <div class="panel-icon dark"><i class="fas fa-map-marker-alt"></i></div>
+          <h2>centro lógistico</h2>
+          <div class="panel-hidden-info">
+            <p>Río Cuarto, Córdoba. Logística ágil en toda la zona núcleo.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Castelli+1835,+Río+Cuarto,+Córdoba" target="_blank" class="btn-panel-outline">Ir a la Planta</a>
+          </div>
+        </div>
+      </article>
     </section>
-
-    <section class="services-cta">
-      <div class="container">
-        <h2>¿Listo para planificar tu próxima campaña?</h2>
-        <a href="index.html#contacto" class="btn-cta-gold">contactanos</a>
-      </div>
+    
+    <section class="minimal-cta">
+       <div class="container cta-flex">
+         <div class="cta-text">
+           <h2>¿Tu campo rinde lo que debería?</h2>
+           <p>No dejes rentabilidad en el lote. Hablemos de eficiencia.</p>
+         </div>
+         <div class="cta-action">
+           <a href="index.html#contacto" class="btn-solid-green">
+             INICIAR ASESORAMIENTO <i class="fas fa-arrow-right"></i>
+           </a>
+         </div>
+       </div>
     </section>
 
   </main>
-
+  
   <footer>
     <div class="container" style="padding:20px; text-align:center;">
-      <p><strong>HT - AGRONEGOCIOS</strong> &copy; 2024</p>
+      <p><strong>HT - AGRONEGOCIOS</strong> © 2025</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
-
 </body>
 </html>

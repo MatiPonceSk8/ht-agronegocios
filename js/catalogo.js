@@ -101,11 +101,25 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // VARIABLES GLOBALES DE ESTADO
   let carrito = []; 
-  let filtroActual = "todos"; // "todos", "herbicida", "fertilizante", etc. o "busqueda"
-  let ultimosResultadosBusqueda = []; // Almacena temporalmente lo que buscó el usuario
+  let filtroActual = "todos"; 
+  let ultimosResultadosBusqueda = []; 
 
   /* =========================================================
-     2. LÓGICA DEL BUSCADOR INTELIGENTE (NUEVO)
+     NUEVO: CARGAR MEMORIA AL INICIAR
+     ========================================================= */
+  // Verificamos si hay algo guardado de una visita anterior
+  if(localStorage.getItem('ht_carrito_storage')) {
+      try {
+          carrito = JSON.parse(localStorage.getItem('ht_carrito_storage'));
+          actualizarDock(); // Mostramos la barra si hay items recuperados
+      } catch(e) {
+          console.error("Error al cargar el carrito", e);
+          localStorage.removeItem('ht_carrito_storage');
+      }
+  }
+
+  /* =========================================================
+     2. LÓGICA DEL BUSCADOR INTELIGENTE
      ========================================================= */
   const searchInput = document.getElementById('searchInput');
 
@@ -113,40 +127,33 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener('input', (e) => {
       const termino = e.target.value.toLowerCase().trim();
 
-      // Desmarcamos visualmente los filtros de botones
       btnsFiltro.forEach(btn => btn.classList.remove('active'));
 
       if (termino === "") {
-        // Si borra todo, volvemos a mostrar todo y activamos el botón "Todos"
         filtroActual = "todos";
         document.querySelector('[data-filter="todos"]').classList.add('active');
         renderizarProductos("todos");
         return;
       }
 
-      // Filtramos en toda la base de datos
       const encontrados = productos.filter(p => 
          p.titulo.toLowerCase().includes(termino) || 
          p.tag.toLowerCase().includes(termino) ||
          p.categoria.toLowerCase().includes(termino)
       );
 
-      // Guardamos el estado de búsqueda
       filtroActual = "busqueda";
       ultimosResultadosBusqueda = encontrados;
-
-      // Renderizamos esos resultados
       renderizarProductos("busqueda");
     });
   }
 
   /* =========================================================
-     3. RENDERIZADO (MODIFICADO PARA SOPORTAR BÚSQUEDA)
+     3. RENDERIZADO
      ========================================================= */
   function renderizarProductos(filtro) {
     grid.innerHTML = "";
     
-    // Determinamos qué lista de productos usar
     let listaA_Mostrar = [];
 
     if (filtro === "todos") {
@@ -154,11 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (filtro === "busqueda") {
         listaA_Mostrar = ultimosResultadosBusqueda;
     } else {
-        // Es un filtro de categoría (herbicida, fertilizante, etc.)
         listaA_Mostrar = productos.filter(p => p.categoria === filtro);
     }
 
-    // Manejo de "Sin resultados"
     if(listaA_Mostrar.length === 0) {
       if (filtro === "busqueda") {
          grid.innerHTML = `
@@ -172,9 +177,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Dibujamos las tarjetas
     listaA_Mostrar.forEach((prod, index) => {
-      // Estado actual del carrito para este item
+      // AQUÍ ES DONDE LA PERSISTENCIA SE HACE VISIBLE
+      // Al renderizar, chequeamos contra el carrito cargado de memoria
       const itemEnCarrito = carrito.find(i => i.id === prod.id);
       const cantidadActual = itemEnCarrito ? itemEnCarrito.cantidad : 0;
 
@@ -192,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const article = document.createElement("article");
       article.classList.add("producto-bloque", "fade-in");
-      // Pequeño delay escalonado para efecto visual
       article.style.animationDelay = `${index * 0.05}s`;
       
       article.innerHTML = `
@@ -235,25 +239,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     4. DELEGACIÓN DE EVENTOS (INTERACTIVIDAD)
+     4. DELEGACIÓN DE EVENTOS
      ========================================================= */
   
   grid.addEventListener('click', (e) => {
-    
-    // Buscamos si el clic fue en un botón con data-action
     const target = e.target.closest('button');
     if(!target) return;
 
     const action = target.dataset.action;
     const id = parseInt(target.dataset.id);
 
-    // Ejecutar acción correspondiente
     if(action === "toggle") togglePopover(id);
     else if(action === "plus") cambiarQty(id, 1);
     else if(action === "minus") cambiarQty(id, -1);
     else if(action === "confirm") confirmar(id);
     else if(action === "delete") eliminar(id);
   });
+
+  /* =========================================================
+     NUEVO: FUNCIÓN PARA GUARDAR EN LOCALSTORAGE
+     ========================================================= */
+  function guardarEnMemoria() {
+      // Convierte el array a texto y lo guarda en el navegador
+      localStorage.setItem('ht_carrito_storage', JSON.stringify(carrito));
+  }
 
   /* =========================================================
      5. FUNCIONES LÓGICAS DE CARRITO
@@ -266,7 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if(popover) {
         const item = carrito.find(i => i.id === id);
         const display = document.getElementById(`qty-display-${id}`);
-        // Resetear contador visual
         if(display) display.innerText = item ? item.cantidad : 1;
         popover.classList.toggle('active');
     }
@@ -294,16 +302,22 @@ document.addEventListener("DOMContentLoaded", () => {
       carrito.push({ ...prod, cantidad: val });
     }
 
+    // NUEVO: Guardamos cambios
+    guardarEnMemoria();
+
     const popover = document.getElementById(`popover-${id}`);
     if(popover) popover.classList.remove('active');
     
-    // IMPORTANTE: Redibujamos manteniendo el filtro actual (sea categoría o búsqueda)
     renderizarProductos(filtroActual);
     actualizarDock();
   }
 
   function eliminar(id) {
     carrito = carrito.filter(i => i.id !== id);
+    
+    // NUEVO: Guardamos cambios
+    guardarEnMemoria();
+
     renderizarProductos(filtroActual);
     actualizarDock();
   }
@@ -326,40 +340,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // BOTÓN "VACIAR TODO" (PAPELERA)
   const btnTrash = document.getElementById("btn-trash-all");
   if(btnTrash) {
     btnTrash.addEventListener("click", () => {
-      // Pedimos confirmación simple
       if(confirm("¿Estás seguro de que querés vaciar tu lista de cotización?")) {
-        carrito = []; // Vaciamos el array
-        renderizarProductos(filtroActual); // Redibujamos
-        actualizarDock(); // Se ocultará la barra
+        carrito = []; 
+        
+        // NUEVO: Limpiamos también la memoria
+        localStorage.removeItem('ht_carrito_storage');
+        
+        renderizarProductos(filtroActual); 
+        actualizarDock(); 
       }
     });
   }
 
 
   /* =========================================================
-     7. FILTROS POR BOTÓN (MODIFICADO PARA LIMPIAR BÚSQUEDA)
+     7. FILTROS POR BOTÓN
      ========================================================= */
   btnsFiltro.forEach(btn => {
     btn.addEventListener("click", () => {
       
-      // Limpiamos visualmente el buscador para evitar confusión
       if(searchInput) searchInput.value = "";
       
-      // Actualizamos estado de botones
       btnsFiltro.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       
-      // Establecemos el nuevo filtro
       filtroActual = btn.dataset.filter;
       renderizarProductos(filtroActual);
     });
   });
 
-  // Cerrar popover al hacer clic afuera
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.prod-actions')) {
       document.querySelectorAll('.qty-popover').forEach(el => el.classList.remove('active'));
