@@ -1,175 +1,75 @@
-/* IMPORTANTE: Cargamos la fuente "AGRO" (Roboto Slab) directamente aquí */
+/* css/home.css - VERSIÓN FINAL (SIN TINTE VERDE + BLUR) */
+
+/* Fuente AGRO */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&display=swap');
 
 /* =========================================
-   1. HERO CINEMATIC (Estilo Agro Power)
+   1. HERO CINEMATIC 
    ========================================= */
-
 .hero-cinematic {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 5%;
-  overflow: hidden;
-  
-  /* IMAGEN DE FONDO */
+  position: relative; width: 100%; height: 100vh; min-height: 600px;
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 0 5%; overflow: hidden;
   background: url('../assets/img/inicio.png') no-repeat center center;
-  background-size: cover;
-  background-color: #0f1f16; 
-  color: white;
-
-  /* Ajuste menú transparente */
-  margin-top: -85px; 
-  padding-top: 85px; 
+  background-size: cover; background-color: #0f1f16; color: white;
+  margin-top: -85px; padding-top: 85px; 
 }
 
-/* Capa Oscura */
 .hero-bg-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, 
-      rgba(12, 28, 18, 0.95) 0%, 
-      rgba(12, 28, 18, 0.85) 45%, 
-      rgba(12, 28, 18, 0.3) 100%);
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(12, 28, 18, 0.95) 0%, rgba(12, 28, 18, 0.85) 45%, rgba(12, 28, 18, 0.3) 100%);
   z-index: 1;
 }
 
-.hero-main-content {
-  position: relative;
-  z-index: 10;
-  max-width: 850px;
-  animation: fadeSlideRight 1.2s ease-out;
-}
+.hero-main-content { position: relative; z-index: 10; max-width: 850px; animation: fadeSlideRight 1.2s ease-out; }
 
-/* Línea Decorativa */
-.hero-decorative-line {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  opacity: 0.9;
-}
-
+.hero-decorative-line { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; opacity: 0.9; }
 .line-shape { width: 50px; height: 2px; background-color: #c5a065; }
+.line-text { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: #c5a065; }
 
-.line-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #c5a065;
-}
-
-/* --- TÍTULO GIGANTE (ESTILO AGRO: ROBOTO SLAB) --- */
 .hero-title-large {
-  font-family: 'Roboto Slab', serif; 
-  font-size: clamp(3.5rem, 8vw, 7rem); 
-  line-height: 1; 
-  font-weight: 900;
-  margin: 0 0 30px 0;
-  text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: -1px;
+  font-family: 'Roboto Slab', serif; font-size: clamp(3.5rem, 8vw, 7rem); 
+  line-height: 1; font-weight: 900; margin: 0 0 30px 0;
+  text-transform: uppercase; color: #ffffff; letter-spacing: -1px;
 }
 
-/* Efecto Outline */
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 2px #ffffff;
-  opacity: 0.9;
-}
+.text-outline { color: transparent; -webkit-text-stroke: 2px #ffffff; opacity: 0.9; }
 
-/* Descripción */
 .hero-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 45px;
-  border-left: 3px solid #c5a065; 
-  padding-left: 20px;
-  max-width: 550px;
-  font-weight: 300;
+  font-size: 1.1rem; line-height: 1.6; color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 45px; border-left: 3px solid #c5a065; padding-left: 20px;
+  max-width: 550px; font-weight: 300;
 }
 
-/* Botones Hero */
-.hero-buttons {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
-}
+.hero-buttons { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
 
 .btn-glow {
-  padding: 15px 40px;
-  background: #c5a065;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 15px 40px; background: #c5a065; color: white;
+  text-transform: uppercase; letter-spacing: 1px; font-weight: 700; font-size: 0.9rem;
+  border: none; cursor: pointer; transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(197, 160, 101, 0.3); 
 }
-
-.btn-glow:hover {
-  background: #fff;
-  color: #1e4d2b;
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-}
+.btn-glow:hover { background: #fff; color: #1e4d2b; transform: translateY(-3px); box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
 
 .btn-outline-white {
-  display: inline-block;
-  padding: 14px 35px;
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  display: inline-block; padding: 14px 35px; background: transparent;
+  color: white; border: 1px solid rgba(255, 255, 255, 0.5);
+  text-transform: uppercase; letter-spacing: 1px; font-weight: 600; font-size: 0.9rem;
+  transition: all 0.3s ease; text-decoration: none;
 }
+.btn-outline-white:hover { border-color: #ffffff; background: #ffffff; color: #1e4d2b; transform: translateY(-3px); }
 
-.btn-outline-white:hover {
-  border-color: #ffffff;
-  background: #ffffff;
-  color: #1e4d2b;
-  transform: translateY(-3px);
-}
-
-/* Elementos Flotantes (Bottom) */
+/* --- ELEMENTOS FLOTANTES (BOTTOM) --- */
 .hero-floating-bottom {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  width: 100%;
-  padding: 0 5%;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  position: absolute; bottom: 30px; left: 0; width: 100%; padding: 0 5%;
+  z-index: 10; display: flex; justify-content: space-between; align-items: flex-end;
   font-family: 'Inter', sans-serif;
 }
-
 .hero-socials { display: flex; align-items: center; gap: 20px; color: rgba(255,255,255,0.7); }
 .hero-socials span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
 .social-line { width: 40px; height: 1px; background: rgba(255,255,255,0.4); }
 .hero-socials a { color: white; font-size: 1.2rem; transition: 0.3s; opacity: 0.8; }
 .hero-socials a:hover { color: #c5a065; transform: translateY(-3px); opacity: 1; }
-
-.hero-scroll-trigger { position: absolute; left: 50%; transform: translateX(-50%); bottom: 20px; opacity: 0.8; }
-.mouse { width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.6); border-radius: 20px; position: relative; }
-.mouse::before { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: #c5a065; border-radius: 50%; animation: scrollAnim 2s infinite; }
-@keyframes scrollAnim { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 20px; } }
 
 .hero-decor-right { display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.5); }
 .hero-decor-right span { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
@@ -179,169 +79,155 @@
 
 
 /* =========================================
-   2. SECCIÓN TRAYECTORIA (STATS) - CORREGIDA
+   BOTÓN SCROLL RADAR
    ========================================= */
-.stats-section {
-  background-color: #1e4d2b; /* Verde HT */
-  color: white;
-  padding: 80px 0;
+.hero-scroll-trigger {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px; /* Posición Desktop */
+  z-index: 20;
+}
+
+/* El Círculo Principal */
+.scroll-radar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;               /* Tamaño Desktop */
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #c5a065; /* Borde fino dorado */
+  color: #c5a065;            /* Icono dorado */
+  font-size: 1.2rem;
+  text-decoration: none;
   position: relative;
-  overflow: hidden;
-  border-bottom: 4px solid #c5a065; /* Detalle dorado */
+  transition: all 0.3s ease;
+  background: rgba(15, 31, 22, 0.4); 
+  backdrop-filter: blur(4px);        
 }
 
-/* Patrón de fondo rayado (Loop Perfecto) */
-.stats-section::before {
+/* El Icono (Flecha interna) */
+.scroll-radar i {
+  animation: dropArrow 2s infinite; 
+}
+
+/* --- LAS ONDAS (RIPPLES) --- */
+.scroll-radar::before,
+.scroll-radar::after {
   content: '';
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  
-  /* Rayas diagonales usando mosaico */
-  background-image: linear-gradient(
-      45deg,
-      transparent 45%,
-      rgba(255,255,255,0.08) 45%, 
-      rgba(255,255,255,0.08) 55%, 
-      transparent 55%
-  );
-  
-  background-size: 15px 15px; /* Tamaño pequeño del patrón para loop rápido */
-  pointer-events: none;
-  animation: moverFondoRayado 1s linear infinite;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 1px solid #c5a065;
+  opacity: 0;
+  z-index: -1;
+  animation: radarWave 2.5s linear infinite;
 }
 
-/* Animación de movimiento perfecta */
-@keyframes moverFondoRayado {
-  from { background-position: 0 0; }
-  to { background-position: 15px 0; } /* Se mueve lo mismo que el tamaño del patrón */
+.scroll-radar::after {
+  animation-delay: 1.25s;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-  gap: 30px;
-  text-align: center;
+.scroll-radar:hover {
+  background: #c5a065;
+  color: #1e4d2b; 
+  box-shadow: 0 0 25px rgba(197, 160, 101, 0.6);
+  transform: translateY(-5px);
 }
 
-.stat-item {
-  position: relative;
-  padding: 10px;
+/* --- ANIMACIONES DEL RADAR --- */
+@keyframes radarWave {
+  0% { width: 100%; height: 100%; opacity: 0.8; border-width: 2px; }
+  100% { width: 300%; height: 300%; opacity: 0; border-width: 0px; }
 }
 
-/* Líneas separadoras (solo Desktop) */
-.stat-item:not(:last-child)::after {
-  content: '';
-  position: absolute; right: 0; top: 20%; height: 60%;
-  width: 1px; background: rgba(197, 160, 101, 0.4);
-}
-
-.stat-number {
-  font-family: 'Roboto Slab', serif; /* Fuente fuerte */
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #c5a065; /* Dorado */
-  margin-bottom: 5px;
-  line-height: 1;
-}
-
-.stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-}
-
-/* Responsive de Stats */
-@media (max-width: 900px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 20px;
-  }
-  .stat-item:not(:last-child)::after { display: none; }
-}
-
-@media (max-width: 600px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  .stat-number { font-size: 3rem; }
+@keyframes dropArrow {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(5px); }
+  60% { transform: translateY(3px); }
 }
 
 
 /* =========================================
-   3. SECCIÓN SERVICIOS (Estilo Premium)
+   2. STATS (TRAYECTORIA)
    ========================================= */
-
-.services-section {
-  padding: 100px 0;
-  background-color: #f9f9f7; 
+.stats-section {
+  background-color: #1e4d2b; color: white; padding: 80px 0;
+  position: relative; overflow: hidden; border-bottom: 4px solid #c5a065; 
 }
+.stats-section::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.08) 55%, transparent 55%);
+  background-size: 15px 15px; pointer-events: none; animation: moverFondoRayado 1s linear infinite;
+}
+@keyframes moverFondoRayado { from { background-position: 0 0; } to { background-position: 15px 0; } }
 
-/* Cabecera */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+.stat-item { position: relative; padding: 10px; }
+.stat-item:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: rgba(197, 160, 101, 0.4);
+}
+.stat-number { font-family: 'Roboto Slab', serif; font-size: 3.5rem; font-weight: 700; color: #c5a065; margin-bottom: 5px; line-height: 1; }
+.stat-label { font-family: 'Inter', sans-serif; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.9); font-weight: 500; }
+
+
+/* =========================================
+   3. SERVICIOS (TARJETAS + BOTÓN)
+   ========================================= */
+.services-section { padding: 100px 0; background-color: #f9f9f7; }
+
 .section-header { text-align: center; max-width: 700px; margin: 0 auto 70px auto; }
 .section-subtitle { display: block; font-family: 'Inter', sans-serif; color: #c5a065; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
 .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #1e4d2b; margin-bottom: 20px; }
 .header-line { width: 60px; height: 3px; background: #c5a065; margin: 0 auto 25px auto; }
 .section-header p { font-size: 1.1rem; color: #5e6d64; line-height: 1.6; }
 
-/* Grid Servicios */
-.grid-services {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-bottom: 60px;
-}
+.grid-services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 60px; }
 
-/* Tarjeta */
 .service-card {
-  background: #ffffff;
-  padding: 40px 35px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  background: #ffffff; padding: 40px 35px; border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 10px 30px rgba(0,0,0,0.04);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  position: relative;
-  overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 20px; position: relative; overflow: hidden;
 }
-
 .service-card::before {
   content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0%;
   background-color: #c5a065; transition: height 0.4s ease;
 }
-
 .card-icon {
   width: 60px; height: 60px; background-color: #f4f8f5; color: #1e4d2b;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem; transition: all 0.4s ease;
 }
-
 .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #1e4d2b; margin-bottom: 12px; transition: color 0.4s ease; }
 .card-content p { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 20px; transition: color 0.4s ease; }
-
 .card-link {
   font-size: 0.9rem; font-weight: 700; color: #c5a065; text-transform: uppercase; letter-spacing: 1px;
   display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(10px); transition: all 0.4s ease;
 }
 
-/* Hover */
-.service-card:hover {
-  transform: translateY(-8px); box-shadow: 0 20px 40px rgba(30, 77, 43, 0.15);
-  border-color: transparent; background-color: #1e4d2b;
-}
+.service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(30, 77, 43, 0.15); border-color: transparent; background-color: #1e4d2b; }
 .service-card:hover::before { height: 100%; }
 .service-card:hover .card-icon { background-color: rgba(255,255,255,0.1); color: #ffffff; transform: scale(1.1) rotate(5deg); }
 .service-card:hover .card-content h3 { color: #ffffff; }
 .service-card:hover .card-content p { color: rgba(255,255,255,0.8); }
 .service-card:hover .card-link { opacity: 1; transform: translateY(0); color: #c5a065; }
 
-/* Botón CTA */
-.cta-container { text-align: center; margin-top: 50px; }
+/* ----------------------------------------------------
+   BOTÓN CTA CENTRADO (FLEXBOX)
+   ---------------------------------------------------- */
+.cta-container { 
+  display: flex !important;            /* Obliga a usar Flexbox */
+  justify-content: center !important;  /* Obliga a centrar horizontalmente */
+  align-items: center !important;      /* Centra verticalmente */
+  width: 100% !important;              /* Ocupa todo el ancho */
+  margin-top: 50px; 
+  opacity: 1 !important; transform: none !important; 
+}
+
 .btn-primary-solid {
   display: inline-block; padding: 16px 45px; background-color: #1e4d2b;
   color: white; font-weight: 600; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;
@@ -351,9 +237,8 @@
 
 
 /* =========================================
-   4. SECCIÓN EQUIPO (Estilo Clásico)
+   4. EQUIPO
    ========================================= */
-
 .bg-white-section { background-color: #ffffff; padding: 80px 0; }
 .team-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
 .team-card {
@@ -366,36 +251,35 @@
 
 
 /* =========================================
-   5. INSUMOS (Texto Centrado)
+   5. INSUMOS (FONDO BLUR + OSCURO NEUTRO)
    ========================================= */
-
 .agroquimicos-section { position: relative; padding: 100px 0; overflow: hidden; }
+
 .agroquimicos-bg {
   position: absolute; inset: 0;
-  background: linear-gradient(rgba(30, 77, 43, 0.85), rgba(30, 77, 43, 0.85)),
-              url('../assets/img/insumos\ agroquimicos.png');
-  background-size: cover; background-position: center; z-index: 0;
+  
+  /* Gradiente NEGRO TRANSPARENTE (0.6) - Sin color verde */
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+  ), url('../assets/img/fondo\ insumos\ agroquimicos.png');
+  
+  background-size: cover; 
+  background-position: center; 
+  z-index: 0;
+
+  /* EFECTO BLUR + ZOOM */
+  filter: blur(5px);
+  transform: scale(1.1);
 }
 
 .agroquimicos-content { position: relative; z-index: 1; color: white; }
 .section-header.light h2, .section-header.light p { color: white; }
 
-.agroquimicos-slider { 
-  display: grid; 
-  grid-template-columns: 1.2fr 1fr; 
-  align-items: center; 
-  gap: 60px; 
-  margin-top: 60px; 
-}
+.agroquimicos-slider { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 60px; margin-top: 60px; }
 
-/* CENTRADO DE TEXTO Y BOTÓN */
-.agroquimicos-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra el botón horizontalmente */
-  text-align: center;  /* Centra el texto */
-}
-
+/* Centrado texto Insumos */
+.agroquimicos-text { display: flex; flex-direction: column; align-items: center; text-align: center; }
 .agroquimicos-text h3 { font-size: 2rem; margin-bottom: 15px; color: #c5a065; }
 .agroquimicos-text p { font-size: 1.05rem; opacity: 0.95; line-height: 1.7; }
 
@@ -410,7 +294,6 @@
 .agroquimicos-image { background: transparent; padding: 0; box-shadow: none; display: flex; align-items: center; justify-content: center; position: relative; }
 .agroquimicos-image img { max-width: 380px; border-radius: 12px; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)); transition: opacity 0.5s ease; }
 
-/* Nav Slider */
 .agro-nav {
   position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px;
   border-radius: 50%; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(6px);
@@ -422,115 +305,74 @@
 .agro-nav.next { right: 10px; }
 
 /* Utilidad Reveal */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.4s ease, transform 0.4s ease; will-change: opacity, transform; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 
 /* =========================================
-   6. CONTACTO (ESTILO AGENCY PRO - CLARO)
+   6. CONTACTO
    ========================================= */
-
-.contact-pro-section {
-  padding: 100px 0;
-  background-color: #f9f9f7; /* Gris muy suave (Versión Clara) */
-}
-
-/* El Contenedor Principal */
+.contact-pro-section { padding: 100px 0; background-color: #f9f9f7; }
 .contact-pro-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr; 
-  background: white;
-  border-radius: 24px; 
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); 
-  max-width: 1100px;
-  margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.3fr; background: white;
+  border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); max-width: 1100px; margin: 0 auto;
 }
-
-/* --- PANEL IZQUIERDO (Marca) --- */
 .contact-brand-panel {
-  background: linear-gradient(135deg, #1e4d2b 0%, #112e1a 100%); 
-  color: white;
-  padding: 60px 50px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
+  background: linear-gradient(135deg, #1e4d2b 0%, #112e1a 100%); color: white; padding: 60px 50px;
+  position: relative; display: flex; flex-direction: column; justify-content: center; overflow: hidden;
 }
-
 .panel-content { position: relative; z-index: 2; }
+.panel-subtitle { font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block; }
+.contact-brand-panel h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; line-height: 1.1; color: white; margin-bottom: 20px; }
+.contact-brand-panel p { font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 40px; line-height: 1.6; }
 
-.panel-subtitle {
-  font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 2px;
-  color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block;
-}
-
-.contact-brand-panel h2 {
-  font-family: 'Playfair Display', serif; font-size: 2.5rem;
-  line-height: 1.1; color: white; margin-bottom: 20px;
-}
-
-.contact-brand-panel p {
-  font-size: 1.05rem; color: rgba(255,255,255,0.8);
-  margin-bottom: 40px; line-height: 1.6;
-}
-
-/* Lista de Contacto */
 .pro-contact-list { display: flex; flex-direction: column; gap: 25px; }
 .pro-item { display: flex; align-items: center; gap: 15px; }
-
-.icon-box {
-  width: 45px; height: 45px; background: rgba(255,255,255,0.1);
-  border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; color: #c5a065;
-}
-
+.icon-box { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #c5a065; }
 .pro-item .label { display: block; font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
 .pro-item .value { font-size: 1rem; font-weight: 500; font-family: 'Inter', sans-serif; }
+.panel-circle { position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: #c5a065; border-radius: 50%; opacity: 0.1; filter: blur(40px); z-index: 1; }
 
-/* Decoración Fondo */
-.panel-circle {
-  position: absolute; bottom: -50px; right: -50px;
-  width: 200px; height: 200px; background: #c5a065;
-  border-radius: 50%; opacity: 0.1; filter: blur(40px); z-index: 1;
-}
-
-/* --- PANEL DERECHO (Formulario) --- */
 .contact-form-panel { padding: 60px 50px; background-color: #ffffff; }
 .form-grid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .input-group { margin-bottom: 20px; }
 .input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #2c2c2c; margin-bottom: 8px; }
-
-/* INPUTS MODERNOS */
 .contact-form-panel input, .contact-form-panel select, .contact-form-panel textarea {
-  width: 100%; padding: 16px 20px; background-color: #f4f5f7; 
-  border: 1px solid transparent; border-radius: 8px;
-  font-size: 0.95rem; color: #333; transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  width: 100%; padding: 16px 20px; background-color: #f4f5f7; border: 1px solid transparent; border-radius: 8px; font-size: 0.95rem; color: #333; transition: all 0.3s ease; font-family: 'Inter', sans-serif;
 }
-.contact-form-panel input:focus, .contact-form-panel select:focus, .contact-form-panel textarea:focus {
-  background-color: #ffffff; border-color: #1e4d2b;
-  box-shadow: 0 4px 12px rgba(30, 77, 43, 0.1); outline: none;
-}
-
-/* BOTÓN DE ENVÍO PRO */
+.contact-form-panel input:focus, .contact-form-panel select:focus, .contact-form-panel textarea:focus { background-color: #ffffff; border-color: #1e4d2b; box-shadow: 0 4px 12px rgba(30, 77, 43, 0.1); outline: none; }
 .btn-submit-pro {
-  width: 100%; padding: 18px; background-color: #1e4d2b;
-  color: white; font-weight: 600; font-size: 1rem; border: none;
-  border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
-  display: flex; justify-content: center; align-items: center;
-  gap: 10px; letter-spacing: 0.5px;
+  width: 100%; padding: 18px; background-color: #1e4d2b; color: white; font-weight: 600; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 10px; letter-spacing: 0.5px;
 }
-.btn-submit-pro:hover {
-  background-color: #153820; transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(30, 77, 43, 0.2);
-}
+.btn-submit-pro:hover { background-color: #153820; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(30, 77, 43, 0.2); }
+
 
 /* =========================================
-   7. RESPONSIVE GLOBAL (MÓVIL)
+   ALIADOS (LOGOS)
    ========================================= */
+.logos-section { background-color: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05); overflow: hidden; padding: 20px 0; }
+.logos-title {
+  display: flex; align-items: center; justify-content: center; gap: 15px;
+  font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #1e4d2b;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 40px; position: relative;
+}
+.logos-title::before, .logos-title::after { content: ""; display: block; width: 40px; height: 2px; background-color: #c5a065; border-radius: 2px; }
+.logos-slider::before { left: 0; background: linear-gradient(to right, white, transparent); }
+.logos-slider::after { right: 0; background: linear-gradient(to left, white, transparent); }
+
+.logos-track { display: flex; gap: 80px; width: max-content; animation: scrollLogos 45s linear infinite; }
+.logos-track img { height: 45px; width: auto; object-fit: contain; filter: grayscale(100%) opacity(0.5) contrast(1.2); mix-blend-mode: multiply; transition: all 0.4s ease; cursor: pointer; }
+.logos-track img:hover { filter: grayscale(0%) opacity(1) contrast(1); transform: scale(1.1); mix-blend-mode: normal; }
+@keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.logos-track:hover { animation-play-state: paused; }
+
+
+/* =========================================================================
+   TODAS LAS REGLAS RESPONSIVE (MEDIA QUERIES) AL FINAL DEL ARCHIVO
+   ========================================================================= */
+
 @media (max-width: 900px) {
+  /* HERO */
   .hero-cinematic { justify-content: center; text-align: center; padding: 0 20px; padding-top: 80px; }
   .hero-bg-overlay { background: rgba(12, 28, 18, 0.85); }
   .hero-decorative-line { justify-content: center; margin-bottom: 15px; }
@@ -540,13 +382,36 @@
   .btn-glow, .btn-outline-white { width: 100%; }
   .hero-socials, .hero-decor-right { display: none; }
   
+  /* --- AJUSTES RADAR PARA MÓVIL (EVITAR SUPERPOSICIÓN) --- */
+  .hero-main-content {
+    /* Empujar el contenido hacia arriba para que no toque el radar */
+    padding-bottom: 60px; 
+  }
+
+  .hero-scroll-trigger {
+    /* Bajar el radar casi al borde para dar más aire */
+    bottom: 15px; 
+  }
+
+  .scroll-radar {
+    /* Achicar un poco el botón radar para móviles */
+    width: 50px; 
+    height: 50px;
+  }
+
+  /* STATS */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  .stat-item:not(:last-child)::after { display: none; }
+
+  /* SERVICIOS */
   .grid-services { grid-template-columns: 1fr; }
   .card-link { opacity: 1; transform: translateY(0); margin-top: 15px; }
 
+  /* INSUMOS */
   .agroquimicos-slider { grid-template-columns: 1fr; display: flex !important; flex-direction: column; }
   .agroquimicos-image { margin-top: 30px; }
 
-  /* Contacto Responsive */
+  /* CONTACTO */
   .contact-pro-wrapper { grid-template-columns: 1fr; }
   .contact-brand-panel { padding: 40px 30px; }
   .contact-form-panel { padding: 40px 30px; }
@@ -554,99 +419,14 @@
   .contact-brand-panel h2 { font-size: 2rem; }
 }
 
-/* =========================================
-   CINTA DE MARCAS (LOGO TICKER)
-   ========================================= */
-.logos-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  overflow: hidden;
-  padding: 20px 0; /* Espaciado interno */
-}
-.logos-title {
-  display: flex;              /* Para alinear las líneas con el texto */
-  align-items: center;
-  justify-content: center;
-  gap: 15px;                  /* Espacio entre el texto y las líneas */
-
-  font-family: 'Playfair Display', serif; /* Fuente elegante del sitio */
-  font-size: 1.2rem;          /* Un pelín más grande para que se lea bien la fuente serif, pero sutil */
-  font-weight: 700;           /* Negrita para presencia */
-  color: #1e4d2b;             /* Verde Corporativo (en vez de gris) */
-  
-  letter-spacing: 1px;        /* Espaciado de letras */
-  text-transform: uppercase;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-/* Líneas doradas a los costados */
-.logos-title::before,
-.logos-title::after {
-  content: "";
-  display: block;
-  width: 40px;                /* Largo de la línea */
-  height: 2px;                /* Grosor de la línea */
-  background-color: #c5a065;  /* Color Dorado */
-  border-radius: 2px;
-}
-.logos-slider::before { left: 0; background: linear-gradient(to right, white, transparent); }
-.logos-slider::after { right: 0; background: linear-gradient(to left, white, transparent); }
-
-/* Pista que se mueve */
-.logos-track {
-  display: flex;
-  gap: 80px; /* Espacio generoso entre logos */
-  width: max-content;
-  animation: scrollLogos 45s linear infinite; /* 45s para que sea lento y elegante */
-}
-
-/* ESTILO DE LOS LOGOS */
-.logos-track img {
-  height: 45px; /* Altura fija para uniformidad */
-  width: auto;  /* El ancho se ajusta solo */
-  object-fit: contain;
-  
-  /* Estética Sutil */
-  filter: grayscale(100%) opacity(0.5) contrast(1.2);
-  mix-blend-mode: multiply; /* Ayuda a limpiar bordes blancos de JPGs */
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-/* Hover: Recuperan color y opacidad */
-.logos-track img:hover {
-  filter: grayscale(0%) opacity(1) contrast(1);
-  transform: scale(1.1); /* Ligero zoom */
-  mix-blend-mode: normal;
-}
-
-/* Animación */
-@keyframes scrollLogos {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Se mueve hasta la mitad (donde empieza el duplicado) */
-}
-
-/* Pausar si el usuario pasa el mouse */
-.logos-track:hover {
-  animation-play-state: paused;
-}
-
-/* RESPONSIVE */
 @media (max-width: 600px) {
+  /* STATS MOBILE */
+  .stats-grid { grid-template-columns: 1fr; gap: 50px; }
+  .stat-number { font-size: 3rem; }
+
+  /* LOGOS (ALIADOS) MOBILE */
   .logos-track { gap: 40px; }
-  .logos-track img { height: 30px; } /* Más chicos en celular */
-  
-  /* CORRECCIÓN TÍTULO ALIADOS */
-  .logos-title {
-    font-size: 1rem;       /* Fuente un poco más chica */
-    gap: 8px;              /* Menos espacio entre líneas y texto */
-    white-space: nowrap;   /* Evitar que se rompa en dos renglones */
-  }
-  
-  .logos-title::before,
-  .logos-title::after {
-    width: 15px;           /* Líneas cortas para que entre el texto */
-    flex-shrink: 0;        /* Evita que desaparezcan */
-  }
+  .logos-track img { height: 30px; } 
+  .logos-title { font-size: 1rem; gap: 8px; white-space: nowrap; }
+  .logos-title::before, .logos-title::after { width: 15px; flex-shrink: 0; }
 }

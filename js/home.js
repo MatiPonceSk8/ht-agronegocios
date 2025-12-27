@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (elementTop < windowHeight - offset) {
         el.classList.add("active");
-        el.style.transitionDelay = `${index * 0.12}s`;
+        el.style.transitionDelay = `${index * 0.09}s`;
       }
     });
   };
