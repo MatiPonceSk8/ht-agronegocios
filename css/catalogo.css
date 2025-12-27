@@ -5,25 +5,48 @@
 /* --- 1. CABECERA (HERO) --- */
 .catalogo-hero {
   position: relative;
-  height: 55vh; 
-  min-height: 450px;
+  /* Aumentamos un poco la altura para que la imagen se luzca más */
+  height: 65vh; 
+  min-height: 860px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  background: url('../assets/img/imgFondoInicio.png') no-repeat center center;
+  
+  /* Nota las comillas simples '' por los espacios en el nombre del archivo */
+  background: url('../assets/img/agroquimicos/foto de catalogo.png') no-repeat center center;
+  
+  /* Asegura que cubra todo el fondo sin deformarse */
   background-size: cover;
+  
+  /* Mantenemos el efecto parallax (fijo) si te gustaba, ayuda a que se sienta premium.
+     Si prefieres que se mueva con el scroll, borra esta línea: */
+  background-attachment: fixed; 
+  
+  /* Ajustes de márgenes (se mantienen igual) */
   margin-top: -85px; 
   padding-top: 85px; 
   margin-bottom: -60px;
   padding-bottom: 48px;
 }
+/* CAMBIO: Borde inferior dorado para separar */
+.catalogo-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; width: 100%; height: 4px;
+  background: #c5a065;
+  z-index: 5;
+}
 
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, rgba(15, 31, 22, 0.8), rgba(15, 31, 22, 0.95));
+  /* CAMBIO: Degradado NEUTRO (Negro) suave. 
+     Transparente arriba para ver el cielo, oscuro abajo para leer texto. 
+     Ya no es verde. */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1;
 }
 
@@ -39,25 +62,29 @@
 
 .hero-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase;
+  font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase;
   color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Sombra para resaltar sobre la foto */
 }
 
 .catalogo-hero h1 {
-  font-family: 'Playfair Display', serif; font-size: 3.5rem;
+  font-family: 'Playfair Display', serif; font-size: 4rem;
   line-height: 1.1; margin-bottom: 20px; color: white;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  /* Sombra más fuerte para garantizar lectura sin el filtro verde */
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
 .hero-line {
   width: 60px; height: 3px; background-color: #c5a065;
   margin-bottom: 25px; border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 .catalogo-hero p {
-  font-family: 'Inter', sans-serif; font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9); line-height: 1.6;
-  max-width: 600px; font-weight: 300;
+  font-family: 'Inter', sans-serif; font-size: 1.2rem;
+  color: #f0f0f0; line-height: 1.6;
+  max-width: 600px; font-weight: 400;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
 }
 
 /* --- 2. BARRA UNIFICADA (BUSCADOR + FILTROS) --- */
@@ -117,11 +144,11 @@
 }
 .search-inline input::placeholder { color: #aaa; font-weight: 400; }
 
-/* LÍNEA SEPARADORA */
 .capsule-divider {
     width: 1px;
     height: 30px;
-    background-color: #eee;
+    background-color: rgba(30, 77, 43, 0.15); /* Verde muy sutil en vez de gris */
+    border-right: 1px solid rgba(255, 255, 255, 0.5); /* Brillo al lado de la línea */
 }
 
 /* BOTONES DE FILTRO */
