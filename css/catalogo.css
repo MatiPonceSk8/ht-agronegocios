@@ -347,6 +347,24 @@
   .prod-imagen { order: -1; }
 }
 
+/* --- CORRECCIÓN PARA IPHONE/MÓVIL (Fondo Fijo) --- */
+@media (max-width: 768px) {
+  .catalogo-hero,
+  .cta-final {
+    /* Desactiva el efecto fijo que rompe la imagen en iOS */
+    background-attachment: scroll !important;
+    
+    /* Asegura que la imagen esté centrada y cubra el área */
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+
+  /* Ajuste opcional: Reducir un poco la altura del hero en móvil para que se vea mejor */
+  .catalogo-hero {
+      padding: 100px 20px; /* Un poco menos alto que en PC */
+  }
+}
+
 @media (max-width: 768px) {
     /* Barra unificada en móvil */
     .filtros-capsula {
