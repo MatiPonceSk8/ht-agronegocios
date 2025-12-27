@@ -179,7 +179,7 @@
 
 
 /* =========================================
-   2. SECCIÓN TRAYECTORIA (STATS) - NUEVA
+   2. SECCIÓN TRAYECTORIA (STATS) - CORREGIDA
    ========================================= */
 .stats-section {
   background-color: #1e4d2b; /* Verde HT */
@@ -190,28 +190,29 @@
   border-bottom: 4px solid #c5a065; /* Detalle dorado */
 }
 
-/* Patrón de fondo rayado animado */
+/* Patrón de fondo rayado (Loop Perfecto) */
 .stats-section::before {
   content: '';
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   
-  /* Rayas diagonales */
-  background-image: repeating-linear-gradient(
+  /* Rayas diagonales usando mosaico */
+  background-image: linear-gradient(
       45deg,
-      rgba(255,255,255,0.1) 0px,  /* Color de línea (10% opacidad) */
-      rgba(255,255,255,0.1) 1px,  /* Grosor */
-      transparent 1px,
-      transparent 15px            /* Espaciado */
+      transparent 45%,
+      rgba(255,255,255,0.08) 45%, 
+      rgba(255,255,255,0.08) 55%, 
+      transparent 55%
   );
   
+  background-size: 15px 15px; /* Tamaño pequeño del patrón para loop rápido */
   pointer-events: none;
-  animation: moverFondoRayado 60s linear infinite;
+  animation: moverFondoRayado 1s linear infinite;
 }
 
-/* Animación de movimiento horizontal */
+/* Animación de movimiento perfecta */
 @keyframes moverFondoRayado {
   from { background-position: 0 0; }
-  to { background-position: 1000px 0; }
+  to { background-position: 15px 0; } /* Se mueve lo mismo que el tamaño del patrón */
 }
 
 .stats-grid {
@@ -635,4 +636,17 @@
 @media (max-width: 600px) {
   .logos-track { gap: 40px; }
   .logos-track img { height: 30px; } /* Más chicos en celular */
+  
+  /* CORRECCIÓN TÍTULO ALIADOS */
+  .logos-title {
+    font-size: 1rem;       /* Fuente un poco más chica */
+    gap: 8px;              /* Menos espacio entre líneas y texto */
+    white-space: nowrap;   /* Evitar que se rompa en dos renglones */
+  }
+  
+  .logos-title::before,
+  .logos-title::after {
+    width: 15px;           /* Líneas cortas para que entre el texto */
+    flex-shrink: 0;        /* Evita que desaparezcan */
+  }
 }
