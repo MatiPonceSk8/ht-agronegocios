@@ -1,5 +1,5 @@
 /* =========================================
-   ESTILOS CATÁLOGO - HT AGRONEGOCIOS
+   ESTILOS CATÁLOGO - HT AGRONEGOCIOS (FINAL)
    ========================================= */
 
 /* --- 1. CABECERA (HERO) --- */
@@ -21,17 +21,17 @@
   /* Asegura que cubra todo el fondo sin deformarse */
   background-size: cover;
   
-  /* Mantenemos el efecto parallax (fijo) si te gustaba, ayuda a que se sienta premium.
-     Si prefieres que se mueva con el scroll, borra esta línea: */
+  /* Efecto Parallax para PC (se desactiva en móviles más abajo) */
   background-attachment: fixed; 
   
-  /* Ajustes de márgenes (se mantienen igual) */
+  /* Ajustes de márgenes */
   margin-top: -85px; 
   padding-top: 85px; 
   margin-bottom: -60px;
   padding-bottom: 48px;
 }
-/* CAMBIO: Borde inferior dorado para separar */
+
+/* Borde inferior dorado para separar */
 .catalogo-hero::after {
   content: '';
   position: absolute;
@@ -43,9 +43,7 @@
 .hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* CAMBIO: Degradado NEUTRO (Negro) suave. 
-     Transparente arriba para ver el cielo, oscuro abajo para leer texto. 
-     Ya no es verde. */
+  /* Degradado NEUTRO (Negro) suave. */
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1;
 }
@@ -64,13 +62,12 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase;
   color: #c5a065; font-weight: 700; margin-bottom: 15px; display: block;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Sombra para resaltar sobre la foto */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .catalogo-hero h1 {
   font-family: 'Playfair Display', serif; font-size: 4rem;
   line-height: 1.1; margin-bottom: 20px; color: white;
-  /* Sombra más fuerte para garantizar lectura sin el filtro verde */
   text-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
@@ -91,7 +88,7 @@
 .filtros-container-wrapper {
     position: relative;
     z-index: 10;
-    margin-top: -35px;  /* Ajustado para que flote bien */
+    margin-top: -35px;
     margin-bottom: -35px;
     display: flex;
     justify-content: center;
@@ -101,7 +98,7 @@
 
 .filtros-capsula {
     background: #ffffff;
-    padding: 5px 8px; /* Compacto */
+    padding: 5px 8px;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -123,7 +120,7 @@
     align-items: center;
     gap: 12px;
     padding-left: 15px;
-    flex: 1; /* Ocupa el espacio restante */
+    flex: 1;
     min-width: 220px;
 }
 
@@ -147,8 +144,8 @@
 .capsule-divider {
     width: 1px;
     height: 30px;
-    background-color: rgba(30, 77, 43, 0.15); /* Verde muy sutil en vez de gris */
-    border-right: 1px solid rgba(255, 255, 255, 0.5); /* Brillo al lado de la línea */
+    background-color: rgba(30, 77, 43, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* BOTONES DE FILTRO */
@@ -335,7 +332,17 @@
 
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-  .catalogo-hero { height: auto; padding: 120px 20px 60px 20px; }
+  /* AQUÍ ESTÁ EL ARREGLO PARA IPHONE */
+  .catalogo-hero { 
+    height: auto; 
+    padding: 120px 20px 60px 20px;
+    
+    /* FIX CRÍTICO PARA IOS: Evita el zoom exagerado */
+    background-attachment: scroll !important; 
+    background-position: center center !important;
+    background-size: cover !important;
+  }
+
   .catalogo-hero h1 { font-size: 2.5rem; }
   .producto-bloque { min-height: auto; }
   .prod-imagen, .prod-contenido { flex: 0 0 100%; max-width: 100%; border: none; }
@@ -345,24 +352,6 @@
   .prod-actions { width: 100%; } 
   .producto-bloque:nth-child(even) { flex-direction: row; }
   .prod-imagen { order: -1; }
-}
-
-/* --- CORRECCIÓN PARA IPHONE/MÓVIL (Fondo Fijo) --- */
-@media (max-width: 768px) {
-  .catalogo-hero,
-  .cta-final {
-    /* Desactiva el efecto fijo que rompe la imagen en iOS */
-    background-attachment: scroll !important;
-    
-    /* Asegura que la imagen esté centrada y cubra el área */
-    background-position: center center !important;
-    background-size: cover !important;
-  }
-
-  /* Ajuste opcional: Reducir un poco la altura del hero en móvil para que se vea mejor */
-  .catalogo-hero {
-      padding: 100px 20px; /* Un poco menos alto que en PC */
-  }
 }
 
 @media (max-width: 768px) {
