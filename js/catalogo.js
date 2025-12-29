@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "Glifosato Power Plus II",
       unidad: "Bidones (20L)", 
       descripcion: "Concentrado soluble (SL). Control post-emergente sistémico de malezas anuales y perennes.",
-      specs: { "Concentración": "79% WG", "Acción": "Sistémica" },
-      img: "assets/img/agroquimicos/glifosato power plus 2.png"
+      specs: { "Concentración": "79% WG", "Acción": "Sistémica" }
     },
     {
       id: 2, 
@@ -21,8 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "2,4-D Etil Hexil",
       unidad: "Bidones (20L)",
       descripcion: "Herbicida sistémico de baja volatilidad (Éster). Excelente penetración en cutículas cerosas.",
-      specs: { "Formulación": "EC", "Volatilidad": "Baja" },
-      img: "assets/img/agroquimicos/2,4D etil hexil.png"
+      specs: { "Formulación": "EC", "Volatilidad": "Baja" }
     },
     {
       id: 3, 
@@ -31,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "Imazetapir 10%",
       unidad: "Bidones (20L)",
       descripcion: "Acción residual y sistémica para soja, maní y alfalfa. Controla gramíneas y latifoliadas.",
-      specs: { "Uso": "Pre/Post Emergencia", "Cultivos": "Soja, Maní" },
-      img: "assets/img/agroquimicos/imazetapir.png"
+      specs: { "Uso": "Pre/Post", "Cultivos": "Soja, Maní" }
     },
     {
       id: 4, 
@@ -41,48 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "Paraquat Sigma",
       unidad: "Bidones (20L)",
       descripcion: "Desecante rápido no selectivo. La herramienta ideal para el 'doble golpe' sin residualidad.",
-      specs: { "Efecto": "Quemante", "Residualidad": "Nula" },
-      img: "assets/img/agroquimicos/paraquat.png"
-    },
-    {
-      id: 6, 
-      categoria: "herbicida", 
-      tag: "Herbicida Desecante", 
-      titulo: "Glufosinato de Amonio",
-      unidad: "Bidones (20L)",
-      descripcion: "Herbicida de contacto con ligera acción sistémica. Fundamental para rotación de principios.",
-      specs: { "Grupo": "H", "Control": "Amaranthus" },
-      img: "assets/img/agroquimicos/glufosinato de amonio.png"
-    },
-    {
-      id: 7, 
-      categoria: "herbicida", 
-      tag: "Herbicida Residual", 
-      titulo: "Flumioxazin Delta",
-      unidad: "Bidones (5L)", 
-      descripcion: "Herbicida PPO de suelo con potente acción residual. Solución para Yuyo Colorado.",
-      specs: { "Modo Acción": "PPO", "Residualidad": "Alta" },
-      img: "assets/img/agroquimicos/flumioxazin.png"
-    },
-    {
-      id: 8, 
-      categoria: "herbicida", 
-      tag: "Herbicida Selectivo", 
-      titulo: "Prometrina Delta",
-      unidad: "Bidones (20L)",
-      descripcion: "Herbicida selectivo de pre-emergencia o pre-siembra para Girasol y Soja.",
-      specs: { "Familia": "Triazinas", "Uso": "Girasol/Soja" },
-      img: "assets/img/agroquimicos/prometrina.png"
-    },
-    {
-      id: 9, 
-      categoria: "coadyuvante", 
-      tag: "Coadyuvante Premium", 
-      titulo: "Metil Oil",
-      unidad: "Bidones (20L)",
-      descripcion: "Aceite metilado de soja. Maximiza la eficiencia de aplicación y reduce la deriva.",
-      specs: { "Base": "Aceite Metilado", "Función": "Penetrante" },
-      img: "assets/img/agroquimicos/metil oil.png"
+      specs: { "Efecto": "Quemante", "Residualidad": "Nula" }
     },
     {
       id: 5, 
@@ -91,35 +47,78 @@ document.addEventListener("DOMContentLoaded", () => {
       titulo: "Amino 26",
       unidad: "Bidones (20L)",
       descripcion: "Fertilizante foliar a base de aminoácidos libres. Potente anti-estrés.",
-      specs: { "Composición": "Aminoácidos", "Aplicación": "Foliar" },
-      img: "assets/img/agroquimicos/amino26.png"
+      specs: { "Composición": "Aminoácidos", "Aplicación": "Foliar" }
+    },
+    {
+      id: 6, 
+      categoria: "herbicida", 
+      tag: "Herbicida Desecante", 
+      titulo: "Glufosinato de Amonio",
+      unidad: "Bidones (20L)",
+      descripcion: "Herbicida de contacto con ligera acción sistémica. Fundamental para rotación de principios.",
+      specs: { "Grupo": "H", "Control": "Amaranthus" }
+    },
+    {
+      id: 7, 
+      categoria: "herbicida", 
+      tag: "Herbicida Residual", 
+      titulo: "Flumioxazin Delta",
+      unidad: "Bidones (5L)", 
+      descripcion: "Herbicida PPO de suelo con potente acción residual. Solución para Yuyo Colorado.",
+      specs: { "Modo Acción": "PPO", "Residualidad": "Alta" }
+    },
+    {
+      id: 8, 
+      categoria: "herbicida", 
+      tag: "Herbicida Selectivo", 
+      titulo: "Prometrina Delta",
+      unidad: "Bidones (20L)",
+      descripcion: "Herbicida selectivo de pre-emergencia o pre-siembra para Girasol y Soja.",
+      specs: { "Familia": "Triazinas", "Uso": "Girasol/Soja" }
+    },
+    {
+      id: 9, 
+      categoria: "coadyuvante", 
+      tag: "Coadyuvante Premium", 
+      titulo: "Metil Oil",
+      unidad: "Bidones (20L)",
+      descripcion: "Aceite metilado de soja. Maximiza la eficiencia de aplicación y reduce la deriva.",
+      specs: { "Base": "Aceite Met.", "Función": "Penetrante" }
+    },
+    // ID 10: TU NUEVO PRODUCTO
+    {
+      id: 10,
+      categoria: "fertilizante",
+      tag: "Fertilizante Prueba",
+      titulo: "Fertilizante Inventado",
+      badge: "Nuevo",
+      unidad: "Bidones (20L)",
+      descripcion: "Fertilizante inventado para probar si funciona la cotización automática.",
+      specs: { "Composición": "N-P-K", "Aplicación": "Foliar" }
     }
   ];
 
   const grid = document.getElementById("catalogo-grid");
   const btnsFiltro = document.querySelectorAll(".btn-filtro");
   
-  // VARIABLES GLOBALES DE ESTADO
+  // ESTADO
   let carrito = []; 
   let filtroActual = "todos"; 
   let ultimosResultadosBusqueda = []; 
 
-  /* =========================================================
-     NUEVO: CARGAR MEMORIA AL INICIAR
-     ========================================================= */
-  // Verificamos si hay algo guardado de una visita anterior
+  // CARGAR MEMORIA
   if(localStorage.getItem('ht_carrito_storage')) {
       try {
           carrito = JSON.parse(localStorage.getItem('ht_carrito_storage'));
-          actualizarDock(); // Mostramos la barra si hay items recuperados
+          actualizarDock(); 
       } catch(e) {
-          console.error("Error al cargar el carrito", e);
+          console.error("Error al cargar carrito", e);
           localStorage.removeItem('ht_carrito_storage');
       }
   }
 
   /* =========================================================
-     2. LÓGICA DEL BUSCADOR INTELIGENTE
+     2. LÓGICA DEL BUSCADOR
      ========================================================= */
   const searchInput = document.getElementById('searchInput');
 
@@ -152,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
      3. RENDERIZADO
      ========================================================= */
   function renderizarProductos(filtro) {
+    if(!grid) return;
     grid.innerHTML = "";
     
     let listaA_Mostrar = [];
@@ -165,21 +165,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if(listaA_Mostrar.length === 0) {
-      if (filtro === "busqueda") {
-         grid.innerHTML = `
-            <div style="width:100%; text-align:center; padding:50px 20px; color:#888;">
+      grid.innerHTML = `
+            <div style="width:100%; grid-column: 1 / -1; text-align:center; padding:50px 20px; color:#888;">
                 <i class="fas fa-search" style="font-size:2rem; margin-bottom:15px; opacity:0.3;"></i><br>
-                No encontramos productos que coincidan con tu búsqueda.
+                No encontramos productos que coincidan.
             </div>`;
-      } else {
-         grid.innerHTML = "<div style='width:100%; padding:50px; text-align:center; color:#888;'>No hay productos en esta categoría.</div>";
-      }
       return;
     }
 
     listaA_Mostrar.forEach((prod, index) => {
-      // AQUÍ ES DONDE LA PERSISTENCIA SE HACE VISIBLE
-      // Al renderizar, chequeamos contra el carrito cargado de memoria
       const itemEnCarrito = carrito.find(i => i.id === prod.id);
       const cantidadActual = itemEnCarrito ? itemEnCarrito.cantidad : 0;
 
@@ -191,33 +185,46 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       let specsHTML = "";
-      for (const [key, value] of Object.entries(prod.specs)) {
-          specsHTML += `<div><strong>${key}:</strong> ${value}</div>`;
+      if(prod.specs) {
+        for (const [key, value] of Object.entries(prod.specs)) {
+            specsHTML += `<div class="spec-item"><strong>${key}</strong> ${value}</div>`;
+        }
       }
 
+      // Badge Logic
+      const badgeHTML = prod.badge 
+          ? `<span class="card-badge ${prod.badge.toLowerCase()}">${prod.badge}</span>` 
+          : '';
+
+      const waterMarkText = prod.titulo ? prod.titulo.substring(0, 2).toUpperCase() : "HT";
+
       const article = document.createElement("article");
-      article.classList.add("producto-bloque", "fade-in");
-      article.style.animationDelay = `${index * 0.05}s`;
+      article.classList.add("product-card", "fade-in");
+      article.style.animationDelay = `${index * 0.08}s`;
       
       article.innerHTML = `
-        <div class="prod-imagen">
-            <img src="${prod.img}" alt="${prod.titulo}">
+        ${badgeHTML}
+        <div class="card-watermark">${waterMarkText}</div>
+
+        <div class="card-header">
+            <span class="card-tag">${prod.tag}</span>
+            <h2 class="card-title">${prod.titulo}</h2>
         </div>
-        
-        <div class="prod-contenido">
-          <span class="prod-tag">${prod.tag}</span>
-          <h2>${prod.titulo}</h2>
-          <p>${prod.descripcion}</p>
-          <div class="prod-specs">${specsHTML}</div>
+
+        <p class="card-desc">${prod.descripcion}</p>
+
+        <div class="card-specs">
+            <div class="spec-item"><strong>Presentación</strong> ${prod.unidad}</div>
+            ${specsHTML}
+        </div>
           
-          <div class="prod-actions" id="action-box-${prod.id}">
-            
+        <div class="card-actions" id="action-box-${prod.id}">
             <button class="${btnClase}" data-action="toggle" data-id="${prod.id}">
               ${btnTexto} <i class="fas fa-chevron-down"></i>
             </button>
 
             <div id="popover-${prod.id}" class="qty-popover">
-              <span class="popover-title">Cantidad de ${prod.unidad}</span>
+              <span class="popover-title">Cantidad</span>
               
               <div class="qty-selector">
                 <button class="btn-qty" data-action="minus" data-id="${prod.id}">-</button>
@@ -230,8 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${cantidadActual > 0 ? `<button class="btn-delete" data-action="delete" data-id="${prod.id}"><i class="fas fa-trash"></i></button>` : ''}
               </div>
             </div>
-
-          </div>
         </div>
       `;
       grid.appendChild(article);
@@ -241,35 +246,35 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      4. DELEGACIÓN DE EVENTOS
      ========================================================= */
-  
-  grid.addEventListener('click', (e) => {
-    const target = e.target.closest('button');
-    if(!target) return;
+  if(grid) {
+    grid.addEventListener('click', (e) => {
+        const target = e.target.closest('button');
+        if(!target) return;
 
-    const action = target.dataset.action;
-    const id = parseInt(target.dataset.id);
+        const action = target.dataset.action;
+        const id = parseInt(target.dataset.id, 10);
 
-    if(action === "toggle") togglePopover(id);
-    else if(action === "plus") cambiarQty(id, 1);
-    else if(action === "minus") cambiarQty(id, -1);
-    else if(action === "confirm") confirmar(id);
-    else if(action === "delete") eliminar(id);
-  });
+        if(isNaN(id)) return;
 
-  /* =========================================================
-     NUEVO: FUNCIÓN PARA GUARDAR EN LOCALSTORAGE
-     ========================================================= */
+        if(action === "toggle") togglePopover(id);
+        else if(action === "plus") cambiarQty(id, 1);
+        else if(action === "minus") cambiarQty(id, -1);
+        else if(action === "confirm") confirmar(id);
+        else if(action === "delete") eliminar(id);
+    });
+  }
+
   function guardarEnMemoria() {
-      // Convierte el array a texto y lo guarda en el navegador
       localStorage.setItem('ht_carrito_storage', JSON.stringify(carrito));
   }
 
   /* =========================================================
      5. FUNCIONES LÓGICAS DE CARRITO
      ========================================================= */
-
   function togglePopover(id) {
-    document.querySelectorAll('.qty-popover').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.qty-popover').forEach(el => {
+        if(el.id !== `popover-${id}`) el.classList.remove('active');
+    });
     
     const popover = document.getElementById(`popover-${id}`);
     if(popover) {
@@ -292,8 +297,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function confirmar(id) {
     const display = document.getElementById(`qty-display-${id}`);
+    if(!display) return;
+    
     const val = parseInt(display.innerText);
     const prod = productos.find(p => p.id === id);
+
+    if(!prod) return; 
 
     const existing = carrito.find(i => i.id === id);
     if(existing) {
@@ -301,29 +310,30 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       carrito.push({ ...prod, cantidad: val });
     }
-
-    // NUEVO: Guardamos cambios
     guardarEnMemoria();
 
     const popover = document.getElementById(`popover-${id}`);
     if(popover) popover.classList.remove('active');
     
+    // Notificación
+    mostrarNotificacion("Producto agregado a la cotización", "success");
+
     renderizarProductos(filtroActual);
     actualizarDock();
   }
 
   function eliminar(id) {
     carrito = carrito.filter(i => i.id !== id);
-    
-    // NUEVO: Guardamos cambios
     guardarEnMemoria();
+
+    mostrarNotificacion("Producto eliminado de la lista", "delete");
 
     renderizarProductos(filtroActual);
     actualizarDock();
   }
 
   /* =========================================================
-     6. BARRA INFERIOR (SMART DOCK) Y PAPELERA
+     6. BARRA INFERIOR (SMART DOCK)
      ========================================================= */
   function actualizarDock() {
     const dock = document.getElementById("smart-dock");
@@ -345,47 +355,48 @@ document.addEventListener("DOMContentLoaded", () => {
     btnTrash.addEventListener("click", () => {
       if(confirm("¿Estás seguro de que querés vaciar tu lista de cotización?")) {
         carrito = []; 
-        
-        // NUEVO: Limpiamos también la memoria
         localStorage.removeItem('ht_carrito_storage');
         
+        mostrarNotificacion("Lista vaciada correctamente", "delete");
+
         renderizarProductos(filtroActual); 
         actualizarDock(); 
       }
     });
   }
 
-
   /* =========================================================
-     7. FILTROS POR BOTÓN
+     7. FILTROS
      ========================================================= */
   btnsFiltro.forEach(btn => {
     btn.addEventListener("click", () => {
-      
       if(searchInput) searchInput.value = "";
-      
       btnsFiltro.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      
       filtroActual = btn.dataset.filter;
       renderizarProductos(filtroActual);
     });
   });
 
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.prod-actions')) {
+    if (!e.target.closest('.card-actions')) {
       document.querySelectorAll('.qty-popover').forEach(el => el.classList.remove('active'));
     }
   });
-
 
   /* =========================================================
      8. ENVÍO WHATSAPP / EMAIL
      ========================================================= */
   function generarTextoPedido(saltoLinea) {
     let txt = "";
-    carrito.forEach(i => {
-      txt += `• ${i.titulo}: ${i.cantidad} x [${i.unidad}]${saltoLinea}`;
+    carrito.forEach(itemCarrito => {
+      // BUSCAMOS DATO FRESCO
+      const productoReal = productos.find(p => p.id === itemCarrito.id);
+      
+      const unidadCorrecta = productoReal ? productoReal.unidad : itemCarrito.unidad;
+      const tituloCorrecto = productoReal ? productoReal.titulo : itemCarrito.titulo;
+
+      txt += `• ${tituloCorrecto}: ${itemCarrito.cantidad} x [${unidadCorrecta}]${saltoLinea}`;
     });
     return txt;
   }
@@ -408,6 +419,53 @@ document.addEventListener("DOMContentLoaded", () => {
         body += "\nQuedo a la espera. Gracias.";
         window.location.href = `mailto:gestion@ht.agronegocios.com?subject=Solicitud Web&body=${encodeURIComponent(body)}`;
       });
+  }
+
+  /* =========================================================
+     9. SISTEMA DE NOTIFICACIONES TOAST (LA PARTE QUE FALTABA)
+     ========================================================= */
+  function mostrarNotificacion(mensaje, tipo = "success") {
+    // Si olvidaste poner el div en el HTML, esto lo crea solo para que no falle
+    let container = document.getElementById("toast-container");
+    
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "toast-container";
+        // Estilos de emergencia
+        container.style.position = "fixed";
+        container.style.top = "30px";
+        container.style.left = "50%";
+        container.style.transform = "translateX(-50%)";
+        container.style.zIndex = "9999";
+        container.style.display = "flex";
+        container.style.flexDirection = "column";
+        container.style.gap = "10px";
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${tipo === "delete" ? "delete" : ""}`;
+    
+    // Si no carga el CSS, darle estilo básico
+    if(getComputedStyle(container).position === 'static') { 
+       toast.style.background = tipo === "delete" ? "#d32f2f" : "#1e4d2b";
+       toast.style.color = "white";
+       toast.style.padding = "10px 20px";
+       toast.style.borderRadius = "50px";
+       toast.style.marginTop = "10px";
+    }
+
+    const icono = tipo === "delete" ? '<i class="fas fa-trash-alt"></i>' : '<i class="fas fa-check-circle"></i>';
+    toast.innerHTML = `${icono} <span style="margin-left:8px">${mensaje}</span>`;
+
+    container.appendChild(toast);
+
+    // Animación
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transition = "opacity 0.5s";
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
   }
 
   /* =========================================================
