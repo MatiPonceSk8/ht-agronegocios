@@ -14,17 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "Glifosato Power Plus II",
       desc: "Control total de malezas. Herbicida sistémico granulado de máxima concentración y absorción.",
-      img: "assets/img/agroquimicos/glifosato power plus 2.png"
+      img: "assets/img/glifosato power plus 2.png"
     },
     {
       title: "2,4-D Etil Hexil",
       desc: "Especialista en hoja ancha. Herbicida selectivo de baja volatilidad para tus barbechos.",
-      img: "assets/img/agroquimicos/2,4D etil hexil.png"
+      img: "assets/img/2,4D etil hexil.png"
     },
     {
       title: "Paraquat Sigma",
       desc: "Velocidad de acción. Desecante de contacto ideal para 'Doble Golpe' sin residualidad.",
-      img: "assets/img/agroquimicos/paraquat.png"
+      img: "assets/img/paraquat.png"
     }
   ];
 
