@@ -85,17 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
       descripcion: "Aceite metilado de soja. Maximiza la eficiencia de aplicación y reduce la deriva.",
       specs: { "Base": "Aceite Met.", "Función": "Penetrante" }
     },
-    // ID 10: TU NUEVO PRODUCTO
-    {
-      id: 10,
-      categoria: "fertilizante",
-      tag: "Fertilizante Prueba",
-      titulo: "Fertilizante Inventado",
-      badge: "Nuevo",
-      unidad: "Bidones (20L)",
-      descripcion: "Fertilizante inventado para probar si funciona la cotización automática.",
-      specs: { "Composición": "N-P-K", "Aplicación": "Foliar" }
-    }
   ];
 
   const grid = document.getElementById("catalogo-grid");
