@@ -402,63 +402,69 @@
     .dock-actions { width: 100%; }
     .btn-dock { flex: 1; justify-content: center; padding: 12px 0; }
 }
+
 /* =========================================
-   NOTIFICACIONES TOAST (FEEDBACK)
+   NOTIFICACIONES TOAST (PREMIUM FLUIDO)
    ========================================= */
 
 #toast-container {
   position: fixed;
-  top: 30px; /* Margen desde arriba */
+  top: 30px; 
   left: 50%;
-  transform: translateX(-50%); /* Centrado horizontal perfecto */
-  z-index: 9999; /* Por encima de TODO */
+  transform: translateX(-50%);
+  z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  pointer-events: none; /* Para que puedas clickear a través si no hay toasts */
+  gap: 15px; 
+  pointer-events: none;
 }
 
 .toast {
-  background-color: #1e4d2b; /* Verde HT */
+  background-color: #1e4d2b; 
   color: white;
-  padding: 12px 25px;
-  border-radius: 50px; /* Forma de píldora */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 12px 30px; 
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1); 
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-width: 250px;
+  gap: 12px;
+  min-width: 280px;
   justify-content: center;
   
-  /* Animación de entrada */
-  animation: slideDownFade 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  opacity: 0;
-  transform: translateY(-20px);
+  /* ANIMACIÓN DE ENTRADA: De abajo hacia arriba */
+  animation: slideInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  
+  /* Preparamos la transición de salida */
+  transition: all 0.5s ease;
 }
 
 .toast.delete {
-  background-color: #d32f2f; /* Rojo para eliminar */
+  background-color: #d32f2f;
 }
 
 .toast i {
-  color: #c5a065; /* Icono dorado */
-  font-size: 1.1rem;
+  color: #c5a065;
+  font-size: 1.2rem;
 }
 
-/* Animación Keyframes */
-@keyframes slideDownFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Estado de salida: Se añade con JS */
+.toast.closing {
+  opacity: 0;
+  transform: translateY(-20px); /* Se eleva al desaparecer */
+  pointer-events: none;
 }
 
-@keyframes fadeOut {
-  to {
+/* KEYFRAMES */
+@keyframes slideInUp {
+  0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

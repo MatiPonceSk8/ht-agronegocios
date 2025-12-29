@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       categoria: "coadyuvante", 
       tag: "Coadyuvante Premium", 
       titulo: "Metil Oil",
+      //badge: "Nuevo",
       unidad: "Bidones (20L)",
       descripcion: "Aceite metilado de soja. Maximiza la eficiencia de aplicación y reduce la deriva.",
       specs: { "Base": "Aceite Met.", "Función": "Penetrante" }
@@ -411,49 +412,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     9. SISTEMA DE NOTIFICACIONES TOAST (LA PARTE QUE FALTABA)
+     9. SISTEMA DE NOTIFICACIONES TOAST (OPTIMIZADO)
      ========================================================= */
   function mostrarNotificacion(mensaje, tipo = "success") {
-    // Si olvidaste poner el div en el HTML, esto lo crea solo para que no falle
     let container = document.getElementById("toast-container");
     
     if (!container) {
         container = document.createElement("div");
         container.id = "toast-container";
-        // Estilos de emergencia
-        container.style.position = "fixed";
-        container.style.top = "30px";
-        container.style.left = "50%";
-        container.style.transform = "translateX(-50%)";
-        container.style.zIndex = "9999";
-        container.style.display = "flex";
-        container.style.flexDirection = "column";
-        container.style.gap = "10px";
+        // Si no existe, se crea pero el CSS se encarga de la posición
         document.body.appendChild(container);
     }
 
     const toast = document.createElement("div");
+    // Agregamos la clase base
     toast.className = `toast ${tipo === "delete" ? "delete" : ""}`;
     
-    // Si no carga el CSS, darle estilo básico
-    if(getComputedStyle(container).position === 'static') { 
-       toast.style.background = tipo === "delete" ? "#d32f2f" : "#1e4d2b";
-       toast.style.color = "white";
-       toast.style.padding = "10px 20px";
-       toast.style.borderRadius = "50px";
-       toast.style.marginTop = "10px";
-    }
-
+    // Contenido
     const icono = tipo === "delete" ? '<i class="fas fa-trash-alt"></i>' : '<i class="fas fa-check-circle"></i>';
-    toast.innerHTML = `${icono} <span style="margin-left:8px">${mensaje}</span>`;
+    toast.innerHTML = `${icono} <span>${mensaje}</span>`;
 
     container.appendChild(toast);
 
-    // Animación
+    // TIEMPO DE PERMANENCIA
+    // 1. Esperamos 3 segundos
+    // 2. Agregamos clase "closing" (inicia animación de salida CSS)
+    // 3. Esperamos 0.5s (lo que dura la animación CSS) y borramos del DOM
     setTimeout(() => {
-        toast.style.opacity = "0";
-        toast.style.transition = "opacity 0.5s";
-        setTimeout(() => toast.remove(), 500);
+        toast.classList.add("closing");
+        
+        // Esperar a que termine la animación de salida para remover el nodo
+        setTimeout(() => {
+            toast.remove();
+        }, 500); 
+        
     }, 3000);
   }
 
