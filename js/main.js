@@ -53,62 +53,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================================
-   3. MANEJO DEL FORMULARIO DE CONTACTO (AJAX + REDIRECCIÓN)
+   3. CONEXIÓN CON GOOGLE SHEETS (BACKEND PROPIO)
    ========================================================= */
+
 document.addEventListener("DOMContentLoaded", () => {
     
-    const contactForm = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contactForm");
 
-    if (contactForm) {
-      contactForm.addEventListener("submit", async function(event) {
-        event.preventDefault(); // 1. Frenamos el envío tradicional HTML
-        
-        const status = document.getElementById("formMsg");
-        const submitBtn = contactForm.querySelector('.btn-submit-pro');
-        const originalBtnText = submitBtn.innerHTML;
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function(event) {
+      event.preventDefault(); // Evitamos recarga
+      
+      const submitBtn = contactForm.querySelector('.btn-submit-pro');
+      const status = document.getElementById("formMsg");
+      const originalBtnText = submitBtn.innerHTML;
 
-        // 2. Feedback visual para el usuario (UX Profesional)
-        submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
-        submitBtn.disabled = true;
-        status.innerHTML = ""; // Limpiamos mensajes previos
+      // 1. Feedback Visual
+      submitBtn.innerHTML = 'Procesando... <i class="fas fa-spinner fa-spin"></i>';
+      submitBtn.disabled = true;
+      status.innerHTML = ""; 
 
-        const data = new FormData(event.target);
+      // 2. Preparamos los datos
+      const data = new FormData(contactForm);
 
-        try {
-          // 3. Enviamos los datos a Formspree "por detrás" (Fetch)
-          const response = await fetch(event.target.action, {
-            method: contactForm.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-          });
+      try {
+        // 3. Enviamos a Google Script
+        // NOTA: Google Scripts requiere 'method: POST' y body FormData.
+        // No usaremos headers JSON para evitar problemas de CORS con Google.
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: data
+        });
 
-          // 4. Verificamos la respuesta
-          if (response.ok) {
-            // ÉXITO TOTAL: Redirección relativa (funciona en Local y Github)
-            window.location.href = "thank-you.html"; 
-            
-          } else {
-            // ERROR (Ej: Captcha inválido o problema en Formspree)
-            const jsonData = await response.json();
-            submitBtn.innerHTML = originalBtnText; // Restauramos botón
-            submitBtn.disabled = false;
-            
-            // Mostramos el error exacto que nos da Formspree
-            if (jsonData.errors) {
-              status.innerHTML = `<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ ${jsonData.errors.map(error => error.message).join(", ")}</div>`;
-            } else {
-              status.innerHTML = '<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ Ocurrió un error. Revisa el Captcha e intenta de nuevo.</div>';
-            }
-          }
-        } catch (error) {
-          // ERROR DE RED (Internet caído, etc)
-          submitBtn.innerHTML = originalBtnText;
-          submitBtn.disabled = false;
-          status.innerHTML = '<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ Error de conexión. Verifica tu internet.</div>';
+        // 4. Verificamos respuesta
+        // Google siempre devuelve status 200 si llegó bien al script
+        if (response.ok) {
+          // ÉXITO: Vamos a la página de gracias
+          window.location.href = "thank-you.html";
+        } else {
+          throw new Error("Error en la respuesta del servidor");
         }
-      });
-    }
 
+      } catch (error) {
+        console.error("Error!", error.message);
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+        status.innerHTML = '<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ Hubo un problema. Intenta nuevamente.</div>';
+      }
+    });
+  }
 });
