@@ -276,6 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function cambiarQty(id, delta) {
+    if (navigator.vibrate) navigator.vibrate(30);  //vibracion 
+
     const display = document.getElementById(`qty-display-${id}`);
     if(display) {
         let val = parseInt(display.innerText);
@@ -288,6 +290,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function confirmar(id) {
     const display = document.getElementById(`qty-display-${id}`);
     if(!display) return;
+
+    if (navigator.vibrate) navigator.vibrate(50);   //vibracion 
     
     const val = parseInt(display.innerText);
     const prod = productos.find(p => p.id === id);
@@ -313,6 +317,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function eliminar(id) {
+    if (navigator.vibrate) navigator.vibrate(50);   //vibracion
+
     carrito = carrito.filter(i => i.id !== id);
     guardarEnMemoria();
 
@@ -344,6 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if(btnTrash) {
     btnTrash.addEventListener("click", () => {
       if(confirm("¿Estás seguro de que querés vaciar tu lista de cotización?")) {
+        if (navigator.vibrate) navigator.vibrate([50, 30, 50]);   //vibracion
         carrito = []; 
         localStorage.removeItem('ht_carrito_storage');
         
