@@ -51,3 +51,64 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
 });
+
+/* =========================================================
+   3. MANEJO DEL FORMULARIO DE CONTACTO (AJAX + REDIRECCIÓN)
+   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async function(event) {
+        event.preventDefault(); // 1. Frenamos el envío tradicional HTML
+        
+        const status = document.getElementById("formMsg");
+        const submitBtn = contactForm.querySelector('.btn-submit-pro');
+        const originalBtnText = submitBtn.innerHTML;
+
+        // 2. Feedback visual para el usuario (UX Profesional)
+        submitBtn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
+        status.innerHTML = ""; // Limpiamos mensajes previos
+
+        const data = new FormData(event.target);
+
+        try {
+          // 3. Enviamos los datos a Formspree "por detrás" (Fetch)
+          const response = await fetch(event.target.action, {
+            method: contactForm.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          });
+
+          // 4. Verificamos la respuesta
+          if (response.ok) {
+            // ÉXITO TOTAL: Redirección relativa (funciona en Local y Github)
+            window.location.href = "thank-you.html"; 
+            
+          } else {
+            // ERROR (Ej: Captcha inválido o problema en Formspree)
+            const jsonData = await response.json();
+            submitBtn.innerHTML = originalBtnText; // Restauramos botón
+            submitBtn.disabled = false;
+            
+            // Mostramos el error exacto que nos da Formspree
+            if (jsonData.errors) {
+              status.innerHTML = `<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ ${jsonData.errors.map(error => error.message).join(", ")}</div>`;
+            } else {
+              status.innerHTML = '<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ Ocurrió un error. Revisa el Captcha e intenta de nuevo.</div>';
+            }
+          }
+        } catch (error) {
+          // ERROR DE RED (Internet caído, etc)
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+          status.innerHTML = '<div style="color: #d32f2f; margin-top: 10px; font-weight:600;">⚠️ Error de conexión. Verifica tu internet.</div>';
+        }
+      });
+    }
+
+});
