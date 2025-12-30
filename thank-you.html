@@ -2,122 +2,189 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HT - Agronegocios | ¡Mensaje Enviado!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>HT - Agronegocios | Solicitud Recibida</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link rel="stylesheet" href="css/main.css">
-
   <style>
-    .thank-you-section {
-      min-height: 60vh; /* Ocupa buena parte de la pantalla */
+    /* === RESET === */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: #050505; /* Negro puro de base */
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-color: #f8f6f2; /* Color de fondo de tu sitio */
-      padding: 40px 20px;
+      color: #fff;
+    }
+
+    /* === FONDO EDITORIAL (La clave del estilo Vogue) === */
+    .editorial-bg {
+      position: absolute; inset: 0; z-index: 0;
+      /* Usamos la foto del campo pero la transformamos en arte B&N */
+      background-image: url('assets/img/fondo insumos agroquimicos.png');
+      background-size: cover;
+      background-position: center;
+      /* Filtro DRAMÁTICO: Escala de grises total + Contraste alto + Oscuridad */
+      filter: grayscale(100%) contrast(110%) brightness(30%);
+      
+      /* Animación lenta de zoom (Efecto Ken Burns sutil) */
+      animation: slowZoom 20s linear infinite alternate;
+    }
+
+    /* Textura de grano fino para simular papel de revista o fotografía analógica */
+    .texture-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* === MARCO PERIMETRAL (Detalle de Alta Costura) === */
+    .frame-border {
+      position: absolute;
+      top: 20px; bottom: 20px; left: 20px; right: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* === CONTENIDO CENTRAL === */
+    .vogue-content {
+      position: relative;
+      z-index: 10;
       text-align: center;
+      padding: 0 20px;
+      max-width: 800px;
     }
 
-    .thank-card {
-      background: white;
-      max-width: 600px;
-      width: 100%;
-      padding: 60px 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(30, 77, 43, 0.1); /* Tu sombra verde suave */
-      border-top: 5px solid #c5a065; /* Tu color dorado */
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .icon-success {
-      font-size: 4rem;
-      color: #1e4d2b; /* Verde HT */
-      margin-bottom: 25px;
-    }
-
-    .thank-card h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #1e4d2b;
-      margin-bottom: 15px;
-    }
-
-    .thank-card p {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      color: #5e6d64;
-      line-height: 1.6;
-      margin-bottom: 35px;
-    }
-
-    .btn-return {
-      display: inline-block;
-      padding: 15px 40px;
-      background-color: #1e4d2b;
-      color: white;
-      font-weight: 600;
-      border-radius: 50px;
+    /* 1. HEADER PEQUEÑO (Marca de Agua) */
+    .brand-top {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em; /* Mucho espacio entre letras */
       text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(30, 77, 43, 0.2);
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 40px;
+      display: inline-block;
+      position: relative;
+    }
+    /* Línea decorativa debajo de la marca */
+    .brand-top::after {
+      content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 1px; background: #fff; opacity: 0.3;
     }
 
-    .btn-return:hover {
-      background-color: #153820;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(30, 77, 43, 0.3);
+    /* 2. EL TITULAR GIGANTE (Estilo Revista) */
+    .headline-editorial {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem); /* Responsivo pero gigante */
+      line-height: 0.9;
+      margin-bottom: 30px;
+      font-weight: 400; /* Regular, no bold, para elegancia */
+      font-style: italic; /* El toque itálico es muy Vogue */
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+    .headline-editorial span {
+      display: block;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: revealText 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+    /* Retrasos para efecto cascada */
+    .headline-editorial span:nth-child(1) { animation-delay: 0.2s; }
+    .headline-editorial span:nth-child(2) { animation-delay: 0.4s; font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 300; letter-spacing: -2px; font-size: 0.8em; } /* Contraste de fuentes */
+    .headline-editorial span:nth-child(3) { animation-delay: 0.6s; color: #d4c5a3; /* Color Arena/Beige (No dorado brillante) */ }
+
+    /* 3. PÁRRAFO SOFISTICADO */
+    .editorial-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      max-width: 400px;
+      margin: 0 auto 50px auto;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards 1s;
+    }
+
+    /* 4. BOTÓN DE FIRMA (Signature Button) */
+    .btn-vogue {
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 5px;
+      transition: all 0.5s ease;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards 1.2s;
+    }
+
+    .btn-vogue:hover {
+      border-bottom-color: #d4c5a3;
+      color: #d4c5a3;
+      letter-spacing: 0.3em; /* Se expande al pasar el mouse */
+    }
+
+    /* === ANIMACIONES === */
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    @keyframes revealText {
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .frame-border { top: 10px; bottom: 10px; left: 10px; right: 10px; }
+      .headline-editorial { font-size: 3.5rem; }
     }
   </style>
 </head>
+
 <body>
 
-  <nav>
-    <div class="nav-container">
-      <div class="brand">
-        <a href="index.html" style="display:flex; gap:10px; align-items:center;">
-            <img src="assets/icons/logo.png" alt="HT Agronegocios" class="brand-icon">
-            HT - AGRONEGOCIOS
-        </a>
-      </div>
-    </div>
-  </nav>
+  <div class="editorial-bg"></div>
+  <div class="texture-overlay"></div>
+  <div class="frame-border"></div>
 
-  <main class="thank-you-section">
-    <div class="thank-card">
-      <div class="icon-success">
-        <i class="fas fa-check-circle"></i>
-      </div>
-      <h1>¡Consulta Enviada!</h1>
-      <p>
-        Gracias por contactarte con <strong>HT Agronegocios</strong>. 
-        Hemos recibido tu mensaje correctamente. Nuestro equipo técnico analizará tu consulta y te responderá a la brevedad.
-      </p>
-      <a href="index.html" class="btn-return">
-        <i class="fas fa-arrow-left"></i> Volver al Inicio
-      </a>
-    </div>
-  </main>
+  <div class="vogue-content">
+    
+    <div class="brand-top">HT AGRONEGOCIOS</div>
 
-  <footer>
-    <div class="container" style="padding:20px">
-      <p><strong>HT - AGRONEGOCIOS</strong> &copy; 2025</p>
-      <p>Río Cuarto, Córdoba, Argentina.</p>
-    </div>
-  </footer>
+    <h1 class="headline-editorial">
+      <span>Solicitud</span>
+      <span>RECIBIDA</span>
+      <span>Con Éxito.</span>
+    </h1>
 
-  <script src="js/main.js"></script>
+    <p class="editorial-text">
+      La excelencia comienza con la comunicación. Hemos procesado sus datos. Un asesor especializado se pondrá en contacto a la brevedad.
+    </p>
+
+    <a href="index.html" class="btn-vogue">Volver al Hub</a>
+
+  </div>
 
 </body>
 </html>
